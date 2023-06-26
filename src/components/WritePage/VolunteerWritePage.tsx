@@ -17,7 +17,7 @@ import {
 	LayoutContainer,
 	LayoutChildContainer,
 } from '@components/WritePage/WritePageStyle';
-import VolunteerCalendar from '@components/Calendar/VolunteerCalendar';
+import Calendar from '@components/Calendar/Calendar';
 import LargeSelector from '@components/Selector/LargeSelector.tsx';
 import actTypes from '@src/types/actTypeConstants';
 import { Title, TeamType, TeamTypeRadio } from '@pages/myPage/style';
@@ -198,9 +198,10 @@ const VolunteerWritePage = ({ onSave, onCancel }: VolunteerWritePageProps) => {
 							}}>
 							모집 마감일
 						</Title>
-						<VolunteerCalendar
+						<Calendar
 							selectedDate={deadline}
 							setSelectedDate={setDeadline}
+							category='volunteer'
 						/>
 					</LayoutChildContainer>
 					<LayoutChildContainer>
@@ -212,9 +213,10 @@ const VolunteerWritePage = ({ onSave, onCancel }: VolunteerWritePageProps) => {
 							}}>
 							활동 시작일
 						</Title>
-						<VolunteerCalendar
+						<Calendar
 							selectedDate={startDate}
 							setSelectedDate={setStartDate}
+							category='volunteer'
 						/>
 					</LayoutChildContainer>
 					<LayoutChildContainer>
@@ -226,9 +228,10 @@ const VolunteerWritePage = ({ onSave, onCancel }: VolunteerWritePageProps) => {
 							}}>
 							활동 종료일
 						</Title>
-						<VolunteerCalendar
+						<Calendar
 							selectedDate={endDate}
 							setSelectedDate={setEndDate}
+							category='volunteer'
 						/>
 					</LayoutChildContainer>
 				</LayoutContainer>
