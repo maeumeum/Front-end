@@ -162,7 +162,11 @@ const AuthTeam = () => {
 								<Title>대표 이미지 등록</Title>
 								<UploadTeamImg setFile={setFile} />
 								<Title>설립일</Title>
-								<Calendar selectedDate={date} setSelectedDate={setDate} />
+								<Calendar
+									selectedDate={date}
+									setSelectedDate={setDate}
+									category='teamAuth'
+								/>
 								<Title>프로젝트 팀 소개</Title>
 								<TextAreaForm
 									submit={submit}
