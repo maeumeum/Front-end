@@ -20,7 +20,7 @@ import {
 } from './style.ts';
 import PostList from '@components/PostList/PostList.tsx';
 import Menu from '@components/Menu/Menu.tsx';
-import questionImage from '@assets/images/questionImage.png';
+import questionImage from '@assets/images/questionImage.webp';
 import { get } from '@api/api';
 import DataType from '@src/types/dataType.ts';
 import throttle from '@utils/throttle.ts';
