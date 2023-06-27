@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import background from '@assets/images/background.jpg';
+import background from '@assets/images/background.webp';
 import SearchBar from '@components/SearchBar/SearchBar.tsx';
 import WriteButton from '@components/Buttons/WriteButton/WriteButton.tsx';
 import {
@@ -28,8 +28,8 @@ import { DataType } from '@src/types/dataType.ts';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
 import throttle from '@utils/throttle.ts';
-import volunteerImage from '@assets/images/volunteerPage.png';
-import dog from '@assets/images/dog.png';
+import volunteerImage from '@assets/images/volunteerPage.webp';
+import dog from '@assets/images/dog.webp';
 import VolunteerClose from './VolunteerClosePage.tsx';
 
 const VolunteerOngoing = () => {

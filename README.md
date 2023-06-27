@@ -1,6 +1,10 @@
-# 엘리스 SW 엔지니어 트랙 4기 2차 프로젝트 "마음이음"
+# 엘리스 SW 엔지니어 트랙 4기 2차 프로젝트 "마음이음"(작성중)
 
-[![logo](/uploads/d761595c3b4ce8aa3f0c5be33e73aaed/logo.png)](http://kdt-sw-4-team01.elicecoding.com/)
+[![logo](https://github.com/maumeum/Front-end/assets/119808319/69a624d8-6bb0-43bd-a3e0-b3e85d13e132)](http://kdt-sw-4-team01.elicecoding.com/)
+<br>
+[프론트엔드 리포지토리](https://github.com/maumeum/Front-end)
+<br>
+[백엔드 리포지토리](https://github.com/maumeum/Back-end)
 
 <br>
 
@@ -8,7 +12,7 @@
 
 ### 고객 페르소나
 <p align="center">
-![image](/uploads/c5d77670dcb0972e2bebc1c7a02702c1/image.png)
+  <img src="https://github.com/maumeum/Front-end/assets/119808319/8e516425-a2bb-4b5d-a027-6123730a3be7/image.png">
 </p>
 
 ### 서비스 개요
@@ -69,7 +73,7 @@
 ## 3. 아키텍쳐 설계
 
 <p align="center">
-![image](/uploads/cfa83ea353988139ba891bca59faf29a/image.png)
+  <img src="https://github.com/maumeum/Front-end/assets/119808319/ddfd81c8-4b7c-4ca0-a1c7-d14c0ca14aee/image-arch.png">
 </p>
 
 <br>
@@ -77,7 +81,13 @@
 ## 4. 역할 분담
 
 ### Backend
-[류한나](https://github.com/hanna-ryu)
+[류한나](https://github.com/hanna-ryu) : 팀장 / 백엔드 
+- User JWT인증 방식 로그인, 회원가입, 유저 관련 CRUD 기능 구현
+- Review 조건별 / 기능별 CRUD 기능 구현 , scheduler 모듈 활용 일정시점 db 자동변경 구현  
+- 팀 단체 인증 CRUD 기능 구현, , nodemailer 인증 시스템 구현, 
+- winston 활용 logger 시스템 적용
+- asyncHandler , errorHandler, 응답 형식 구분
+- multer 활용 이미지 업로드 기능 구현
 
 [이해인](https://github.com/LHI0915)
 
@@ -85,16 +95,31 @@
 
 ### Frontend
 [김마리나](https://github.com/marinarinarina)
-- 각자
+- 컴포넌트 스토리북 작성
+- 같이봉사해요 페이지 구현
+  - 등록한 봉사활동 전체보기
+  - 봉사활동 글쓰기
 
 [류이서](https://github.com/ryuiseo)
-- 분담한
+- 커뮤니티 페이지 구현
+  - 게시글 작성, 수정, 삭제
+  - 댓글 작성, 수정, 삭제
+- 리뷰 페이지 구현
+  - 리뷰 수정, 삭제
+- 홈페이지 UI 디자인
 
 [정혜린](https://github.com/02rynn)
-- 기능을
 
 [최윤재](https://github.com/uniqueeest)
-- 적어주세요
+- 메인페이지 구현
+- 회원가입, 로그인 페이지 구현
+- 검색 페이지 구현
+- 팀 단체 인증
+- 관리자 페이지
+   - 신고된 게시글, 댓글 확인 후 승인/거부
+   - 팀 단체 승인/거부
+   - 신고된 유저 관리
+ 
 
 <br>
 
