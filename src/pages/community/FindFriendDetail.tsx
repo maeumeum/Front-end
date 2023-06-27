@@ -152,7 +152,7 @@ const FindFriendDetail = () => {
 				<ContentContainer>
 					{hasPostImage && (
 						<div>
-							{images.map((image: any, index: any) => (
+							{images.map((image: string, index: number) => (
 								<Image
 									key={index}
 									src={`${apiURL}/${image}`}

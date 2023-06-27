@@ -15,12 +15,13 @@ import {
 } from '@src/components/WritePage/WritePageStyle';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
+import { CommunityType } from '@src/types/communityType';
 
 const CommunityEditPage = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { postId } = location.state;
-	const [post, setPost] = useState<any>([]);
+	const [post, setPost] = useState<CommunityType | null>(null);
 	const [inputContent, setInputContent] = useState('');
 	const [inputTitle, setInputTitle] = useState('');
 	const [selectedImage, setSelectedImage] = useState<File[]>([]);
@@ -35,7 +36,7 @@ const CommunityEditPage = () => {
 		fetchPost();
 	}, []);
 
-	const handleInputChange = (event: any) => {
+	const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
 		const text = event.target.value;
 		if (text.length <= 2000) {
 			setInputContent(text);
@@ -83,7 +84,11 @@ const CommunityEditPage = () => {
 		navigate(`/community/${postId}`);
 	};
 
-	const { title, content } = post;
+	let title = '';
+	let content = '';
+	if (post) {
+		({ title, content } = post);
+	}
 
 	return (
 		<>

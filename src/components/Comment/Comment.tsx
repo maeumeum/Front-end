@@ -33,6 +33,7 @@ import useAuthStore from '@src/store/useAuthStore';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
 import throttle from '@utils/throttle.ts';
+import { CommentListType, CommentType } from '@src/types/commentType';
 
 const apiURL = import.meta.env.VITE_API_URL;
 
@@ -46,7 +47,7 @@ type UserType = {
 
 const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 	const [inputArea, setInputArea] = useState('');
-	const [value, setValue] = useState<any[]>([]);
+	const [commentList, setCommentList] = useState<CommentListType>([]);
 	const [editingCommentId, setEditingCommentId] = useState('');
 	const [editedComment, setEditedComment] = useState('');
 	const { userData, getUserData } = useAuthStore();
@@ -65,18 +66,18 @@ const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 			`/api/postComments/${postId}?skip=0&limit=3`,
 			{},
 		);
-		setValue(response.data.postCommentList);
+		setCommentList(response.data.postCommentList);
 	};
 
 	const loadMoreData = async () => {
 		try {
 			if (!isLoad) {
 				const response = await get<DataType>(
-					`/api/postComments/${postId}?skip=${value.length}&limit=3`,
+					`/api/postComments/${postId}?skip=${commentList.length}&limit=3`,
 					{},
 				);
 				const newPostListData = response.data.postCommentList;
-				setValue((prevData) => [...prevData, ...newPostListData]);
+				setCommentList((prevData) => [...prevData, ...newPostListData]);
 				setLoad(response.data.hasMore);
 			}
 		} catch (error) {
@@ -86,7 +87,7 @@ const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 
 	// 무한 스크롤
 	useEffect(() => {
-		if (value.length > 0) {
+		if (commentList.length > 0) {
 			const handleScroll = throttle(() => {
 				const { scrollTop, offsetHeight } = document.documentElement;
 				if (offsetHeight - window.innerHeight - scrollTop < 200) {
@@ -97,9 +98,11 @@ const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 			window.addEventListener('scroll', handleScroll);
 			return () => window.removeEventListener('scroll', handleScroll);
 		}
-	}, [value]);
+	}, [commentList]);
 
-	const handleCommentChange = (event: any) => {
+	const handleCommentChange = (
+		event: React.ChangeEvent<HTMLTextAreaElement>,
+	) => {
 		const text = event.target.value;
 		if (text.length <= 200) {
 			setInputArea(text);
@@ -136,7 +139,9 @@ const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 	};
 
 	const handelEditingComment = (comment_id: string) => {
-		const comment = value.find((comment: any) => comment._id === comment_id);
+		const comment = commentList.find(
+			(comment: CommentType) => comment._id === comment_id,
+		);
 		if (comment) {
 			setEditingCommentId(comment_id);
 			setEditedComment(comment.content);
@@ -212,11 +217,11 @@ const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 				<Box></Box>
 				<Comment>댓글 목록</Comment>
 			</Title>
-			{!value || value.length === 0 ? (
+			{!commentList || commentList.length === 0 ? (
 				<CommentHolder>등록된 댓글이 없습니다.</CommentHolder>
 			) : (
-				value &&
-				value.map((comment: any) => (
+				commentList &&
+				commentList.map((comment: CommentType) => (
 					<CommentContainer key={comment._id}>
 						<ProfileContainer>
 							<RandomPhoto>
