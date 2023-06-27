@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import WritePageProps from './WritePageProps';
+import { WritePageProps } from '@src/types/dataType';
 import {
 	TextContainer,
 	Container,

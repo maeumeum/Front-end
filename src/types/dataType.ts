@@ -1,5 +1,3 @@
-import WritePageProps from '@components/WritePage/WritePageProps';
-
 export interface DataType {
 	data: any;
 	error: any;
@@ -18,7 +16,7 @@ export interface VolunteerDataType {
 }
 
 export interface PostDataType {
-	title: string;
+	content: string;
 	inputTitle: string;
 	selectedActType: string;
 	inputRegisterCount: string;
@@ -27,6 +25,11 @@ export interface PostDataType {
 	startDate: Date;
 	endDate: Date;
 	centName: string;
+}
+
+export interface WritePageProps {
+	onSave: (inputTitle: string, textContent: string) => void;
+	onCancel: () => void;
 }
 
 export interface VolunteerWritePageProps
@@ -42,4 +45,9 @@ export interface VolunteerWritePageProps
 		endDate: Date,
 		centName: string,
 	) => void;
+}
+
+export interface ImageData {
+	setFile: (file: File | null) => void;
+	imageType: 'thumbnail' | 'image';
 }
