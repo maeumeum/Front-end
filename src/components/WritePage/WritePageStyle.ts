@@ -5,16 +5,18 @@ export const Container = styled.div`
 	margin-top: 10rem;
 	display: flex;
 	flex-direction: column;
-	width: 95rem;
+	width: ${(props) => (props.className === 'writePage' ? '112rem' : '95rem')};
 	margin-bottom: 20rem;
 `;
+
 export const CategoryContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 `;
+
 export const LayoutContainer = styled.div`
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	grid-template-columns: 1fr 1fr 1fr;
 	gap: 3rem;
 `;
@@ -22,15 +24,30 @@ export const LayoutContainer = styled.div`
 export const LayoutChildContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: 150rem;
 	height: 20rem;
+`;
+
+export const TopTitle = styled.h2`
+	margin: 0 auto 2.5rem;
+	font-size: 2.8rem;
+`;
+
+export const DateTitle = styled.h2`
+	margin: 10rem 0 2.5rem;
+	text-align: left;
+	padding-right: 20rem;
+	font-size: 2rem;
+`;
+
+export const WriteTextContainer = styled.div`
+	margin: 3rem 0 10rem;
 `;
 
 export const TitleInput = styled.input`
 	width: 100%;
-	margin: 0 auto;
+	margin: ${(props) =>
+		props.className === 'writePage' ? '0 auto' : '0 auto 3rem'};
 	border: none;
-	margin-bottom: 3rem;
 	font-size: 3.5rem;
 	font-weight: 600;
 	color: #a7a7a7;
@@ -39,16 +56,18 @@ export const TitleInput = styled.input`
 export const ContentInput = styled.textarea`
 	width: 95%;
 	margin: 0 auto;
-	height: 50rem;
+	height: ${(props) => (props.className === 'textWrite' ? '65rem' : '50rem')};
 	border: 1px solid ${({ theme }) => theme.colors.gray400};
 	font-size: 2rem;
-	padding: 5rem;
+	padding: ${(props) => (props.className === 'textWrite' ? '2.5%' : '5rem')};
 	border-radius: 5px;
 	resize: none;
 `;
+
 export const TextContainer = styled.div`
 	margin-bottom: 10rem;
 `;
+
 export const TextLength = styled.p`
 	margin-left: auto;
 	font-size: 2rem;
@@ -62,6 +81,7 @@ export const ButtonContainer = styled.div`
 	gap: 1rem;
 	margin-left: auto;
 `;
+
 export const CancelButton = styled.button`
 	width: 9rem;
 	height: 5rem;
@@ -71,6 +91,7 @@ export const CancelButton = styled.button`
 	cursor: pointer;
 	font-size: 2rem;
 `;
+
 export const SubmitButton = styled.button`
 	width: 9rem;
 	height: 5rem;
@@ -81,6 +102,7 @@ export const SubmitButton = styled.button`
 	font-size: 2rem;
 	color: #ffffff;
 `;
+
 export const ImageArea = styled.label`
 	display: inline-block;
 	padding: 8px 16px;
