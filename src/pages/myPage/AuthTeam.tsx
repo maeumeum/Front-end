@@ -164,7 +164,9 @@ const AuthTeam = () => {
 								<Title>설립일</Title>
 								<Calendar
 									selectedDate={date}
-									setSelectedDate={setDate}
+									setSelectedDate={(prevDate: Date | null) =>
+										setDate(prevDate as Date)
+									}
 									category='teamAuth'
 								/>
 								<Title>프로젝트 팀 소개</Title>
