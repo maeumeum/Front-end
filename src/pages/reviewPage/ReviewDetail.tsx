@@ -21,7 +21,7 @@ import {
 	NameBox,
 	NanoId,
 } from '@src/pages/community/style';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import useAuthStore from '@src/store/useAuthStore.ts';
 import Swal from 'sweetalert2';
 import alertData from '@src/utils/swalObject';

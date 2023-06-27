@@ -18,7 +18,7 @@ import {
 	BottomContainer,
 } from './IntroTeamStyle';
 import { dateFormatter } from '@utils/dateUtils';
-import DataType from '@src/types/dataType.ts';
+import { DataType } from '@src/types/dataType.ts';
 import { post } from '@api/api';
 import { TeamType } from '@src/types/userType';
 import phoneNumSplit from '@utils/phoneNumSplit';

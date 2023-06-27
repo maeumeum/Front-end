@@ -5,7 +5,7 @@ import TeamCard from '@components/Card/TeamCard';
 import TeamModal from '@components/Modal/TeamModal';
 import Menu from '@components/Menu/Menu.tsx';
 import { TeamListType } from '@src/types/cardType';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import { MenuBar, TopBarContainer, TopBar, TeamCardContainer } from './style';
 
 const TeamAuth = () => {

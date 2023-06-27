@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 import { remainingDaysCalculator, getCurrent } from '@utils/dateUtils.ts';
+import { dateFormatter } from '@utils/dateUtils.ts';
 import { truncateDate } from '@utils/truncateDataFns';
 import {
 	Title,
@@ -17,12 +21,9 @@ import star from '@assets/icons/star.svg';
 import LargeButton from '../Buttons/LargeButton';
 import { useParams } from 'react-router-dom';
 import { get, post } from '@api/api';
-import DataType from '@src/types/dataType';
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import { VolunteerDataType } from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import alertData from '@src/utils/swalObject';
-
-// const remainingDays = remainingDaysCalculator(currentDate, deadlineDate);
 
 const truncateTitle = (title: string) => {
 	if (title.length > 40) {
@@ -34,33 +35,36 @@ const truncateTitle = (title: string) => {
 
 function VolunInfo() {
 	const { postId } = useParams() as { postId: string };
-	const [title, setTitle] = useState<string>('');
-	const [registerCount, setRegisterCount] = useState<string>('');
-	const [deadline, setDeadline] = useState<string>('');
-	const [image, setImage] = useState<string>('');
-	const [startDate, setStartDate] = useState<string>('');
-	const [endDate, setEndDate] = useState<string>('');
-	const [applyCount, setApplyCount] = useState<string>('');
-	const [actType, setActType] = useState<string>('');
-	const [statusName, setStatusName] = useState<string>('');
-	const currentDate = getCurrent();
+	const [volunteerData, setVolunteerData] = useState<VolunteerDataType>({
+		title: '',
+		registerCount: '',
+		deadline: '',
+		image: '',
+		startDate: '',
+		endDate: '',
+		applyCount: '',
+		actType: '',
+		statusName: '',
+	});
+	const currentDate = dateFormatter(getCurrent(), 'YYYY-MM-DD');
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await get<DataType>(`/api/volunteers/${postId}`);
-			setTitle(response.data.title);
-			setRegisterCount(response.data.registerCount);
-			setDeadline(response.data.deadline);
-			setImage(response.data.register_user_id.image);
-			setStartDate(response.data.startDate);
-			setEndDate(response.data.endDate);
-			setDeadline(response.data.deadline);
-			setApplyCount(response.data.applyCount);
-			setActType(response.data.actType);
-			setStatusName(response.data.statusName);
+			const responseData = await get<DataType>(`/api/volunteers/${postId}`);
+			setVolunteerData({
+				...volunteerData,
+				title: responseData.data.title,
+				registerCount: responseData.data.registerCount,
+				deadline: dateFormatter(responseData.data.deadline, 'YYYY-MM-DD'),
+				image: responseData.data.register_user_id.image,
+				startDate: dateFormatter(responseData.data.startDate, 'YYYY-MM-DD'),
+				endDate: dateFormatter(responseData.data.endDate, 'YYYY-MM-DD'),
+				applyCount: responseData.data.applyCount,
+				actType: responseData.data.actType,
+				statusName: responseData.data.statusName,
+			});
 		};
-
 		fetchData();
 	}, []);
 
@@ -84,35 +88,41 @@ function VolunInfo() {
 			<div>
 				<IntroContainer>
 					<ImgContainer>
-						<img src={`${apiURL}/${image}`} alt='팀대표이미지' />
-						<Badge>{statusName}</Badge>
+						<img src={`${apiURL}/${volunteerData.image}`} alt='팀대표이미지' />
+						<Badge>{volunteerData.statusName}</Badge>
 					</ImgContainer>
 					<TeamInfo>
-						<Title>{truncateTitle(title)}</Title>
+						<Title>{truncateTitle(volunteerData.title)}</Title>
 						<Line></Line>
 						<InfoBox>
 							<ApplyBox>
 								<img src={star} alt='스타배지' />
-								<h1>현재 {applyCount}명 신청중!</h1>
+								<h1>현재 {volunteerData.applyCount}명 신청중!</h1>
 							</ApplyBox>
 							<Divider />
-							<p>목표인원 : {registerCount}명</p>
-							<p>활동유형 : {actType}</p>
+							<p>목표인원 : {volunteerData.registerCount}명</p>
+							<p>활동유형 : {volunteerData.actType}</p>
 							<p>
 								모집기간 : {truncateDate(currentDate)} ~{' '}
-								{truncateDate(deadline)} (현재&nbsp;
-								{remainingDaysCalculator(currentDate, deadline)}일) 남음
+								{truncateDate(volunteerData.deadline)} (현재&nbsp;
+								{remainingDaysCalculator(currentDate, volunteerData.deadline)}
+								일) 남음
 							</p>
 							<p>
-								활동기간 :{truncateDate(startDate)} ~ {truncateDate(endDate)}
+								활동기간 : {truncateDate(volunteerData.startDate)} ~{' '}
+								{truncateDate(volunteerData.endDate)}
 							</p>
 						</InfoBox>
 						<ButtonContainer>
 							<LargeButton
 								onClick={clickApply}
 								apply={true}
-								disabled={applyCount === registerCount}>
-								{applyCount === registerCount ? '신청마감' : '같이 참여하기'}
+								disabled={
+									volunteerData.applyCount === volunteerData.registerCount
+								}>
+								{volunteerData.applyCount === volunteerData.registerCount
+									? '신청마감'
+									: '같이 참여하기'}
 							</LargeButton>
 						</ButtonContainer>
 					</TeamInfo>

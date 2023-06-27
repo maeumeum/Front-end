@@ -22,7 +22,7 @@ import {
 	NanoId,
 } from './style.ts';
 import CommentSection from '@src/components/Comment/Comment.tsx';
-import DataType from '@src/types/dataType.ts';
+import { DataType } from '@src/types/dataType.ts';
 import useAuthStore from '@src/store/useAuthStore.ts';
 import Swal from 'sweetalert2';
 import alertData from '@src/utils/swalObject.ts';

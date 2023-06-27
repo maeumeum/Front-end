@@ -7,7 +7,7 @@ import {
 	VolunteerListType,
 	ReviewListType,
 } from '@src/types/cardType';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import {
 	MainSection,
 	TopSlogan,

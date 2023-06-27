@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
 import DatePicker from 'react-datepicker';
 import { ko } from 'date-fns/esm/locale';
 import { getMonth, getYear } from 'date-fns';
@@ -6,6 +5,7 @@ import { getMonth, getYear } from 'date-fns';
 import DateDataType from '@src/types/dateType';
 import { limitCalendarRange } from '@utils/dateUtils';
 import {
+	CustomDateInput,
 	CustomDatePicker,
 	CustomHeaderContainer,
 	Month,
@@ -18,7 +18,7 @@ import leftArrow from '@assets/icons/left_arrow.svg';
 
 interface CalendarProps {
 	selectedDate: Date | null;
-	setSelectedDate: Dispatch<SetStateAction<Date>>;
+	setSelectedDate: (prevState: Date | null) => void;
 	category: string;
 }
 
@@ -55,10 +55,9 @@ const Calendar = ({
 	category,
 }: CalendarProps) => {
 	const limitRange = limitCalendarRange();
-	console.log(category);
 	return (
 		<CustomDatePicker>
-			<DatePicker
+			<CustomDateInput
 				locale={ko}
 				dateFormat='yyyy.MM.dd'
 				formatWeekDay={(nameOfDay: string) => nameOfDay.substring(0, 1)}
