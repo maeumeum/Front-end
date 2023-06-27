@@ -59,6 +59,7 @@ export const CustomDatePicker = styled.div`
 
 		.react-datepicker__day--selected {
 			background-color: ${({ theme }) => theme.colors.green200};
+			color: ${({ theme }) => theme.colors.background};
 			border-radius: 12px;
 		}
 
