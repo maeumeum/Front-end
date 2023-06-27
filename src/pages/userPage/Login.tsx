@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 import { post } from '@api/api';
 import { setToken } from '@api/token';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import {
 	LoginSection,
 	LogoContainer,

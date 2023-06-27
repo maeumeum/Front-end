@@ -22,7 +22,7 @@ import PostList from '@components/PostList/PostList.tsx';
 import Menu from '@components/Menu/Menu.tsx';
 import questionImage from '@assets/images/questionImage.png';
 import { get } from '@api/api';
-import DataType from '@src/types/dataType.ts';
+import { DataType } from '@src/types/dataType.ts';
 import throttle from '@utils/throttle.ts';
 
 type PostData = {

@@ -9,7 +9,7 @@ import {
 	Content,
 	Image,
 } from './ActivityStyle';
-import DataType from '@src/types/dataType.ts';
+import { DataType } from '@src/types/dataType.ts';
 import { get } from '@api/api';
 
 const apiURL = import.meta.env.VITE_API_URL;

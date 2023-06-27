@@ -17,7 +17,7 @@ import UploadTeamImg from '@components/Profile/TeamImg';
 import Tab from '@components/Tab/Tab.tsx';
 import alertData from '@utils/swalObject';
 import { validPhoneNum } from '@utils/signUpCheck.ts';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import { TabTypes } from '@src/types/myPageConstants';
 import { post, get } from '@api/api';
 import useSummitStore from '@src/store/useSummitStore';

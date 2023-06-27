@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { get } from '@src/api/api';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import throttle from '@utils/throttle.ts';
 import {
 	MainContainer,

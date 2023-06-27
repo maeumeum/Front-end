@@ -26,7 +26,7 @@ import {
 	RandomPhoto,
 	Img,
 } from './CommentStyle';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import { get, post, patch, del } from '@api/api';
 import { dateFormatter } from '@src/utils/dateUtils';
 import useAuthStore from '@src/store/useAuthStore';

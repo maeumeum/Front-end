@@ -7,7 +7,7 @@ import {
 import VolunteerTogetherCard from '@src/components/Card/VolunteerTogetherCard.tsx';
 import { VolunteerType, VolunteerTogetherType } from '@src/types/cardType.ts';
 import { get } from '@api/api';
-import DataType from '@src/types/dataType.ts';
+import { DataType } from '@src/types/dataType.ts';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
 import throttle from '@utils/throttle.ts';

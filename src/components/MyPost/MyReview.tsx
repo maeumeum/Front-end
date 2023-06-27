@@ -7,7 +7,7 @@ import LargeButton from '@components/Buttons/LargeButton';
 import TopBar from '@components/TopBar/TopBar';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 interface MyReviewProps {
 	closeModal: () => void;
 	id?: string;

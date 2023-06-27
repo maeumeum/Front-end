@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 import { post } from '@src/api/api';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import alertData from '@utils/swalObject';
 import LargeButton from '@components/Buttons/LargeButton';
 import { SignUpSection, SignUpForm } from './style';
