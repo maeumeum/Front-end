@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import {
+	CardBox,
 	Container,
 	Main,
 	MenuBar,
 	TabMenu,
 } from '@components/MyPage/myPage.ts';
 import Tab from '@components/Tab/Tab.tsx';
+import MyCardImg from '@src/components/Card/MyPageCard/MyCardImg';
 import Menu from '@components/Menu/Menu.tsx';
 import Pagination from '@components/Pagination/Pagination.tsx';
 import { TabTypes } from '@src/types/myPageConstants';
@@ -14,53 +16,26 @@ import DataType from '@src/types/dataType';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
 import NoData from '@components/NoData/NoData.tsx';
-
-interface VolunProps {
-	createdAt: string;
-	_id: string;
-	isParticipate: boolean;
-	isReviewed: boolean;
-	volunteer_id: {
-		startDate: string;
-		endDate: string;
-		_id: string;
-		title: string;
-		centName: string;
-		statusName: string;
-		deadline: string;
-		images: string[];
-	};
-}
-
-// interface MyVolunCardProps {
-// 	volunCardData: {
-// 		title: string;
-// 		images: string[];
-// 		startDate: string;
-// 		endDate: string;
-// 		statusName: string;
-// 		isReviewed: boolean;
-// 		_id: string;
-// 		userImage: string;
-// 	};
-// 	currTab?: string;
-// }
+import { getVolunHistoryCardType, MyVolunCardProps } from '@src/types/cardType';
 
 //volunHistory에서 받는 데이터를 아예 카드형식으로 바꿔야함.
-// function transformVolunData(volunPropsArray: VolunProps[]): MyVolunCardProps[] {
-// 	const volunCardData = {
-// 			title: volunPropsArray.volunteer_id.title,
-// 			images: volunPropsArray.volunteer_id.images,
-// 			startDate: volunPropsArray.volunteer_id.startDate,
-// 			endDate: volunPropsArray.volunteer_id.endDate,
-// 			statusName: volunPropsArray.volunteer_id.statusName,
-// 			isReviewed: volunPropsArray.isReviewed,
-// 			_id: volunPropsArray._id,
-// 			userImage:volunPropsArray.volunteer_id.images[0]
-// 	};
-// 	console.log(volunPropsArray);
-// 	// return { volunCardData };
-// }
+function transformVolunData(
+	volunPropsArray: getVolunHistoryCardType,
+): MyVolunCardProps {
+	const volunCardData = {
+		title: volunPropsArray.volunteer_id.title,
+		thumbnail: volunPropsArray.volunteer_id.images[0],
+		startDate: volunPropsArray.volunteer_id.startDate,
+		endDate: volunPropsArray.volunteer_id.endDate,
+		statusName: volunPropsArray.volunteer_id.statusName,
+		isReviewed: volunPropsArray.isReviewed,
+		volunId: volunPropsArray.volunteer_id._id,
+		nickname: volunPropsArray.volunteer_id.register_user_id.nickname,
+		authorization: volunPropsArray.volunteer_id.register_user_id.authorization,
+		userImage: volunPropsArray.volunteer_id.register_user_id.image,
+	};
+	return { volunCardData };
+}
 
 function MyVolunHistory() {
 	const [currTab, setCurrTab] = useState<TabTypes>(TabTypes.VOLUNTEER_APPLIED);
@@ -68,9 +43,11 @@ function MyVolunHistory() {
 	const handleClickTab = (tab: TabTypes) => {
 		setCurrTab(tab);
 	};
-	const [appliedData, setAppliedData] = useState<VolunProps[]>([]);
-	const [completedData, setCompletedData] = useState<VolunProps[]>([]);
-	const [volunData, setVolunData] = useState<VolunProps[]>([]);
+	const [appliedData, setAppliedData] = useState<getVolunHistoryCardType[]>([]);
+	const [completedData, setCompletedData] = useState<getVolunHistoryCardType[]>(
+		[],
+	);
+	const [volunData, setVolunData] = useState<getVolunHistoryCardType[]>([]);
 	//페이지네이션
 	const [currentPage, setCurrentPage] = useState(1);
 	const pageSize = 8;
@@ -86,7 +63,7 @@ function MyVolunHistory() {
 					'/api/applications?status=false',
 					{},
 				);
-				setAppliedData(getCompetededData.data as VolunProps[]);
+				setAppliedData(getCompetededData.data as getVolunHistoryCardType[]);
 			} catch (error) {
 				Swal.fire(alertData.errorMessage('데이터를 불러오는데 실패했습니다.'));
 			}
@@ -103,7 +80,7 @@ function MyVolunHistory() {
 					'/api/applications?status=true',
 					{},
 				);
-				setCompletedData(getAppliedData.data as VolunProps[]);
+				setCompletedData(getAppliedData.data as getVolunHistoryCardType[]);
 			} catch (error) {
 				Swal.fire(alertData.errorMessage('데이터를 불러오는데 실패했습니다.'));
 			}
@@ -117,8 +94,7 @@ function MyVolunHistory() {
 			: setVolunData(completedData);
 	}, [currTab, appliedData, completedData]);
 
-	console.log(volunData);
-	// const myVolunCardProps = transformVolunData(volunData);
+	const myVolunCardData = volunData.map(transformVolunData);
 
 	return (
 		<>
@@ -132,17 +108,17 @@ function MyVolunHistory() {
 						<Tab currTab={currTab} onClick={handleClickTab} tabs={tabs} />
 					</TabMenu>
 					{volunData.length === 0 && <NoData category='봉사' />}
-					{/* <CardBox>
-						{volunData
+					<CardBox>
+						{myVolunCardData
 							.slice((currentPage - 1) * pageSize, currentPage * pageSize)
 							.map((data, index) => (
-								<Card
-									key={data.volunteer_id._id + '-' + index}
+								<MyCardImg
+									key={data.volunCardData.volunId + '-' + index}
 									currTab={currTab}
-									data={data}
+									volunCardData={data.volunCardData}
 								/>
 							))}
-					</CardBox> */}
+					</CardBox>
 				</Main>
 			</Container>
 

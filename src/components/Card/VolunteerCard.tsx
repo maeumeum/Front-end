@@ -32,9 +32,9 @@ const VolunteerCard = ({ volunteerData, onClick }: VolunteerCardProps) => {
 			</RecruitStatus>
 			<VolunteerIntroContainer>
 				<VolunteerTitle>{volunteerData.title}</VolunteerTitle>
-				<VolunteerContent>
+				{/* <VolunteerContent>
 					{volunteerData.register_user_id.nickname}
-				</VolunteerContent>
+				</VolunteerContent> */}
 			</VolunteerIntroContainer>
 		</VolunteerSection>
 	);

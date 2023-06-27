@@ -143,3 +143,45 @@ export interface CommentType {
 }
 
 export type CommentListType = CommentType[];
+
+export interface getVolunHistoryCardType {
+	_id: string;
+	isParticipate: boolean;
+	isReviewed: boolean;
+	volunteer_id: {
+		startDate: string;
+		endDate: string;
+		register_user_id: {
+			nickname: string;
+			image: string;
+			authorization: boolean;
+		};
+		_id: string;
+		title: string;
+		statusName: string;
+		deadline: string;
+		images: string[];
+	};
+}
+
+export interface MyVolunCardProps {
+	volunCardData: {
+		title: string;
+		thumbnail: string;
+		startDate: string;
+		endDate: string;
+		statusName: string;
+		isReviewed: boolean;
+		volunId: string;
+		userImage: string;
+		authorization: boolean;
+		nickname: string;
+	};
+	currTab?: string;
+}
+
+export interface ReviewProps {
+	statusName: string;
+	isReviewed: boolean;
+	volunId: string;
+}
