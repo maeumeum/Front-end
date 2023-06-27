@@ -23,7 +23,7 @@ import {
 	RemainDesc,
 } from '@components/Modal/modal';
 import { TeamType } from '@src/types/cardType';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 
 interface TeamModalProps {
 	isOpen: boolean;

@@ -8,7 +8,7 @@ import {
 	VolunteerListType,
 	CommentListType,
 } from '@src/types/cardType';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import Menu from '@components/Menu/Menu.tsx';
 import PostList from '@components/PostList/PostList';
 import { MenuBar, TopBarContainer, ClickTopBar, PostContainer } from './style';

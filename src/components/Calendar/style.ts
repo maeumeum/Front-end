@@ -1,4 +1,13 @@
+import DatePicker from 'react-datepicker';
 import styled from 'styled-components';
+
+export const CustomDateInput = styled(DatePicker)`
+	border: none;
+	padding: 1rem 0;
+	font-size: 1.8rem;
+	color: ${({ theme }) => theme.colors.gray600};
+	cursor: pointer;
+`;
 
 export const CustomDatePicker = styled.div`
 	.date-picker-calendar {
@@ -50,6 +59,7 @@ export const CustomDatePicker = styled.div`
 
 		.react-datepicker__day--selected {
 			background-color: ${({ theme }) => theme.colors.green200};
+			color: ${({ theme }) => theme.colors.background};
 			border-radius: 12px;
 		}
 
@@ -87,20 +97,13 @@ export const Year = styled.select`
 
 export const MonthButton = styled.button`
 	display: flex;
+	background-color: transparent;
 	align-items: center;
 	margin: auto 1rem;
-	width: 3rem;
-	height: 3rem;
-	font-size: 1.6rem;
-	color: #ffffff;
-	background-color: ${({ theme }) => theme.colors.green200};
+	width: 4rem;
+	height: 4rem;
 	border: none;
-	border-radius: 8px;
 	cursor: pointer;
-
-	&:hover {
-		background-color: ${({ theme }) => theme.colors.green300};
-	}
 
 	img {
 		width: 100%;

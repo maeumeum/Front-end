@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import DataType from '@src/types/dataType.ts';
+import { DataType } from '@src/types/dataType.ts';
 import { get, patch } from '@api/api';
 import {
 	TextContainer,
