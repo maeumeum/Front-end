@@ -1,7 +1,7 @@
 export interface CommunityType {
 	content: string;
 	createdAt: string;
-	images: string;
+	images: string[];
 	isReported: boolean;
 	postType: string;
 	title: string;
@@ -10,6 +10,8 @@ export interface CommunityType {
 	_id: string;
 	user: string;
 	userRole: string;
+	nickname: string;
+	nanoid: string;
 }
 
 export type CommunityListType = CommunityType[];
