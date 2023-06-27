@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 import { get, del, patch } from '@api/api';
 import { getToken } from '@api/token';
-import { dateFormatter } from '@src/utils/dateUtils.ts';
+import { dateFormatter } from '@utils/dateUtils.ts';
+import alertData from '@utils/swalObject.ts';
 import {
 	DetailContainer,
 	Header,
@@ -21,11 +24,9 @@ import {
 	NanoId,
 	NameBox,
 } from './style.ts';
-import CommentSection from '@src/components/Comment/Comment.tsx';
+import CommentSection from '@components/Comment/Comment.tsx';
 import { DataType } from '@src/types/dataType.ts';
 import useAuthStore from '@src/store/useAuthStore.ts';
-import Swal from 'sweetalert2';
-import alertData from '@src/utils/swalObject.ts';
 
 const apiURL = import.meta.env.VITE_API_URL;
 
