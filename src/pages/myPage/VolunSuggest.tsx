@@ -15,26 +15,10 @@ import { get } from '@api/api';
 import DataType from '@src/types/dataType';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
+import MyCardImg from '@src/components/Card/MyPageCard/MyCardImg';
 import NoData from '@components/NoData/NoData.tsx';
-
-interface ResponseData {
-	_id: string;
-	title: string;
-	centName: string;
-	createdAt: string;
-	statusName: string;
-	deadline: string;
-	startDate: string;
-	endDate: string;
-	images: string[];
-	register_user_id: {
-		nickname: string;
-		image: string;
-		introduction: string;
-		authorization: boolean;
-	};
-	updatedAt: string;
-}
+import { transformVolunSuggestData } from '@utils/transformData';
+import { getVolunSuggestDataProps } from '@src/types/cardType';
 
 function VolunSuggest() {
 	const [suggestVolunList, setSuggestVolunList] = useState<ResponseData[]>([]);
@@ -56,7 +40,8 @@ function VolunSuggest() {
 					{},
 				);
 				setSuggestVolunList(
-					getSuggestedData.data.registerationVolunteers as ResponseData[],
+					getSuggestedData.data
+						.registerationVolunteers as getVolunSuggestDataProps[],
 				);
 			} catch (error) {
 				Swal.fire(alertData.errorMessage('데이터를 불러오는데 실패했습니다.'));
@@ -65,29 +50,7 @@ function VolunSuggest() {
 		fetchData();
 	}, []);
 
-	const transformData = suggestVolunList.map((data) => {
-		//Card 컴포넌트 형식에 맞게 데이터형태 변환
-		return {
-			createdAt: data.createdAt,
-			_id: data._id,
-			volunteer_id: {
-				startDate: data.startDate,
-				endDate: data.endDate,
-				_id: data._id,
-				title: data.title,
-				centName: data.centName,
-				statusName: data.statusName,
-				deadline: data.deadline,
-				images: data.images,
-			},
-			register_user_id: {
-				nickname: data.register_user_id.nickname,
-				image: data.register_user_id.image,
-				introduction: data.register_user_id.introduction,
-				authorization: data.register_user_id.authorization,
-			},
-		};
-	});
+	const myVolunCardData = suggestVolunList.map(transformVolunSuggestData);
 
 	return (
 		<>
@@ -102,22 +65,22 @@ function VolunSuggest() {
 					</TabMenu>
 					{suggestVolunList.length === 0 && <NoData category='봉사' />}
 					<CardBox>
-						{transformData
+						{myVolunCardData
 							.slice((currentPage - 1) * pageSize, currentPage * pageSize)
-							.map((data) => (
-								<Card
-									key={data.volunteer_id._id}
-									data={data}
+							.map((data, index) => (
+								<MyCardImg
+									key={data.volunCardData.volunId + '-' + index}
+									volunCardData={data.volunCardData}
 									currTab={currTab}
 								/>
 							))}
 					</CardBox>
 				</Main>
 			</Container>
-			{transformData.length > 0 && (
+			{myVolunCardData.length > 0 && (
 				<Pagination
 					currentPage={currentPage}
-					totalPages={Math.ceil(transformData.length / pageSize)}
+					totalPages={Math.ceil(myVolunCardData.length / pageSize)}
 					handlePageChange={handlePageChange}
 				/>
 			)}

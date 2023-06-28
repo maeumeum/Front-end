@@ -49,6 +49,7 @@ function VolunInfo() {
 	useEffect(() => {
 		const fetchData = async () => {
 			const response = await get<DataType>(`/api/volunteers/${postId}`);
+			console.log(response.data);
 			setTitle(response.data.title);
 			setRegisterCount(response.data.registerCount);
 			setDeadline(response.data.deadline);
@@ -66,10 +67,10 @@ function VolunInfo() {
 
 	const clickApply = async () => {
 		try {
-			await post('/api/applications', {
+			const response = await post('/api/applications', {
 				volunteer_id: postId,
 			});
-
+			console.log(response);
 			navigate('/mypage/history');
 			Swal.fire(alertData.successMessage('참여신청 되었습니다!:)'));
 		} catch (e) {

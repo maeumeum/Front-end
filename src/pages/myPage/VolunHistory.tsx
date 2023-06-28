@@ -16,26 +16,8 @@ import DataType from '@src/types/dataType';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
 import NoData from '@components/NoData/NoData.tsx';
-import { getVolunHistoryCardType, MyVolunCardProps } from '@src/types/cardType';
-
-//volunHistory에서 받는 데이터를 아예 카드형식으로 바꿔야함.
-function transformVolunData(
-	volunPropsArray: getVolunHistoryCardType,
-): MyVolunCardProps {
-	const volunCardData = {
-		title: volunPropsArray.volunteer_id.title,
-		thumbnail: volunPropsArray.volunteer_id.images[0],
-		startDate: volunPropsArray.volunteer_id.startDate,
-		endDate: volunPropsArray.volunteer_id.endDate,
-		statusName: volunPropsArray.volunteer_id.statusName,
-		isReviewed: volunPropsArray.isReviewed,
-		volunId: volunPropsArray.volunteer_id._id,
-		nickname: volunPropsArray.volunteer_id.register_user_id.nickname,
-		authorization: volunPropsArray.volunteer_id.register_user_id.authorization,
-		userImage: volunPropsArray.volunteer_id.register_user_id.image,
-	};
-	return { volunCardData };
-}
+import { getVolunHistoryCardType } from '@src/types/cardType';
+import { transformVolunData } from '@utils/transformData';
 
 function MyVolunHistory() {
 	const [currTab, setCurrTab] = useState<TabTypes>(TabTypes.VOLUNTEER_APPLIED);
