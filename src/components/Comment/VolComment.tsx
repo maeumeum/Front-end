@@ -23,7 +23,6 @@ import {
 	NameContainer,
 	NanoId,
 	Btn3,
-	RandomPhoto,
 	Img,
 } from './CommentStyle';
 import { DataType } from '@src/types/dataType';

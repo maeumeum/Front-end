@@ -15,3 +15,9 @@ export interface CommunityType {
 }
 
 export type CommunityListType = CommunityType[];
+
+export interface CommunityCardProps {
+	communityData: CommunityType;
+	onClick: React.MouseEventHandler<HTMLDivElement>;
+	searchPage?: boolean;
+}
