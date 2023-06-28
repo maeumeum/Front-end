@@ -25,15 +25,6 @@ export const VolunteerPageContainer = styled.div`
 `;
 
 // write page
-export const WriteMiddleContainer = styled.div`
-	margin: 0 auto;
-	margin-top: 10rem;
-	margin-bottom: 0;
-	padding-bottom: 1rem;
-	background-color: '#FFFFE8';
-	text-align: center;
-`;
-
 export const WriteImageArea = styled.label`
 	display: inline-block;
 	margin-top: 9.2rem;
