@@ -4,9 +4,9 @@ export const WriteBtn = styled.button`
 	width: 11.5rem;
 	height: 4.5rem;
 	border: none;
-	background: #d9d9d9;
-	border-radius: 27.5px;
+	background: ${({ theme }) => theme.colors.gray400};
+	border-radius: ${({ theme }) => theme.radius.m1};
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	margin-left: auto;
 `;

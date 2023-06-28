@@ -13,7 +13,7 @@ export const MainContainer = styled.div`
 `;
 export const Descript = styled.span`
 	font-size: 3rem;
-	color: black;
+	color: ${({ theme }) => theme.colors.text};
 	margin-top: 10rem;
 	background-color: ${({ theme }) => theme.colors.green100};
 `;
@@ -85,14 +85,14 @@ export const TextBox1 = styled.div`
 	width: 30rem;
 `;
 export const TextTitle = styled.p`
-	font-size: 3rem;
+	font-size: ${({ theme }) => theme.typography.size.subtitle};
 	color: #2596be;
 `;
 export const TextName = styled.p`
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 `;
 export const TextContent = styled.p`
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 `;
 export const TextBox2 = styled.div`
 	position: absolute;

@@ -59,7 +59,7 @@ export const Sub = styled.div`
 	flex-direction: column;
 	margin-left: 25rem;
 	p {
-		font-size: 2rem;
+		font-size: ${({ theme }) => theme.typography.size.default};
 		margin-top: -2rem;
 		letter-spacing: 0.2rem;
 	}
@@ -129,12 +129,12 @@ export const NameBox = styled.div`
 `;
 
 export const UserName = styled.p`
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	margin-right: 1rem;
 `;
 
 export const NanoId = styled.p`
-	font-size: 1.8rem;
+	font-size: ${({ theme }) => theme.typography.size.paragraph};
 	color: ${({ theme }) => theme.colors.gray500};
 `;
 
@@ -151,7 +151,7 @@ export const Btn = styled.button`
 	width: 10rem;
 	margin: 2rem -5rem 0 60rem;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	color: ${({ theme }) => theme.colors.background};
 
 	&:hover {
@@ -167,7 +167,7 @@ export const BtnDelete = styled.button`
 	width: 10rem;
 	margin-top: 2rem;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	color: ${({ theme }) => theme.colors.background};
 
 	&:hover {
@@ -209,12 +209,12 @@ export const ImageArea = styled.label`
 	padding: 8px 16px;
 	text-align: center;
 	background-color: ${({ theme }) => theme.colors.pink200};
-	color: white;
+	color: ${({ theme }) => theme.colors.background};
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
 	width: 20rem;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	position: absolute;
 	top: 70rem;
 	left: 9rem;
@@ -236,7 +236,7 @@ export const BtnReport = styled.button`
 	width: 13rem;
 	margin-top: 2rem;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	color: #ff9c9c;
 `;
 
