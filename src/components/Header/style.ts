@@ -9,6 +9,11 @@ export const HeaderSection = styled.div`
 	height: 8rem;
 	background-color: #ffffff;
 	border-bottom: 1px solid rgb(238, 238, 238);
+
+	@media (max-width: 1024px) {
+		height: 9rem;
+		z-index: 0;
+	}
 `;
 
 export const HeaderContainer = styled.div`
@@ -17,23 +22,65 @@ export const HeaderContainer = styled.div`
 	align-items: center;
 	margin: 0 40rem;
 	min-width: 112rem;
+
+	@media (max-width: 1024px) {
+		margin: 0 2rem;
+		min-width: 33rem;
+	}
+`;
+
+export const HamburgerBtnContainer = styled.div`
+	display: none;
+
+	@media (max-width: 1024px) {
+		display: contents;
+		width: 3rem;
+		cursor: pointer;
+
+		img {
+			width: 3rem;
+		}
+	}
 `;
 
 export const LogoContainer = styled.div`
 	width: 8rem;
 	height: 8rem;
 	cursor: pointer;
+
+	@media (max-width: 1024px) {
+		width: 7rem;
+		height: 5rem;
+	}
 `;
 
 export const MainLogo = styled.img`
 	width: 8rem;
 	height: 8rem;
+
+	@media (max-width: 1024px) {
+		width: 7rem;
+		height: 5rem;
+	}
 `;
 
 export const NavContainer = styled.div`
 	display: flex;
 	height: 8rem;
 	min-width: 40rem;
+
+	@media (max-width: 1024px) {
+		display: none;
+	}
+`;
+
+export const MobileNavContainer = styled.div`
+	display: none;
+
+	@media (max-width: 1024px) {
+		display: flex;
+		justify-content: space-between;
+	}
 `;
 
 export const NavCategory = styled(NavLink)`
@@ -45,6 +92,8 @@ export const NavCategory = styled(NavLink)`
 		} else if (props.className === 'review') {
 			return 'var(--button--color)';
 		} else if (props.className === 'volunteers') {
+			return 'var(--button--color)';
+		} else if (props.className === 'main') {
 			return 'var(--button--color)';
 		} else {
 			return '#444444';
@@ -75,6 +124,10 @@ export const LoginButton = styled.button`
 	font-size: 1.2rem;
 	text-decoration: none;
 	cursor: pointer;
+
+	@media (max-width: 1024px) {
+		display: none;
+	}
 `;
 
 export const SearchButton = styled.div`
