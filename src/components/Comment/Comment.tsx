@@ -23,7 +23,7 @@ import {
 	NameContainer,
 	NanoId,
 	Btn3,
-	RandomPhoto,
+	PhotoContainer,
 	Img,
 } from './CommentStyle';
 import { DataType } from '@src/types/dataType';
@@ -224,12 +224,12 @@ const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 				commentList.map((comment: CommentType) => (
 					<CommentContainer key={comment._id}>
 						<ProfileContainer>
-							<RandomPhoto>
+							<PhotoContainer>
 								<Img
 									src={`${apiURL}/${comment.user_id.image}`}
 									alt='profile-image'
 								/>
-							</RandomPhoto>
+							</PhotoContainer>
 							<UserContainer>
 								<NameContainer>
 									<UserName>{comment.user_id.nickname}</UserName>

@@ -15,7 +15,7 @@ export const InputContainer = styled.div`
 	display: flex;
 	align-items: center;
 	padding: 3.5rem 0;
-	border-radius: 1rem;
+	border-radius: ${({ theme }) => theme.radius.s1};
 	border: 1px solid ${({ theme }) => theme.colors.gray300};
 `;
 
@@ -26,7 +26,7 @@ export const SearchBarInput = styled.input`
 	height: 5.8rem;
 	border: none;
 	outline: none;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 `;
 export const SearchLogo = styled.img`
 	margin-left: 2rem;
@@ -42,13 +42,13 @@ export const SearchBarBtn = styled.button`
 	padding: 3.5rem 0;
 	width: 11.5rem;
 	height: 5.8rem;
-	background-color: #aacb73;
+	background-color: ${({ theme }) => theme.colors.green200};
 	border-radius: 1.2rem;
 	color: white;
-	font-weight: bold;
+	font-weight: ${({ theme }) => theme.typography.weight.bold};
 	border: none;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.green300};

@@ -58,7 +58,7 @@ export const ContentInput = styled.textarea`
 	margin: 0 auto;
 	height: ${(props) => (props.className === 'textWrite' ? '65rem' : '50rem')};
 	border: 1px solid ${({ theme }) => theme.colors.gray400};
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	padding: ${(props) => (props.className === 'textWrite' ? '2.5%' : '5rem')};
 	border-radius: 5px;
 	resize: none;
@@ -70,7 +70,7 @@ export const TextContainer = styled.div`
 
 export const TextLength = styled.p`
 	margin-left: auto;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	margin-top: -9rem;
 	margin-bottom: 10rem;
 	color: ${({ theme }) => theme.colors.gray400};
@@ -85,21 +85,21 @@ export const ButtonContainer = styled.div`
 export const CancelButton = styled.button`
 	width: 9rem;
 	height: 5rem;
-	background-color: white;
+	background-color: ${({ theme }) => theme.colors.background};
 	border: 0.2rem solid #888888;
 	border-radius: 1.2rem;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 `;
 
 export const SubmitButton = styled.button`
 	width: 9rem;
 	height: 5rem;
-	background-color: #aacb73;
+	background-color: ${({ theme }) => theme.colors.green200};
 	border: none;
 	border-radius: 1.2rem;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	color: #ffffff;
 `;
 
@@ -108,7 +108,7 @@ export const ImageArea = styled.label`
 	padding: 8px 16px;
 	text-align: center;
 	background-color: var(--color--footer);
-	color: #ffffff;
+	color: ${({ theme }) => theme.colors.background};
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
