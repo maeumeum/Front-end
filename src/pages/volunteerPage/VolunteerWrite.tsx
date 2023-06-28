@@ -5,9 +5,10 @@ import VolunteerWritePage from '@components/WritePage/VolunteerWritePage';
 import { post } from '@api/api';
 import { getToken } from '@api/token';
 import { useNavigate } from 'react-router-dom';
-import { ImageArea, Container, MiddleContainer } from './style';
+import { WriteImageArea, Container, WriteMiddleContainer } from './style';
 import actTypes from '@src/types/actTypeConstants';
 import TopBar from '@components/TopBar/TopBar';
+
 const VolunteerWrite = () => {
 	const navigate = useNavigate();
 	const [selectedImage, setSelectedImage] = useState<File[]>([]);
@@ -116,20 +117,14 @@ const VolunteerWrite = () => {
 	return (
 		<>
 			<Container>
-				<MiddleContainer
-					style={{
-						backgroundColor: '#FFFFE8',
-						marginBottom: '0',
-						paddingBottom: '1rem',
-						textAlign: 'center',
-					}}>
+				<WriteMiddleContainer>
 					<TopBar
 						title={'글 작성하기'}
 						text={'우리 단체의 봉사활동을 홍보해요'}
 					/>
-				</MiddleContainer>
+				</WriteMiddleContainer>
 				<VolunteerWritePage onSave={onSavePost} onCancel={onCancelPost} />
-				<ImageArea style={{ marginTop: '9.2rem' }}>
+				<WriteImageArea>
 					이미지업로드
 					<input
 						id='fileInput'
@@ -139,7 +134,7 @@ const VolunteerWrite = () => {
 						multiple
 						onChange={handelImageChange}
 					/>
-				</ImageArea>
+				</WriteImageArea>
 			</Container>
 		</>
 	);

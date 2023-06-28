@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import VolunteerCalendar from './VolunteerCalendar.tsx';
+import Calender from './Calendar';
 
-const meta: Meta<typeof VolunteerCalendar> = {
+const meta: Meta<typeof Calender> = {
 	title: 'Components/Calendar',
-	component: VolunteerCalendar,
+	component: Calender,
 	tags: ['autodocs'],
 };
 

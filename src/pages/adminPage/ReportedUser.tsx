@@ -4,7 +4,7 @@ import { get } from '@api/api';
 import UserCard from '@components/Card/UserCard';
 import Menu from '@components/Menu/Menu.tsx';
 import { UserListType } from '@src/types/userType';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import { MenuBar, TopBarContainer, TopBar, UserContainer } from './style';
 
 const ReportedUser = () => {

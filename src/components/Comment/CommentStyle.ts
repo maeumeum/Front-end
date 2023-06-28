@@ -17,7 +17,7 @@ export const EditCommentArea = styled.textarea`
 	padding: 2rem;
 	margin-left: 2rem;
 	margin-top: 2rem;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	resize: none;
 	white-space: pre-wrap;
 `;
@@ -37,7 +37,7 @@ export const BtnContainer2 = styled.div`
 	margin-bottom: 2rem;
 `;
 export const CommentLength = styled.p`
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	display: block;
 	margin: 1rem 2rem 0 106rem;
 	color: ${({ theme }) => theme.colors.gray400};
@@ -45,7 +45,7 @@ export const CommentLength = styled.p`
 export const Box = styled.div`
 	width: 0.8rem;
 	height: 2.5rem;
-	background-color: black;
+	background-color: ${({ theme }) => theme.colors.text};
 	margin-right: 2rem;
 `;
 export const Comment = styled.p`
@@ -56,32 +56,32 @@ export const Btn1 = styled.button`
 	background-color: #aacb73;
 	width: 9rem;
 	height: 4.4rem;
-	border-radius: 10%;
+	border-radius: ${({ theme }) => theme.radius.s1};
 	border: none;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	margin-bottom: 2rem;
-	color: #ffffff;
+	color: ${({ theme }) => theme.colors.background};
 `;
 export const Btn2 = styled.button`
-	background-color: #ffd4d4;
+	background-color: ${({ theme }) => theme.colors.pink200};
 	width: 9rem;
 	height: 4.4rem;
-	border-radius: 10%;
+	border-radius: ${({ theme }) => theme.radius.s1};
 	border: none;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	margin-bottom: 2rem;
-	color: #ffffff;
+	color: ${({ theme }) => theme.colors.background};
 `;
 export const Btn3 = styled.button`
-	background-color: #ffd4d4;
+	background-color: ${({ theme }) => theme.colors.pink200};
 	width: 9rem;
 	height: 4.4rem;
-	border-radius: 10%;
+	border-radius: ${({ theme }) => theme.radius.s1};
 	border: none;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	margin-top: -13rem;
 	margin-bottom: 2rem;
 	margin-left: 10rem;
@@ -89,7 +89,7 @@ export const Btn3 = styled.button`
 export const CommentContainer = styled.div`
 	height: 32rem;
 	border: none;
-	border-radius: 0.7rem;
+	border-radius: ${({ theme }) => theme.radius.s1};
 	margin-bottom: 2rem;
 	position: relative;
 	word-wrap: break-word;
@@ -108,7 +108,7 @@ export const Profile = styled.img`
 	border-radius: 100rem;
 	margin-right: 3rem;
 `;
-export const RandomPhoto = styled.div`
+export const PhotoContainer = styled.div`
 	width: 10rem;
 	height: 10rem;
 	border-radius: 50%;
@@ -123,14 +123,13 @@ export const Img = styled.img`
 export const CommentArea = styled.textarea`
 	width: 105rem;
 	padding: 4rem;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	border: none;
 	height: 6rem;
 	resize: none;
 	background-color: ${({ theme }) => theme.colors.gray100};
-	border-radius: 3rem;
-	white-space: 'pre-wrap;
-	
+	border-radius: ${({ theme }) => theme.radius.s1};
+	white-space: 'pre-wrap';
 `;
 export const UserContainer = styled.div`
 	margin: 0 0 0 2rem;
@@ -141,7 +140,7 @@ export const UserName = styled.p`
 `;
 export const NanoId = styled.p`
 	font-size: 1.8rem;
-	color: #aaaaaa;
+	color: ${({ theme }) => theme.colors.gray500};
 	margin-top: 5rem;
 	margin-left: 1rem;
 `;
@@ -150,15 +149,15 @@ export const NameContainer = styled.div`
 	display: flex;
 `;
 export const Date = styled.p`
-	font-size: 1.5rem;
-	color: #94a3b8;
+	font-size: ${({ theme }) => theme.typography.size.paragraph};
+	color: ${({ theme }) => theme.colors.gray500};
 	position: absolute;
 	top: 2rem;
 	right: 2rem;
 `;
 
 export const Contents = styled.p`
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	color: #475569;
 	margin: 4rem;
 	position: absolute;
@@ -168,18 +167,18 @@ export const Contents = styled.p`
 `;
 
 export const CommentHolder = styled.p`
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	color: ${({ theme }) => theme.colors.gray400};
 `;
 export const BtnReport = styled.button`
 	background-color: inherit;
-	border-radius: 3.3rem;
+	border-radius: ${({ theme }) => theme.radius.s1};
 	border: none;
 	height: 5rem;
 	width: 9rem;
 	margin-top: 1rem;
 	cursor: pointer;
-	font-size: 2rem;
-	color: #ff9c9c;
+	font-size: ${({ theme }) => theme.typography.size.default};
+	color: ${({ theme }) => theme.colors.highlight};
 	margin-left: auto;
 `;

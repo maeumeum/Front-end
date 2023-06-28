@@ -25,7 +25,7 @@ import { useNavigate } from 'react-router-dom';
 import { TabTypes } from '@src/types/myPageConstants';
 import { get, patch } from '@api/api';
 import alertData from '@utils/swalObject';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import check from '@assets/icons/authentication.svg';
 
 interface MyPageUserFormProps {

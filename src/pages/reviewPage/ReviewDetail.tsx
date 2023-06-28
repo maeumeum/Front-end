@@ -21,19 +21,20 @@ import {
 	NameBox,
 	NanoId,
 } from '@src/pages/community/style';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import useAuthStore from '@src/store/useAuthStore.ts';
 import Swal from 'sweetalert2';
 import alertData from '@src/utils/swalObject';
+import { CommunityType } from '@src/types/communityType';
 
 const apiURL = import.meta.env.VITE_API_URL;
 
 const ReviewDetail = () => {
 	const navigate = useNavigate();
 	const { postId } = useParams() as { postId: string };
-	const [post, setPost] = useState<any>([]);
+	const [post, setPost] = useState<CommunityType | null>(null);
 	const [loginUser, setLoginUser] = useState(false);
-	const [datauser, setDataUser] = useState<any>('');
+	const [datauser, setDataUser] = useState<CommunityType | null>(null);
 	const { userData, getUserData } = useAuthStore();
 
 	useEffect(() => {
@@ -102,11 +103,10 @@ const ReviewDetail = () => {
 		'ko',
 	);
 
-	let formattedContent = [];
+	let formattedContent: string[] = [];
 	if (content) {
 		formattedContent = content.split('\n');
 	}
-
 	return (
 		<>
 			<DetailContainer>
@@ -115,8 +115,12 @@ const ReviewDetail = () => {
 					<SubContainer>
 						<InfoBox>
 							<NameBox>
-								<UserName>{datauser.nickname}</UserName>
-								<NanoId> #{datauser.nanoid}</NanoId>
+								{datauser && (
+									<>
+										<UserName>{datauser.nickname}</UserName>
+										<NanoId> #{datauser.nanoid}</NanoId>
+									</>
+								)}
 							</NameBox>
 							<Date>작성일 : {formattedDate}</Date>
 						</InfoBox>
@@ -134,7 +138,7 @@ const ReviewDetail = () => {
 				<ContentContainer>
 					{hasPostImage && (
 						<div>
-							{images.map((image: any, index: any) => (
+							{images.map((image: string, index: number) => (
 								<Image
 									key={index}
 									src={`${apiURL}/${image}`}

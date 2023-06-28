@@ -12,7 +12,7 @@ import Pagination from '@components/Pagination/Pagination.tsx';
 import Menu from '@components/Menu/Menu.tsx';
 import { TabTypes } from '@src/types/myPageConstants';
 import { get } from '@api/api';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
 import MyCardImg from '@src/components/Card/MyPageCard/MyCardImg';

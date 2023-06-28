@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchBar from '@components/SearchBar/SearchBar';
 import { get } from '@src/api/api';
 import { CommunityListType, VolunteerListType } from '@src/types/cardType';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import {
 	SearchSection,
 	VolunteerContainer,

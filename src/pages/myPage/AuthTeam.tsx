@@ -17,7 +17,7 @@ import UploadTeamImg from '@components/Profile/TeamImg';
 import Tab from '@components/Tab/Tab.tsx';
 import alertData from '@utils/swalObject';
 import { validPhoneNum } from '@utils/signUpCheck.ts';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import { TabTypes } from '@src/types/myPageConstants';
 import { post, get } from '@api/api';
 import useSummitStore from '@src/store/useSummitStore';
@@ -162,7 +162,13 @@ const AuthTeam = () => {
 								<Title>대표 이미지 등록</Title>
 								<UploadTeamImg setFile={setFile} />
 								<Title>설립일</Title>
-								<Calendar selectedDate={date} setSelectedDate={setDate} />
+								<Calendar
+									selectedDate={date}
+									setSelectedDate={(prevDate: Date | null) =>
+										setDate(prevDate as Date)
+									}
+									category='teamAuth'
+								/>
 								<Title>프로젝트 팀 소개</Title>
 								<TextAreaForm
 									submit={submit}

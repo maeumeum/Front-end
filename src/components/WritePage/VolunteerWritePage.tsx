@@ -3,11 +3,17 @@ import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
 import { get } from '@api/api';
-import WritePageProps from './WritePageProps';
-import DataType from '@src/types/dataType';
+
 import {
-	TextContainer,
+	DataType,
+	VolunteerWritePageProps,
+	PostDataType,
+} from '@src/types/dataType';
+import {
+	WriteTextContainer,
 	Container,
+	TopTitle,
+	DateTitle,
 	TitleInput,
 	CancelButton,
 	SubmitButton,
@@ -17,38 +23,26 @@ import {
 	LayoutContainer,
 	LayoutChildContainer,
 } from '@components/WritePage/WritePageStyle';
-import VolunteerCalendar from '@components/Calendar/VolunteerCalendar';
+import Calendar from '@components/Calendar/Calendar';
 import LargeSelector from '@components/Selector/LargeSelector.tsx';
 import actTypes from '@src/types/actTypeConstants';
 import { Title, TeamType, TeamTypeRadio } from '@pages/myPage/style';
 import TeamInfo from '@src/types/writerUserTeamType.ts';
 import { useNavigate } from 'react-router-dom';
 
-interface VolunteerWritePageProps extends Omit<WritePageProps, 'onSave'> {
-	onSave: (
-		inputTitle: string,
-		textContent: string,
-		selectedActType: string,
-		inputRegisterCount: string,
-		teenager: boolean,
-		deadline: Date,
-		startDate: Date,
-		endDate: Date,
-		centName: string,
-	) => void;
-}
-
 const VolunteerWritePage = ({ onSave, onCancel }: VolunteerWritePageProps) => {
 	const navigate = useNavigate();
-	const [content, setContent] = useState('');
-	const [inputTitle, setInputTitle] = useState('');
-	const [selectedActType, setSelectedActType] = useState('');
-	const [inputRegisterCount, setInputRegisterCount] = useState('');
-	const [teenager, setTeenager] = useState(true);
-	const [deadline, setDeadline] = useState<Date>(new Date());
-	const [startDate, setStartDate] = useState<Date>(new Date());
-	const [endDate, setEndDate] = useState<Date>(new Date());
-	const [centName, setCentName] = useState<string>('');
+	const [postData, setPostData] = useState<PostDataType>({
+		content: '',
+		inputTitle: '',
+		selectedActType: '',
+		inputRegisterCount: '',
+		teenager: true,
+		deadline: new Date(),
+		startDate: new Date(),
+		endDate: new Date(),
+		centName: '',
+	});
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -56,7 +50,10 @@ const VolunteerWritePage = ({ onSave, onCancel }: VolunteerWritePageProps) => {
 				const getUserInfoData = await get<DataType>('/api/team/auth', {});
 				const responseData = getUserInfoData.data as TeamInfo;
 				const { teamName } = responseData;
-				setCentName(teamName);
+				setPostData({
+					...postData,
+					centName: teamName,
+				});
 			} catch (error) {
 				Swal.fire(
 					alertData.errorMessage(
@@ -71,15 +68,15 @@ const VolunteerWritePage = ({ onSave, onCancel }: VolunteerWritePageProps) => {
 
 	const onClickHandler = () => {
 		onSave(
-			inputTitle,
-			content,
-			selectedActType,
-			inputRegisterCount,
-			teenager,
-			deadline,
-			startDate,
-			endDate,
-			centName,
+			postData.inputTitle,
+			postData.content,
+			postData.selectedActType,
+			postData.inputRegisterCount,
+			postData.teenager,
+			postData.deadline,
+			postData.startDate,
+			postData.endDate,
+			postData.centName,
 		);
 		clearContentData();
 	};
@@ -87,29 +84,44 @@ const VolunteerWritePage = ({ onSave, onCancel }: VolunteerWritePageProps) => {
 	const handelInputContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		const text = e.target.value;
 		if (text.length <= 2000) {
-			setContent(text);
+			setPostData({
+				...postData,
+				content: text,
+			});
 		}
 	};
 
 	const handleInputTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const text = e.target.value;
 		if (text.length <= 40) {
-			setInputTitle(text);
+			setPostData({
+				...postData,
+				inputTitle: text,
+			});
 		}
 	};
 
 	const handleInputCategory = (selectedValue: string) => {
-		setSelectedActType(selectedValue);
+		setPostData({
+			...postData,
+			selectedActType: selectedValue,
+		});
 	};
 
 	const handleInputRegisterCount = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const count = e.target.value;
-		setInputRegisterCount(count);
+		setPostData({
+			...postData,
+			inputRegisterCount: count,
+		});
 	};
 
 	const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value;
-		setTeenager(value === 'teenager');
+		setPostData({
+			...postData,
+			teenager: value === 'teenager',
+		});
 	};
 
 	const deleteContent = () => {
@@ -118,27 +130,39 @@ const VolunteerWritePage = ({ onSave, onCancel }: VolunteerWritePageProps) => {
 	};
 
 	const clearContentData = () => {
-		setInputTitle('');
-		setContent('');
-		setSelectedActType('');
-		setInputRegisterCount('');
-		setTeenager(true);
-		setDeadline(new Date());
-		setStartDate(new Date());
-		setEndDate(new Date());
-		setCentName('');
+		setPostData({
+			...postData,
+			content: '',
+			inputTitle: '',
+			selectedActType: '',
+			inputRegisterCount: '',
+			teenager: true,
+			deadline: new Date(),
+			startDate: new Date(),
+			endDate: new Date(),
+			centName: '',
+		});
+	};
+
+	const handleDateChange = (date: Date | null, field: string) => {
+		if (date) {
+			setPostData((prevData) => ({
+				...prevData,
+				[field]: date,
+			}));
+		}
 	};
 
 	return (
 		<>
-			<Container>
+			<Container className='writePage'>
 				<div>
-					<Title style={{ marginTop: '0' }}>제목</Title>
+					<TopTitle>제목</TopTitle>
 					<TitleInput
-						placeholder={`[${centName}]만의 특별한 활동 제목을 작성해주세요.`}
-						value={inputTitle}
+						placeholder={`[${postData.centName}]만의 특별한 활동 제목을 작성해주세요.`}
+						value={postData.inputTitle}
 						onChange={handleInputTitle}
-						style={{ marginBottom: '0' }}
+						className='writePage'
 					/>
 				</div>
 				<div>
@@ -147,7 +171,7 @@ const VolunteerWritePage = ({ onSave, onCancel }: VolunteerWritePageProps) => {
 						<TeamTypeRadio
 							type='radio'
 							value='teenager'
-							checked={teenager}
+							checked={postData.teenager}
 							onChange={handleRadioChange}
 						/>
 						나이에 상관없이 모두 신청할 수 있어요.
@@ -156,7 +180,7 @@ const VolunteerWritePage = ({ onSave, onCancel }: VolunteerWritePageProps) => {
 						<TeamTypeRadio
 							type='radio'
 							value='adultOnly'
-							checked={!teenager}
+							checked={!postData.teenager}
 							onChange={handleRadioChange}
 						/>
 						성인만 신청할 수 있어요.
@@ -165,7 +189,7 @@ const VolunteerWritePage = ({ onSave, onCancel }: VolunteerWritePageProps) => {
 				<div>
 					<Title>카테고리</Title>
 					<LargeSelector
-						value={selectedActType}
+						value={postData.selectedActType}
 						onChange={handleInputCategory}
 						options={[
 							{ value: actTypes.OLD, label: '노인' },
@@ -183,66 +207,48 @@ const VolunteerWritePage = ({ onSave, onCancel }: VolunteerWritePageProps) => {
 					<Title>모집인원</Title>
 					<TitleInput
 						placeholder='모집인원을 입력해주세요. (숫자만 입력 가능)'
-						value={inputRegisterCount}
+						value={postData.inputRegisterCount}
 						onChange={handleInputRegisterCount}
-						style={{ marginBottom: '0' }}
+						className='writePage'
 					/>
 				</div>
 				<LayoutContainer>
 					<LayoutChildContainer>
-						<Title
-							style={{
-								textAlign: 'left',
-								paddingRight: '20rem',
-								fontSize: '2rem',
-							}}>
-							모집 마감일
-						</Title>
-						<VolunteerCalendar
-							selectedDate={deadline}
-							setSelectedDate={setDeadline}
+						<DateTitle>모집 마감일</DateTitle>
+						<Calendar
+							selectedDate={postData.deadline}
+							setSelectedDate={(date) => handleDateChange(date, 'deadline')}
+							category='volunteer'
 						/>
 					</LayoutChildContainer>
 					<LayoutChildContainer>
-						<Title
-							style={{
-								textAlign: 'left',
-								paddingRight: '20rem',
-								fontSize: '2rem',
-							}}>
-							활동 시작일
-						</Title>
-						<VolunteerCalendar
-							selectedDate={startDate}
-							setSelectedDate={setStartDate}
+						<DateTitle>활동 시작일</DateTitle>
+						<Calendar
+							selectedDate={postData.startDate}
+							setSelectedDate={(date) => handleDateChange(date, 'startDate')}
+							category='volunteer'
 						/>
 					</LayoutChildContainer>
 					<LayoutChildContainer>
-						<Title
-							style={{
-								textAlign: 'left',
-								paddingRight: '20rem',
-								fontSize: '2rem',
-							}}>
-							활동 종료일
-						</Title>
-						<VolunteerCalendar
-							selectedDate={endDate}
-							setSelectedDate={setEndDate}
+						<DateTitle>활동 종료일</DateTitle>
+						<Calendar
+							selectedDate={postData.endDate}
+							setSelectedDate={(date) => handleDateChange(date, 'endDate')}
+							category='volunteer'
 						/>
 					</LayoutChildContainer>
 				</LayoutContainer>
-				<TextContainer style={{ marginTop: '2rem' }}>
+				<WriteTextContainer>
 					<ContentInput
 						placeholder='봉사활동 주제와 일정을 포함하여 내용을 작성해주세요.&#13;&#10;썸네일을 올려서 활동을 나타내는 대표 이미지를 등록해보세요.'
-						value={content}
+						value={postData.content}
 						onChange={handelInputContent}
 						maxLength={2000}
-						style={{ height: '65rem' }}
+						className='textWrite'
 					/>
-				</TextContainer>
-				<TextLength>{content.length}/2000</TextLength>
-				<ButtonContainer style={{ position: 'relative', bottom: '6.3rem' }}>
+				</WriteTextContainer>
+				<TextLength>{postData.content.length}/2000</TextLength>
+				<ButtonContainer>
 					<CancelButton onClick={deleteContent}>취소</CancelButton>
 					<SubmitButton onClick={onClickHandler}>등록</SubmitButton>
 				</ButtonContainer>

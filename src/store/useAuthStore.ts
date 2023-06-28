@@ -3,7 +3,7 @@ import { getToken } from '@api/token';
 import { get } from '@api/api';
 
 import { AuthType } from '@src/types/authType';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 
 const useAuthStore = create<AuthType>((set) => ({
 	userData: null,
