@@ -25,7 +25,7 @@ const ReviewCard = ({ reviewData, onClick }: ReviewCardProps) => {
 	const previewContent = (reviewData: ReviewType) => {
 		const content = reviewData.content;
 
-		// content의 길이가 35자 이상이라면 ... 처리
+		// content의 길이가 60자 이상이라면 ... 처리
 		if (content.length >= 60) {
 			return `${content.slice(0, 59)}...`;
 		}
