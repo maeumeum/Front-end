@@ -5,7 +5,7 @@ import VolunteerWritePage from '@components/WritePage/VolunteerWritePage';
 import { post } from '@api/api';
 import { getToken } from '@api/token';
 import { useNavigate } from 'react-router-dom';
-import { WriteImageArea, Container, WriteMiddleContainer } from './style';
+import { WriteImageArea, Container } from './style';
 import actTypes from '@src/types/actTypeConstants';
 import TopBar from '@components/TopBar/TopBar';
 
@@ -117,12 +117,10 @@ const VolunteerWrite = () => {
 	return (
 		<>
 			<Container>
-				<WriteMiddleContainer>
-					<TopBar
-						title={'글 작성하기'}
-						text={'우리 단체의 봉사활동을 홍보해요'}
-					/>
-				</WriteMiddleContainer>
+				<TopBar
+					title={'글 작성하기'}
+					text={'우리 단체의 봉사활동을 홍보해요'}
+				/>
 				<VolunteerWritePage onSave={onSavePost} onCancel={onCancelPost} />
 				<WriteImageArea>
 					이미지업로드
