@@ -184,7 +184,6 @@ export const WebName = styled.div`
 	font-weight: ${({ theme }) => theme.typography.weight.bold};
 
 	@media (max-width: 768px) {
-		width: 20rem;
-		height: 20rem;
+		display: relative;
 	}
 `;

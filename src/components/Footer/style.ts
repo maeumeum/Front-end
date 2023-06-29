@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const FooterSection = styled.div`
 	position: relative;
 	height: 25rem;
-	background-color: var(--color--footer);
+	background-color: ${({ theme }) => theme.colors.pink200};
 	border: none;
 `;
 
@@ -44,6 +44,12 @@ export const MemberList = styled.ul`
 	display: flex;
 	list-style-type: none;
 	font-size: 1.2rem;
+
+	@media (max-width: 1024px) {
+		padding: 0;
+		justify-content: end;
+		margin: 2rem;
+	}
 `;
 
 export const Member = styled.li`
@@ -52,5 +58,5 @@ export const Member = styled.li`
 
 export const GitLink = styled.a`
 	text-decoration: none;
-	color: #444444;
+	color: ${({ theme }) => theme.colors.gray600};
 `;

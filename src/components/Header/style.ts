@@ -11,7 +11,7 @@ export const HeaderSection = styled.div`
 	border-bottom: 1px solid rgb(238, 238, 238);
 
 	@media (max-width: 1024px) {
-		height: 9rem;
+		height: 10rem;
 		z-index: 0;
 	}
 `;
@@ -80,6 +80,7 @@ export const MobileNavContainer = styled.div`
 	@media (max-width: 1024px) {
 		display: flex;
 		justify-content: space-between;
+		margin-top: 1rem;
 	}
 `;
 
