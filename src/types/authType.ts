@@ -15,3 +15,8 @@ export interface UuidType {
 	uuidData: string;
 	setUUID: (uuidData: string) => void;
 }
+
+export interface ModalStateType {
+	isOpen: boolean;
+	toggleModal: () => void;
+}

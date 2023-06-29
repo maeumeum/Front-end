@@ -18,6 +18,16 @@ export const customStyles = {
 	},
 };
 
+export const MobileStyles = {
+	content: {
+		top: 0,
+		left: 0,
+		width: '50%',
+		minHeight: '100%',
+	},
+	overlay: { zIndex: 1000 },
+};
+
 export const TitleInput = styled.input`
 	height: 1.8rem;
 	margin-top: 2rem;
@@ -68,4 +78,26 @@ export const RemainContainer = styled.div`
 
 export const RemainDesc = styled.div`
 	font-size: 1.3rem;
+`;
+
+// Mobile Modal
+export const MobileTopContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
+
+export const LoginContainer = styled.div`
+	font-size: 2rem;
+	cursor: pointer;
+`;
+
+export const ExitContainer = styled.div`
+	width: 2.5rem;
+	height: 2.5rem;
+	cursor: pointer;
+
+	img {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
 `;

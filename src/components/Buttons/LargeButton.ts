@@ -13,6 +13,17 @@ const LargeButton = styled.button<LargeButtonProps>`
 	border: none;
 	border-radius: 8px;
 	cursor: ${({ disabled }) => (disabled ? 'auto' : 'pointer')};
+
+	@media (max-width: 768px) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 28rem;
+		height: 4rem;
+		font-size: 1.5rem;
+		margin-top: 2rem;
+		padding: 1.5rem 0;
+	}
 `;
 
 export default LargeButton;

@@ -1,51 +1,62 @@
 import styled from 'styled-components';
 
 export const FooterSection = styled.div`
-  position: relative;
-  height: 25rem;
-  background-color: var(--color--footer);
-  border: none;
+	position: relative;
+	height: 25rem;
+	background-color: ${({ theme }) => theme.colors.pink200};
+	border: none;
 `;
 
 export const IntroContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  min-width: 112rem;
-  margin: 0 40rem;
+	display: flex;
+	justify-content: space-between;
+	min-width: 112rem;
+	margin: 0 40rem;
+
+	@media (max-width: 1024px) {
+		margin: 0 2rem;
+		min-width: 33rem;
+	}
 `;
 
 export const LogoContainer = styled.div`
-  margin-top: 4.6rem;
-  width: 10rem;
-  height: 10rem;
-  cursor: pointer;
+	margin-top: 4.6rem;
+	width: 10rem;
+	height: 10rem;
+	cursor: pointer;
 `;
 
 export const MainLogo = styled.img`
-  width: 10rem;
-  height: 10rem;
+	width: 10rem;
+	height: 10rem;
 `;
 
 export const SloganContainer = styled.div`
-  margin-top: 5.8rem;
+	margin-top: 5.8rem;
 `;
 
 export const Slogan = styled.p`
-  text-align: end;
-  font-size: 1.4rem;
+	text-align: end;
+	font-size: 1.4rem;
 `;
 
 export const MemberList = styled.ul`
-  display: flex;
-  list-style-type: none;
-  font-size: 1.2rem;
+	display: flex;
+	list-style-type: none;
+	font-size: 1.2rem;
+
+	@media (max-width: 1024px) {
+		padding: 0;
+		justify-content: end;
+		margin: 2rem;
+	}
 `;
 
 export const Member = styled.li`
-  margin: 0 0 0 2rem;
+	margin: 0 0 0 2rem;
 `;
 
 export const GitLink = styled.a`
-  text-decoration: none;
-  color: #444444;
+	text-decoration: none;
+	color: ${({ theme }) => theme.colors.gray600};
 `;
