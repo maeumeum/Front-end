@@ -31,3 +31,9 @@ export const Menus = styled.div`
 		}
 	}
 `;
+
+//mobile
+
+export const MenuMobileContainer = styled.div`
+	width: 100%;
+`;

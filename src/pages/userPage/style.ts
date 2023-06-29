@@ -159,6 +159,11 @@ export const SignUpSection = styled.div<SignUpProps>`
 			height: 50rem;
 			margin: 5rem 0 10rem;
 			left: 30.5rem;
+
+			@media (max-width: 768px) {
+				width: 85%;
+				left: 0;
+			}
 		`}
 
 	@media (max-width: 768px) {
