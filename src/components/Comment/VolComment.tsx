@@ -23,6 +23,7 @@ import {
 	NameContainer,
 	NanoId,
 	Btn3,
+	PhotoContainer,
 	Img,
 } from './CommentStyle';
 import { DataType } from '@src/types/dataType';
@@ -223,12 +224,12 @@ const VolComment: React.FC<CommentProps> = ({ postId }) => {
 				CommentList.map((comment: CommentType) => (
 					<CommentContainer key={comment._id}>
 						<ProfileContainer>
-							<RandomPhoto>
+							<PhotoContainer>
 								<Img
 									src={`${apiURL}/${comment.user_id.image}`}
 									alt='profile-image'
 								/>
-							</RandomPhoto>
+							</PhotoContainer>
 							<UserContainer>
 								<NameContainer>
 									<UserName>{comment.user_id.nickname}</UserName>
