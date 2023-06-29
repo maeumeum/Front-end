@@ -7,12 +7,12 @@ export const HeaderSection = styled.div`
 	position: sticky;
 	box-sizing: border-box;
 	height: 8rem;
-	background-color: #ffffff;
+	background-color: ${({ theme }) => theme.colors.background};
 	border-bottom: 1px solid rgb(238, 238, 238);
 
 	@media (max-width: 1024px) {
 		height: 10rem;
-		z-index: 0;
+		z-index: 1;
 	}
 `;
 
@@ -103,6 +103,10 @@ export const NavCategory = styled(NavLink)`
 	font-weight: normal;
 	font-size: 1.5rem;
 	text-decoration: none;
+
+	@media (max-width: 1024px) {
+		font-size: 1.8rem;
+	}
 `;
 
 export const UtilContainer = styled.div`

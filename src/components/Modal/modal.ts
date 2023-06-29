@@ -20,12 +20,12 @@ export const customStyles = {
 
 export const MobileStyles = {
 	content: {
-		zIndex: 400,
 		top: 0,
 		left: 0,
 		width: '50%',
 		minHeight: '100%',
 	},
+	overlay: { zIndex: 1000 },
 };
 
 export const TitleInput = styled.input`
