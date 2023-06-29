@@ -21,7 +21,9 @@ import { transformVolunSuggestData } from '@utils/transformData';
 import { getVolunSuggestDataProps } from '@src/types/cardType';
 
 function VolunSuggest() {
-	const [suggestVolunList, setSuggestVolunList] = useState<ResponseData[]>([]);
+	const [suggestVolunList, setSuggestVolunList] = useState<
+		getVolunSuggestDataProps[]
+	>([]);
 	const tabs = [TabTypes.VOLUNTEER_SUGGEST];
 	const currTab = tabs[0];
 

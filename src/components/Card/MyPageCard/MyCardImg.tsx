@@ -23,11 +23,7 @@ import { MyVolunCardProps } from 'src/types/cardType';
 import SuggestStatusSelector from './SuggestStatusSelector.tsx';
 import AppliedStatusSelector from './AppliedStatusSelector.tsx';
 
-function MyCardImg({
-	currTab,
-	volunCardData,
-	handleClickTab,
-}: MyVolunCardProps) {
+function MyCardImg({ currTab, volunCardData }: MyVolunCardProps) {
 	const {
 		authorization,
 		thumbnail,

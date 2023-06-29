@@ -39,7 +39,7 @@ import {
 	WaitMessage,
 	InfoMessage,
 } from './style';
-import hug from '@assets/images/포옹.png';
+import hug from '@assets/images/jug.webp';
 
 const AuthTeam = () => {
 	const [category, setCategory] = useState<string>('');
@@ -115,7 +115,11 @@ const AuthTeam = () => {
 
 				{isAuthorizaion ? (
 					<InfoMessage>
-						<img src={hug} alt='인증유저' />
+						<img
+							src={hug}
+							alt='인증유저'
+							style={{ width: '30rem', height: '30rem' }}
+						/>
 						<h1>이미 인증된 유저입니다.</h1>
 						<h1>문의사항은 관리자에게 연락주세요:)</h1>
 						<h2>maum.elice@gmail.com</h2>

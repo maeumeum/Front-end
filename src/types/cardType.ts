@@ -201,7 +201,7 @@ export interface MyVolunCardProps {
 
 export interface ReviewProps {
 	statusName: string;
-	isReviewed: boolean;
+	isReviewed?: boolean;
 	volunId: string;
 }
 
