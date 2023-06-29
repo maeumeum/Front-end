@@ -51,6 +51,10 @@ export const ButtonContainer = styled.button`
 	font-size: 1.2rem;
 	text-decoration: none;
 	cursor: pointer;
+
+	@media (max-width: 1024px) {
+		display: none;
+	}
 `;
 
 export const ButtonWord = styled.p`
@@ -61,4 +65,18 @@ export const ButtonWord = styled.p`
 export const StyledLink = styled(Link)`
 	text-decoration: none;
 	color: #000000;
+`;
+
+// mobile
+
+export const MobileButton = styled.div`
+	margin-top: 2rem;
+	padding: 1rem;
+	text-align: center;
+	background-color: ${({ theme }) => theme.colors.gray100};
+	cursor: pointer;
+`;
+
+export const MobileWord = styled.h2`
+	font-size: 2rem;
 `;

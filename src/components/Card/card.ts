@@ -146,6 +146,10 @@ export const CommunityContainer = styled.div`
 	&:hover {
 		transform: scale(1.03);
 	}
+
+	@media (max-width: 768px) {
+		max-height: 25%;
+	}
 `;
 
 export const QnaType = styled.div`
@@ -158,6 +162,10 @@ export const QnaType = styled.div`
 	background-color: ${({ theme }) => theme.colors.green200};
 	border-radius: 50%;
 	font-size: 1.5rem;
+
+	@media (max-width: 768px) {
+		width: 5rem;
+	}
 `;
 
 export const TogetherType = styled.div`
@@ -171,6 +179,10 @@ export const TogetherType = styled.div`
 	background-color: ${({ theme }) => theme.colors.pink200};
 	border-radius: 50%;
 	font-size: 1.5rem;
+
+	@media (max-width: 768px) {
+		width: 5rem;
+	}
 `;
 
 export const CommunityTitle = styled.p`
@@ -247,6 +259,10 @@ export const ImageContainer = styled.div`
 	height: 100%;
 	overflow: hidden;
 	border-radius: 12px 0 0 12px;
+
+	@media (max-width: 768px) {
+		width: 40%;
+	}
 `;
 
 export const ReviewImage = styled.img`
