@@ -7,12 +7,12 @@ export const HeaderSection = styled.div`
 	position: sticky;
 	box-sizing: border-box;
 	height: 8rem;
-	background-color: #ffffff;
+	background-color: ${({ theme }) => theme.colors.background};
 	border-bottom: 1px solid rgb(238, 238, 238);
 
 	@media (max-width: 1024px) {
-		height: 9rem;
-		z-index: 0;
+		height: 10rem;
+		z-index: 1;
 	}
 `;
 
@@ -80,6 +80,7 @@ export const MobileNavContainer = styled.div`
 	@media (max-width: 1024px) {
 		display: flex;
 		justify-content: space-between;
+		margin-top: 1rem;
 	}
 `;
 
@@ -102,6 +103,10 @@ export const NavCategory = styled(NavLink)`
 	font-weight: normal;
 	font-size: 1.5rem;
 	text-decoration: none;
+
+	@media (max-width: 1024px) {
+		font-size: 1.8rem;
+	}
 `;
 
 export const UtilContainer = styled.div`

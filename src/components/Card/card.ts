@@ -270,6 +270,12 @@ export const ReviewImage = styled.img`
 	height: 100%;
 	border: none;
 	transform: translateX(-1.5rem);
+
+	@media (max-width: 768px) {
+		width: auto;
+		height: 100%;
+		transform: translateX(-3.5rem);
+	}
 `;
 
 export const ReviewContainer = styled.div`
@@ -283,6 +289,10 @@ export const ReviewContainer = styled.div`
 export const ReviewTitle = styled.h2`
 	min-height: 20%;
 	font-size: 2rem;
+
+	@media (max-width: 768px) {
+		min-height: 25%;
+	}
 `;
 
 export const Nickname = styled.p`

@@ -1,3 +1,5 @@
+import { useMediaQuery } from 'react-responsive';
+
 import {
 	FooterSection,
 	IntroContainer,
@@ -13,6 +15,12 @@ import {
 import mainLogo from '@assets/icons/mainlogo.svg';
 
 const Footer = () => {
+	const isPc = useMediaQuery({
+		query: '(min-width:1024px)',
+	});
+	const isMobile = useMediaQuery({
+		query: '(max-width:1023px)',
+	});
 	const clickHandler = () => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
@@ -28,17 +36,30 @@ const Footer = () => {
 						마음을 잇는 봉사 <br />
 						마음이음에서 흔적을 남겨보세요
 					</Slogan>
-					<MemberList>
-						{members.map((member: { name: string; link: string }) => {
-							return (
-								<Member key={member.link}>
-									<GitLink href={member.link}>{member.name}</GitLink>
-								</Member>
-							);
-						})}
-					</MemberList>
+					{isPc && (
+						<MemberList>
+							{members.map((member: { name: string; link: string }) => {
+								return (
+									<Member key={member.link}>
+										<GitLink href={member.link}>{member.name}</GitLink>
+									</Member>
+								);
+							})}
+						</MemberList>
+					)}
 				</SloganContainer>
 			</IntroContainer>
+			{isMobile && (
+				<MemberList>
+					{members.map((member: { name: string; link: string }) => {
+						return (
+							<Member key={member.link}>
+								<GitLink href={member.link}>{member.name}</GitLink>
+							</Member>
+						);
+					})}
+				</MemberList>
+			)}
 		</FooterSection>
 	);
 };

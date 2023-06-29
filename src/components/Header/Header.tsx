@@ -22,7 +22,7 @@ import searchLogo from '@assets/icons/search.svg';
 
 const Header = () => {
 	const [checkToken, setCheckToken] = useState<boolean>(false);
-	const [click, setClick] = useState<string>('home');
+	const [click, setClick] = useState<string>('main');
 	const navigate = useNavigate();
 
 	// 토큰 유무

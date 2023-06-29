@@ -4,7 +4,7 @@ export const MainSection = styled.div`
 	position: relative;
 	margin: 0;
 	padding-bottom: 2rem;
-	background-color: #f7f7f7;
+	background-color: ${({ theme }) => theme.colors.gray100};
 `;
 
 export const TopSlogan = styled.h2`
@@ -69,7 +69,7 @@ export const IntroduceTitle = styled.div`
 	flex-direction: column;
 	width: 100%;
 	height: 50%;
-	background-color: var(--color--footer);
+	background-color: ${({ theme }) => theme.colors.pink200};
 	border: none;
 	border-radius: 12px 12px 0 0;
 	overflow: hidden;
@@ -90,7 +90,7 @@ export const IntroImg = styled.img`
 
 export const IntroduceDesc = styled.div`
 	height: 29rem;
-	color: #4a4a4a;
+	color: ${({ theme }) => theme.colors.gray600};
 `;
 
 export const Title = styled.h2`
@@ -184,7 +184,6 @@ export const WebName = styled.div`
 	font-weight: ${({ theme }) => theme.typography.weight.bold};
 
 	@media (max-width: 768px) {
-		width: 20rem;
-		height: 20rem;
+		display: relative;
 	}
 `;
