@@ -51,6 +51,9 @@ export const TitleInput = styled.input`
 	font-size: 3.5rem;
 	font-weight: 600;
 	color: #a7a7a7;
+	@media (max-width: 768px) {
+		margin-top: 5rem;
+	}
 `;
 
 export const ContentInput = styled.textarea`
@@ -80,6 +83,12 @@ export const ButtonContainer = styled.div`
 	display: flex;
 	gap: 1rem;
 	margin-left: auto;
+	@media (max-width: 768px) {
+		justify-content: space-between;
+		width: 95%;
+		position: absolute;
+		top: -7rem;
+	}
 `;
 
 export const CancelButton = styled.button`
@@ -90,6 +99,11 @@ export const CancelButton = styled.button`
 	border-radius: 1.2rem;
 	cursor: pointer;
 	font-size: ${({ theme }) => theme.typography.size.default};
+	@media (max-width: 768px) {
+		border: none;
+		color: ${({ theme }) => theme.colors.gray600};
+		font-size: 2.3rem;
+	}
 `;
 
 export const SubmitButton = styled.button`
@@ -101,6 +115,12 @@ export const SubmitButton = styled.button`
 	cursor: pointer;
 	font-size: ${({ theme }) => theme.typography.size.default};
 	color: #ffffff;
+	@media (max-width: 768px) {
+		border: none;
+		color: ${({ theme }) => theme.colors.green300};
+		font-size: 2.3rem;
+		background-color: ${({ theme }) => theme.colors.background};
+	}
 `;
 
 export const ImageArea = styled.label`

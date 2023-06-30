@@ -27,6 +27,9 @@ export const SearchBarInput = styled.input`
 	border: none;
 	outline: none;
 	font-size: ${({ theme }) => theme.typography.size.default};
+	@media (max-width: 768px) {
+		width: 75rem;
+	}
 `;
 export const SearchLogo = styled.img`
 	margin-left: 2rem;
