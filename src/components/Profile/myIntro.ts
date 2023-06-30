@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
 export const FormContainer = styled.div`
-	min-height: 50rem;
 	display: flex;
 	flex-direction: column;
+	min-height: 50rem;
 	align-items: center;
+
+	@media (max-width: 768px) {
+		width: 100%;
+		margin-top: 1rem;
+		font-size: 12px;
+	}
 `;
 
 export const IntroContainer = styled.div`
@@ -18,6 +24,11 @@ export const IntroContainer = styled.div`
 		padding: 16px 18px;
 		max-width: 66.5rem;
 		resize: none;
+
+		@media (max-width: 768px) {
+			width: 50rem;
+			font-size: 12px;
+		}
 	}
 `;
 

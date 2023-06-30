@@ -45,7 +45,7 @@ export const CommentLength = styled.p`
 export const Box = styled.div`
 	width: 0.8rem;
 	height: 2.5rem;
-	background-color:  ${({ theme }) => theme.colors.text}
+	background-color: ${({ theme }) => theme.colors.text};
 	margin-right: 2rem;
 `;
 export const Comment = styled.p`
@@ -128,9 +128,8 @@ export const CommentArea = styled.textarea`
 	height: 6rem;
 	resize: none;
 	background-color: ${({ theme }) => theme.colors.gray100};
-	border-radius:${({ theme }) => theme.radius.s1};
-	white-space: 'pre-wrap;
-	
+	border-radius: ${({ theme }) => theme.radius.s1};
+	white-space: 'pre-wrap';
 `;
 export const UserContainer = styled.div`
 	margin: 0 0 0 2rem;
