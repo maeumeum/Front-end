@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const FormContainer = styled.div`
-	min-height: 50rem;
 	display: flex;
 	flex-direction: column;
+	min-height: 50rem;
 	align-items: center;
 
 	@media (max-width: 768px) {
