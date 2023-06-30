@@ -39,12 +39,21 @@ export const TextArea = styled.div`
 	align-items: flex-start;
 	margin-left: 25rem;
 	margin-top: 3rem;
+
+	@media (max-width: 768px) {
+		margin-left: 10rem;
+	}
 `;
 
 export const MiddleContainer = styled.div`
 	display: block;
 	margin-left: 25rem;
 	margin-bottom: 10rem;
+
+	@media (max-width: 768px) {
+		margin-left: 0rem;
+		margin-top: 20rem;
+	}
 `;
 
 export const BigText = styled.p`
@@ -75,6 +84,9 @@ export const MainTitle = styled.p`
 	color: #313739;
 	margin: 0;
 	margin-bottom: 5rem;
+	@media (max-width: 768px) {
+		font-size: 6rem;
+	}
 `;
 
 export const Subtitle = styled.p`
@@ -82,6 +94,10 @@ export const Subtitle = styled.p`
 	text-align: left;
 	margin: 0;
 	line-height: 5rem;
+	@media (max-width: 768px) {
+		font-size: 2rem;
+		line-height: 3rem;
+	}
 `;
 
 export const Highlight = styled.span`
@@ -103,12 +119,15 @@ export const DetailContainer = styled.div`
 	margin: 0 auto;
 	margin-top: 15rem;
 	min-height: 60rem;
-	width: 80%;
+	width: 100%;
 `;
 
 export const Header = styled.header`
 	margin: 0 auto;
 	width: 112rem;
+	@media (max-width: 768px) {
+		width: 90%;
+	}
 `;
 
 export const Title = styled.p`
@@ -140,7 +159,7 @@ export const NanoId = styled.p`
 
 export const Date = styled.p`
 	${({ theme }) => theme.colors.gray500}
-	font-size: 1%.6;
+	font-size: 1.6rem;
 `;
 
 export const Btn = styled.button`
@@ -178,12 +197,18 @@ export const BtnDelete = styled.button`
 export const Line = styled.hr`
 	width: 112rem;
 	border: 1px solid #afcd81;
+	@media (max-width: 768px) {
+		width: 90%;
+	}
 `;
 
 export const ContentContainer = styled.div`
 	width: 112rem;
 	margin: 0 auto;
 	margin-top: 10rem;
+	@media (max-width: 768px) {
+		width: 90%;
+	}
 `;
 
 export const Image = styled.img`
@@ -249,4 +274,8 @@ export const BottomArea = styled.div`
 	flex-direction: column;
 	align-items: center;
 	margin-left: 15rem;
+	@media (max-width: 768px) {
+		margin-left: 3rem;
+		margin-top: -10rem;
+	}
 `;
