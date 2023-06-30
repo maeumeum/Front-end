@@ -40,7 +40,6 @@ function truncateDate(createdAt: string) {
 
 function MyPost({ currTab, communityData, onRemovePost }: PostProps) {
 	const { title, content, createdAt, postType, _id } = communityData;
-	console.log(title);
 	const [isShowMore, setIsShowMore] = useState<boolean>(false);
 	const truncatedTitle = truncateTitle(title);
 	const navigate = useNavigate();

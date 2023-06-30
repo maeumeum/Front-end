@@ -6,8 +6,15 @@ export const Container = styled.div`
 	position: relative;
 	margin: 0;
 	padding: 0;
-	margin-left: 15rem;
+	margin-left: 19rem;
 	min-height: 100rem;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		margin: 0;
+		padding: 0;
+		min-height: 100rem;
+	}
 `;
 
 export const MenuBar = styled.div`
@@ -16,6 +23,12 @@ export const MenuBar = styled.div`
 	border-radius: 5px;
 	margin: 15.5rem 0 0 10rem;
 	top: 9.8rem;
+
+	@media (max-width: 768px) {
+		width: 100%;
+		top: 0;
+		margin: 0;
+	}
 `;
 
 export const Main = styled.div`
@@ -23,6 +36,13 @@ export const Main = styled.div`
 	margin-top: 5rem;
 	padding: 3.5rem;
 	margin-left: 5rem;
+
+	@media (max-width: 768px) {
+		width: 100%;
+		margin-top: 1rem;
+		padding: 0;
+		margin-left: 0rem;
+	}
 `;
 
 export const TabMenu = styled.div`

@@ -149,3 +149,76 @@ export interface CommentType {
 }
 
 export type CommentListType = CommentType[];
+
+export interface getVolunHistoryCardType {
+	_id: string;
+	isParticipate: boolean;
+	isReviewed: boolean;
+	user_id: string;
+	volunteer_id: {
+		startDate: string;
+		endDate: string;
+		register_user_id: {
+			nickname: string;
+			image: string;
+			authorization: boolean;
+		};
+		_id: string;
+		title: string;
+		statusName: string;
+		deadline: string;
+		images: string[];
+	};
+}
+
+export interface getVolunSuggestDataProps {
+	_id: string;
+	title: string;
+	statusName: string;
+	deadline: string;
+	startDate: string;
+	endDate: string;
+	images: string[];
+	register_user_id: {
+		nickname: string;
+		image: string;
+		introduction: string;
+		authorization: boolean;
+	};
+}
+
+import { TabTypes } from '@src/types/myPageConstants';
+export interface MyVolunCardProps {
+	volunCardData: {
+		title: string;
+		thumbnail: string;
+		startDate: string;
+		endDate: string;
+		statusName: string;
+		isReviewed?: boolean;
+		volunId: string;
+		userImage: string;
+		authorization: boolean;
+		nickname: string;
+		volunApplyId: string;
+	};
+	currTab?: string;
+}
+
+export interface ReviewProps {
+	statusName: string;
+	isReviewed?: boolean;
+	volunId: string;
+}
+
+export interface SuggestStatusSelectorProps {
+	selectedStatus: string;
+	volunId: string;
+	isPastEndDate: boolean;
+}
+
+export interface AppliedStatusSelectorProps {
+	volunApplyId: string;
+	volunId: string;
+	handleClickTab?: (tab: TabTypes) => void;
+}

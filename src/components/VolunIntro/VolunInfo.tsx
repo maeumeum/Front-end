@@ -70,10 +70,10 @@ function VolunInfo() {
 
 	const clickApply = async () => {
 		try {
-			await post('/api/applications', {
+			const response = await post('/api/applications', {
 				volunteer_id: postId,
 			});
-
+			console.log(response);
 			navigate('/mypage/history');
 			Swal.fire(alertData.successMessage('참여신청 되었습니다!:)'));
 		} catch (e) {
