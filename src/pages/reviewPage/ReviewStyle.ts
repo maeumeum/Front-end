@@ -10,6 +10,9 @@ export const MainContainer = styled.div`
 		line-height: 2rem;
 		color: ${({ theme }) => theme.colors.green100};
 	}
+	@media (max-width: 768px) {
+		margin-left: 5rem;
+	}
 `;
 export const Descript = styled.span`
 	font-size: 3rem;
@@ -20,6 +23,9 @@ export const Descript = styled.span`
 export const MiddleContainer = styled.div`
 	position: relative;
 	margin-bottom: 70rem;
+	@media (max-width: 768px) {
+		display: none;
+	}
 `;
 export const FirstCircle = styled.div`
 	width: 70rem;

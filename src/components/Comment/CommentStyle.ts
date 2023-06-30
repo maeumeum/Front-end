@@ -4,6 +4,9 @@ export const Container = styled.div`
 	margin: 0 auto;
 	width: 112rem;
 	margin-bottom: 20rem;
+	@media (max-width: 768px) {
+		width: 90%;
+	}
 `;
 export const Title = styled.div`
 	display: flex;
@@ -20,6 +23,9 @@ export const EditCommentArea = styled.textarea`
 	font-size: ${({ theme }) => theme.typography.size.default};
 	resize: none;
 	white-space: pre-wrap;
+	@media (max-width: 768px) {
+		width: 80%;
+	}
 `;
 export const BtnContainer = styled.div`
 	margin-top: 4rem;
@@ -27,6 +33,9 @@ export const BtnContainer = styled.div`
 	margin-left: -13rem;
 	margin-top: 2rem;
 	gap: 1rem;
+	@media (max-width: 768px) {
+		margin-left: -32rem;
+	}
 `;
 export const BtnContainer2 = styled.div`
 	margin-top: 4rem;
@@ -35,6 +44,9 @@ export const BtnContainer2 = styled.div`
 	margin-top: 12rem;
 	gap: 1rem;
 	margin-bottom: 2rem;
+	@media (max-width: 768px) {
+		margin-left: 75rem;
+	}
 `;
 export const CommentLength = styled.p`
 	font-size: ${({ theme }) => theme.typography.size.default};
@@ -130,6 +142,9 @@ export const CommentArea = styled.textarea`
 	background-color: ${({ theme }) => theme.colors.gray100};
 	border-radius: ${({ theme }) => theme.radius.s1};
 	white-space: 'pre-wrap';
+	@media (max-width: 768px) {
+		width: 90%;
+	}
 `;
 export const UserContainer = styled.div`
 	margin: 0 0 0 2rem;

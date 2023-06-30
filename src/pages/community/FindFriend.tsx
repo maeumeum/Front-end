@@ -137,9 +137,9 @@ const FindFriend = () => {
 					</Sub>
 				</MiddleContainer>
 				<SearchContainer>
-					{/* <MenuBar>
+					<MenuBar>
 						<Menu title={'커뮤니티'} />
-					</MenuBar> */}
+					</MenuBar>
 					<BottomArea>
 						<SearchBar onSearch={handleSearch} />
 						<NumberWriteContainer>

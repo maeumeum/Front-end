@@ -8,8 +8,24 @@ export const PageContainer = styled.div`
 export const MenuBar = styled.div`
 	width: 10%;
 	min-width: 15.7rem;
-	border-radius: 5px;
 	margin: -7rem 0 0 10rem;
+	@media (max-width: 768px) {
+		width: 100%;
+		margin-left: 30rem;
+		position: absolute;
+		top: 45rem;
+		left: 0;
+
+		&:after {
+			content: '';
+			position: absolute;
+			left: -20rem;
+			right: 40rem;
+			top:8rem; // 원하는 위치에 따라 이 값을 변경할 수 있습니다.
+			height: 1px;
+			background: ${({ theme }) => theme.colors.gray300};
+	
+	}
 `;
 
 export const MainContainer = styled.div`
@@ -176,6 +192,10 @@ export const Btn = styled.button`
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.green300};
 	}
+	@media (max-width: 768px) {
+		margin-right: 2rem;
+		font-size: 1.5rem;
+	}
 `;
 
 export const BtnDelete = styled.button`
@@ -191,6 +211,9 @@ export const BtnDelete = styled.button`
 
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.pink300};
+	}
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
 	}
 `;
 
@@ -227,6 +250,10 @@ export const Container = styled.div`
 	position: relative;
 	width: 112rem;
 	margin: 0 auto;
+	@media (max-width: 768px) {
+		width: 100%;
+		margin-left: -3rem;
+	}
 `;
 
 export const ImageArea = styled.label`
@@ -250,6 +277,9 @@ export const ImageArea = styled.label`
 		top: 0;
 		left: 0;
 		cursor: pointer;
+	}
+	@media (max-width: 768px) {
+		top: 75rem;
 	}
 `;
 
