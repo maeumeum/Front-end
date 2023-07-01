@@ -37,16 +37,15 @@ export const ContentBox = styled.div`
 `;
 
 export const VolunInfo = styled.div`
-	height: 100px;
+	height: 82px;
 	cursor: pointer;
 	p {
 		word-break: keep-all;
-
 		font-size: 2rem;
 		line-height: 2.4rem;
 		letter-spacing: -0.1px;
 		text-align: left;
-		height: 40px;
+		height: 20px;
 	}
 	p + p {
 		position: absolute;

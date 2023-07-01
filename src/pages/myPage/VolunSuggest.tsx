@@ -7,7 +7,6 @@ import {
 	CardBox,
 } from '@components/MyPage/myPage.ts';
 import Tab from '@components/Tab/Tab.tsx';
-import Card from '@components/Card/Card.tsx';
 import Pagination from '@components/Pagination/Pagination.tsx';
 import Menu from '@components/Menu/Menu.tsx';
 import { TabTypes } from '@src/types/myPageConstants';

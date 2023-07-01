@@ -17,6 +17,10 @@ export const PostBox = styled.div<PostProps>`
 	&:hover {
 		box-shadow: 0 4px 6px rgba(0.1, 0.1, 0.1, 0.1);
 	}
+	@media (max-width: 768px) {
+		margin-left: 3rem;
+		width: 56rem;
+	}
 `;
 
 export const Title = styled.p`
