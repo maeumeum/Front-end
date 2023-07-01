@@ -8,8 +8,24 @@ export const PageContainer = styled.div`
 export const MenuBar = styled.div`
 	width: 10%;
 	min-width: 15.7rem;
-	border-radius: 5px;
 	margin: -7rem 0 0 10rem;
+	@media (max-width: 768px) {
+		width: 100%;
+		margin-left: 30rem;
+		position: absolute;
+		top: 45rem;
+		left: 0;
+
+		&:after {
+			content: '';
+			position: absolute;
+			left: -20rem;
+			right: 40rem;
+			top:8rem; // 원하는 위치에 따라 이 값을 변경할 수 있습니다.
+			height: 1px;
+			background: ${({ theme }) => theme.colors.gray300};
+	
+	}
 `;
 
 export const MainContainer = styled.div`
@@ -39,12 +55,21 @@ export const TextArea = styled.div`
 	align-items: flex-start;
 	margin-left: 25rem;
 	margin-top: 3rem;
+
+	@media (max-width: 768px) {
+		margin-left: 10rem;
+	}
 `;
 
 export const MiddleContainer = styled.div`
 	display: block;
 	margin-left: 25rem;
 	margin-bottom: 10rem;
+
+	@media (max-width: 768px) {
+		margin-left: 0rem;
+		margin-top: 20rem;
+	}
 `;
 
 export const BigText = styled.p`
@@ -75,6 +100,9 @@ export const MainTitle = styled.p`
 	color: #313739;
 	margin: 0;
 	margin-bottom: 5rem;
+	@media (max-width: 768px) {
+		font-size: 6rem;
+	}
 `;
 
 export const Subtitle = styled.p`
@@ -82,6 +110,10 @@ export const Subtitle = styled.p`
 	text-align: left;
 	margin: 0;
 	line-height: 5rem;
+	@media (max-width: 768px) {
+		font-size: 2rem;
+		line-height: 3rem;
+	}
 `;
 
 export const Highlight = styled.span`
@@ -103,12 +135,15 @@ export const DetailContainer = styled.div`
 	margin: 0 auto;
 	margin-top: 15rem;
 	min-height: 60rem;
-	width: 80%;
+	width: 100%;
 `;
 
 export const Header = styled.header`
 	margin: 0 auto;
 	width: 112rem;
+	@media (max-width: 768px) {
+		width: 90%;
+	}
 `;
 
 export const Title = styled.p`
@@ -140,7 +175,7 @@ export const NanoId = styled.p`
 
 export const Date = styled.p`
 	${({ theme }) => theme.colors.gray500}
-	font-size: 1%.6;
+	font-size: 1.6rem;
 `;
 
 export const Btn = styled.button`
@@ -156,6 +191,10 @@ export const Btn = styled.button`
 
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.green300};
+	}
+	@media (max-width: 768px) {
+		margin-right: 2rem;
+		font-size: 1.5rem;
 	}
 `;
 
@@ -173,17 +212,26 @@ export const BtnDelete = styled.button`
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.pink300};
 	}
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
+	}
 `;
 
 export const Line = styled.hr`
 	width: 112rem;
 	border: 1px solid #afcd81;
+	@media (max-width: 768px) {
+		width: 90%;
+	}
 `;
 
 export const ContentContainer = styled.div`
 	width: 112rem;
 	margin: 0 auto;
 	margin-top: 10rem;
+	@media (max-width: 768px) {
+		width: 90%;
+	}
 `;
 
 export const Image = styled.img`
@@ -202,6 +250,10 @@ export const Container = styled.div`
 	position: relative;
 	width: 112rem;
 	margin: 0 auto;
+	@media (max-width: 768px) {
+		width: 100%;
+		margin-left: -3rem;
+	}
 `;
 
 export const ImageArea = styled.label`
@@ -226,6 +278,9 @@ export const ImageArea = styled.label`
 		left: 0;
 		cursor: pointer;
 	}
+	@media (max-width: 768px) {
+		top: 75rem;
+	}
 `;
 
 export const BtnReport = styled.button`
@@ -249,4 +304,8 @@ export const BottomArea = styled.div`
 	flex-direction: column;
 	align-items: center;
 	margin-left: 15rem;
+	@media (max-width: 768px) {
+		margin-left: 3rem;
+		margin-top: -10rem;
+	}
 `;
