@@ -15,6 +15,9 @@ export const Container = styled.div`
 		padding: 0;
 		min-height: 100rem;
 	}
+	@media (max-width: 768px) {
+		margin: 0 auto;
+	}
 `;
 
 export const MenuBar = styled.div`

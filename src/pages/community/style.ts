@@ -21,22 +21,21 @@ export const MenuBar = styled.div`
 			position: absolute;
 			left: -20rem;
 			right: 40rem;
-			top:8rem; // 원하는 위치에 따라 이 값을 변경할 수 있습니다.
+			top: 8rem; // 원하는 위치에 따라 이 값을 변경할 수 있습니다.
 			height: 1px;
 			background: ${({ theme }) => theme.colors.gray300};
-			
-			@media (max-width:360px){
+
+			@media (max-width: 360px) {
 				left: -10rem;
 				right: 13rem;
 			}
-	
-	}
+		}
 
-	@media (max-width: 360px){
-		width: 100%;
-		margin-left: 10rem;
-		top: 35rem;
-
+		@media (max-width: 360px) {
+			width: 100%;
+			margin-left: 10rem;
+			top: 35rem;
+		}
 	}
 `;
 

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 interface LargeButtonProps {
 	disabled?: boolean;
 	apply?: boolean;
+	isMyPage?: string;
 }
 const LargeButton = styled.button<LargeButtonProps>`
 	margin-top: ${({ apply }) => (apply ? '0' : '6rem')};
@@ -18,8 +19,8 @@ const LargeButton = styled.button<LargeButtonProps>`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 28rem;
-		height: 4rem;
+		width: ${({ isMyPage }) => (isMyPage === 'mypage' ? '50rem' : '28rem')};
+		height: ${({ isMyPage }) => (isMyPage ? '6%' : '4rem')};
 		font-size: 1.5rem;
 		margin-top: 4rem;
 		padding: 1.5rem 0;

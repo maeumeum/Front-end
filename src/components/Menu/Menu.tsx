@@ -1,5 +1,10 @@
 import { Link } from 'react-router-dom';
-import { MenuTitle, Menus } from '@components/Menu/menu';
+import {
+	MenuTitle,
+	Menus,
+	MenuMobileOl,
+	MenuMobileList,
+} from '@components/Menu/menu';
 import { useMediaQuery } from 'react-responsive';
 type MenuProps = {
 	title: keyof MenuItems;
@@ -61,20 +66,15 @@ function Menu({ title }: MenuProps) {
 				)
 			) : (
 				<Menus>
-					<ul style={{ display: 'flex', flexWrap: 'wrap' }}>
+					<MenuMobileOl>
 						{menuItems.map((item) => (
-							<li
-								key={item.label}
-								style={{
-									width: '25%',
-									display: 'flex',
-								}}>
+							<MenuMobileList key={item.label}>
 								<Link to={item.link}>
 									<p>{item.label}</p>
 								</Link>
-							</li>
+							</MenuMobileList>
 						))}
-					</ul>
+					</MenuMobileOl>
 				</Menus>
 			)}
 		</>

@@ -164,6 +164,11 @@ export const SignUpSection = styled.div<SignUpProps>`
 				width: 85%;
 				left: 0;
 			}
+
+			@media (max-width: 360px) {
+				width: 75%;
+				left: 0;
+			}
 		`}
 
 	@media (max-width: 768px) {
@@ -190,6 +195,11 @@ export const SignUpForm = styled.div`
 
 	@media (max-width: 768px) {
 		width: 100%;
+	}
+
+	@media (max-width: 360px) {
+		width: 85%;
+		margin: 0 auto;
 	}
 `;
 
@@ -257,7 +267,7 @@ export const DataInput = styled.input<SignUpProps>`
 		if (props.name === 'long') {
 			return '60rem';
 		}
-		return '45rem';
+		return '100%';
 	}};
 	height: 5.6rem;
 	padding-left: 1rem;
@@ -273,7 +283,7 @@ export const DataInput = styled.input<SignUpProps>`
 	font-size: 1.6rem;
 
 	@media (max-width: 768px) {
-		width: 100%;
+		width: 50rem;
 	}
 `;
 
@@ -284,22 +294,31 @@ export const CheckValue = styled.p`
 	font-size: 1.2rem;
 `;
 
-export const WithdrawalSection = styled.div`
-	margin-left: 2rem;
-	margin-bottom: 3rem;
-	width: 70%;
-`;
-
 export const WithdrawalContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+`;
+
+export const WithdrawalSection = styled.div`
+	margin-left: 2rem;
+	margin-bottom: 3rem;
+	width: 70%;
+
+	@media (max-width: 768px) {
+		margin: 0 auto;
+		button {
+			margin-left: 10rem;
+		}
+	}
 `;
 
 export const ButtonContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 80%;
 	button + button {
 		margin-top: 3rem;
 	}

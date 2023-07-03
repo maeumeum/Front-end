@@ -29,6 +29,10 @@ export const IntroContainer = styled.div`
 			width: 50rem;
 			font-size: 12px;
 		}
+
+		@media (max-width: 360px) {
+			width: 30rem;
+		}
 	}
 `;
 
