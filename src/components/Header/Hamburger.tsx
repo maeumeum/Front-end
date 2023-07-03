@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 import useModalStore from '@src/store/userModalStore';
 import HamburgerModal from '@components/Modal/HamburgerModal';
@@ -11,15 +12,20 @@ interface ClickProps {
 
 const HamburgerComponent = ({ setClick }: ClickProps) => {
 	const { isOpen, toggleModal } = useModalStore();
+	const isMobile = useMediaQuery({
+		query: '(max-width:768px)',
+	});
 
 	return (
 		<HamburgerBtnContainer>
 			<img src={hamburgerBtn} alt='hamburgerBtn' onClick={toggleModal} />
-			<HamburgerModal
-				isOpen={isOpen}
-				closeModal={toggleModal}
-				setClick={setClick}
-			/>
+			{isMobile && (
+				<HamburgerModal
+					isOpen={isOpen}
+					closeModal={toggleModal}
+					setClick={setClick}
+				/>
+			)}
 		</HamburgerBtnContainer>
 	);
 };

@@ -1,5 +1,7 @@
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
+
+import useAuthStore from '@src/store/useAuthStore';
 
 interface PrivateRouteProps {
 	children?: ReactElement; // Router.tsx에서 PrivateRoute가 감싸고 있는 Componet Element
@@ -14,22 +16,22 @@ export default function PrivateRoute({
 	 * 로그인 했을 경우 : true 라는 텍스트 반환
 	 * 로그인 안했을 경우 : null or false(로그아웃 버튼 눌렀을경우 false로 설정) 반환
 	 */
-	const isAuthenticated = localStorage.getItem('userToken');
+	const { userData, getUserData } = useAuthStore();
+
+	useEffect(() => {
+		if (userData) {
+			getUserData();
+		}
+	}, []);
+
+	const isAuthenticated = userData;
 
 	if (authentication) {
 		// 인증이 반드시 필요한 페이지
 		// 인증을 안했을 경우 로그인 페이지로, 했을 경우 해당 페이지로
-		return isAuthenticated === null || isAuthenticated === 'false' ? (
-			<Navigate to='/login' />
-		) : (
-			<Outlet />
-		);
+		return isAuthenticated === null ? <Navigate to='/login' /> : <Outlet />;
 	} else {
 		// 인증이 반드시 필요 없는 페이지
-		return isAuthenticated === null || isAuthenticated === 'false' ? (
-			<Outlet />
-		) : (
-			<Navigate to='/' />
-		);
+		return isAuthenticated === null ? <Outlet /> : <Navigate to='/' />;
 	}
 }
