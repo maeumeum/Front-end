@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getToken } from '@src/api/token';
 import {
 	Container,
 	Box,
@@ -64,7 +63,6 @@ const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 	const getComments = async () => {
 		const response = await get<DataType>(
 			`/api/postComments/${postId}?skip=0&limit=3`,
-			{},
 		);
 		setCommentList(response.data.postCommentList);
 	};
@@ -74,7 +72,6 @@ const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 			if (!isLoad) {
 				const response = await get<DataType>(
 					`/api/postComments/${postId}?skip=${commentList.length}&limit=3`,
-					{},
 				);
 				const newPostListData = response.data.postCommentList;
 				setCommentList((prevData) => [...prevData, ...newPostListData]);
@@ -118,19 +115,10 @@ const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 			return;
 		}
 		try {
-			const token = getToken();
-			await post(
-				'/api/postComments/',
-				{
-					post_id: postId,
-					content: inputArea,
-				},
-				{
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				},
-			);
+			await post('/api/postComments/', {
+				post_id: postId,
+				content: inputArea,
+			});
 			setInputArea('');
 			getComments();
 		} catch (error) {
@@ -153,44 +141,21 @@ const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 			alert('내용을 입력해주세요');
 			return;
 		}
-		const token = getToken();
-		await patch<DataType>(
-			`/api/postComments/${comment_id}`,
-			{
-				content: editedComment,
-			},
-			{
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			},
-		);
+		await patch<DataType>(`/api/postComments/${comment_id}`, {
+			content: editedComment,
+		});
 		setEditingCommentId('');
 		setEditedComment('');
 		getComments();
 	};
 
 	const handleDeleteComment = async (comment_id: string) => {
-		const token = getToken();
-		await del<DataType>(
-			`/api/postComments/${comment_id}`,
-
-			{
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			},
-		);
+		await del<DataType>(`/api/postComments/${comment_id}`);
 		getComments();
 	};
 
 	const handleReport = async (comment_id: string) => {
-		const token = getToken();
-		await patch<DataType>(`/api/postComments/reports/${comment_id}`, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
+		await patch<DataType>(`/api/postComments/reports/${comment_id}`);
 		Swal.fire(alertData.ReportCompleted);
 	};
 

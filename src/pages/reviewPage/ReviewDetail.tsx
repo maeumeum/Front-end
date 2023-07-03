@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { get, del, patch } from '@api/api';
-import { getToken } from '@api/token';
 import { dateFormatter } from '@src/utils/dateUtils';
 import {
 	DetailContainer,
@@ -71,12 +70,7 @@ const ReviewDetail = () => {
 
 	const handleDelete = async () => {
 		try {
-			const token = getToken();
-			await del<DataType>(`/api/review/users/${postId}`, {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			});
+			await del<DataType>(`/api/review/users/${postId}`);
 			Swal.fire(alertData.successMessage('게시글이 삭제되었습니다.'));
 			navigate('/review');
 		} catch (error) {
@@ -85,12 +79,7 @@ const ReviewDetail = () => {
 	};
 
 	const handleReport = async () => {
-		const token = getToken();
-		await patch<DataType>(`/api/review/users/reports/${postId}`, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
+		await patch<DataType>(`/api/review/users/reports/${postId}`);
 		Swal.fire(alertData.ReportCompleted);
 	};
 
