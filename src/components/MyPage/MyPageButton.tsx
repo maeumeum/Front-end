@@ -2,7 +2,7 @@ import { useEffect, Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
-import useIsLoginStore from '@src/store/useLoginStore.tsx';
+import useLoginStore from '@src/store/useLoginStore.tsx';
 import useAuthStore from '@src/store/useAuthStore';
 import useModalStore from '@src/store/userModalStore.ts';
 import {
@@ -25,7 +25,7 @@ const MyPageButton = ({ setClick, header }: ClickProps) => {
 		query: '(max-width:1023px)',
 	});
 	const { userData, getUserData } = useAuthStore();
-	const { isLogin } = useIsLoginStore();
+	const { isLogin } = useLoginStore();
 	const { toggleModal } = useModalStore();
 	const navigate = useNavigate();
 
@@ -53,9 +53,9 @@ const MyPageButton = ({ setClick, header }: ClickProps) => {
 
 	return (
 		<>
-			{isLogin && isPc ? (
+			{isLogin && userData !== null && isPc ? (
 				<>
-					{userData !== null && userData.role === 'user' ? (
+					{userData.role === 'user' ? (
 						<ButtonContainer onClick={myPageHandler}>
 							<ButtonWord>MY</ButtonWord>
 						</ButtonContainer>

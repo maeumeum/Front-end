@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { get, del, patch } from '@api/api';
-import { getToken } from '@api/token';
 import { dateFormatter } from '@src/utils/dateUtils';
 import {
 	DetailContainer,
@@ -41,12 +40,7 @@ const QuestionDetail = () => {
 	useEffect(() => {
 		const fetchPost = async () => {
 			try {
-				const token = getToken();
-				const response = await get<DataType>(`/api/community/${postId}`, {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
+				const response = await get<DataType>(`/api/community/${postId}`);
 				setPost(response.data.post.post);
 				setDataUser(response.data.post);
 			} catch (error) {
@@ -64,12 +58,7 @@ const QuestionDetail = () => {
 	useEffect(() => {
 		const loginUserLogic = async () => {
 			try {
-				const token = getToken();
-				const response = await get<DataType>(`/api/community/check/${postId}`, {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
+				const response = await get<DataType>(`/api/community/check/${postId}`);
 				setLoginUser(response.data);
 				console.log(response);
 			} catch (error) {
@@ -87,12 +76,7 @@ const QuestionDetail = () => {
 
 	const handleDelete = async () => {
 		try {
-			const token = getToken();
-			await del<DataType>(`/api/community/${postId}`, {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			});
+			await del<DataType>(`/api/community/${postId}`);
 			Swal.fire(alertData.successMessage('게시글이 삭제되었습니다.'));
 			navigate('/community/question');
 		} catch (error) {
@@ -105,12 +89,7 @@ const QuestionDetail = () => {
 	}
 
 	const handleReport = async () => {
-		const token = getToken();
-		await patch<DataType>(`/api/community/reports/${postId}`, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
+		await patch<DataType>(`/api/community/reports/${postId}`);
 		Swal.fire(alertData.ReportCompleted);
 	};
 	const { title, createdAt, images, content } = post;

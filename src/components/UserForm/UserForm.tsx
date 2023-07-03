@@ -1,18 +1,19 @@
 import React, { useState, MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 import TopBar from '../TopBar/TopBar';
+import useLoginStore from '@src/store/useLoginStore';
 import {
 	UserFormContainer,
 	InputContainer,
 } from '@components/UserForm/userForm';
 import LargeButton from '@components/Buttons/LargeButton';
-import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
-import { post, patch } from '@api/api';
+import { get, post, patch } from '@api/api';
 import { validPassword } from '@utils/signUpCheck.ts';
 import { passwordError, passwordCheckError } from '@utils/errorMessage.ts';
 import InputForm from '@src/components/UserForm/InputForm.tsx';
-import { deleteToken } from '@api/token';
 
 interface UserFormProps {
 	closeModal: () => void;
@@ -23,6 +24,7 @@ function UserForm({ closeModal, isChangePasswordModal }: UserFormProps) {
 	const [password, setPassword] = useState('');
 	const [checkPassword, setCheckPassword] = useState<string>('');
 	const [submit, setSubmit] = useState<boolean>(false);
+	const { resetLogin } = useLoginStore();
 	const navigate = useNavigate();
 	const modalTitle = isChangePasswordModal ? '비밀번호 변경' : '유저 정보 확인';
 	const modalText = isChangePasswordModal
@@ -69,8 +71,9 @@ function UserForm({ closeModal, isChangePasswordModal }: UserFormProps) {
 							'비밀번호가 변경되었습니다! 재로그인 해주세요:)',
 						),
 					);
+					await get('/api/logout');
 					closeModal();
-					deleteToken();
+					resetLogin();
 					navigate('/login');
 				} catch (error) {
 					Swal.fire(alertData.errorMessage('비밀번호 변경에 실패하였습니다.'));

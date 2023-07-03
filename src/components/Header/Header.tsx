@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { get } from '@api/api';
-import useIsLoginStore from '@src/store/useLoginStore';
+import useLoginStore from '@src/store/useLoginStore';
 import MyPageButton from '@components/MyPage/MyPageButton';
 import HamburgerComponent from './Hamburger';
 import {
@@ -24,7 +24,7 @@ import searchLogo from '@assets/icons/search.svg';
 const Header = () => {
 	const [checkToken, setCheckToken] = useState<boolean>(false);
 	const [click, setClick] = useState<string>('main');
-	const { isLogin, resetLogin } = useIsLoginStore();
+	const { isLogin, resetLogin } = useLoginStore();
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -42,9 +42,7 @@ const Header = () => {
 
 	// 로그아웃 버튼 클릭하여 토큰 삭제
 	const logoutHandler = async () => {
-		await get('/api/logout', {
-			withCredentials: true,
-		});
+		await get('/api/logout');
 		resetLogin();
 		setClick(() => 'home');
 		navigate('/');

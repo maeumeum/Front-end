@@ -9,7 +9,10 @@ export const get = async <T>(
 ): Promise<T> => {
 	const fullURL = apiURL + url;
 	try {
-		const response = await api.get<T>(fullURL, config);
+		const response = await api.get<T>(fullURL, {
+			...config,
+			withCredentials: true,
+		});
 		return response.data;
 	} catch (err) {
 		throw new Error('API 요청에 실패했습니다.');
@@ -24,7 +27,10 @@ export const post = async <T>(
 ): Promise<T> => {
 	const fullURL = apiURL + url;
 	try {
-		const response = await api.post<T>(fullURL, data, config);
+		const response = await api.post<T>(fullURL, data, {
+			...config,
+			withCredentials: true,
+		});
 		return response.data;
 	} catch (err) {
 		throw new Error('API 요청에 실패했습니다.');
@@ -39,7 +45,10 @@ export const patch = async <T>(
 ): Promise<void> => {
 	const fullURL = apiURL + url;
 	try {
-		await api.patch<T>(fullURL, data, config);
+		await api.patch<T>(fullURL, data, {
+			...config,
+			withCredentials: true,
+		});
 	} catch (err) {
 		throw new Error('API 요청에 실패했습니다.');
 	}
@@ -52,7 +61,10 @@ export const del = async <T>(
 ): Promise<void> => {
 	const fullURL = apiURL + url;
 	try {
-		await api.delete<T>(fullURL, config);
+		await api.delete<T>(fullURL, {
+			...config,
+			withCredentials: true,
+		});
 	} catch (err) {
 		throw new Error('API 요청에 실패했습니다.');
 	}

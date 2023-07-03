@@ -11,8 +11,8 @@ export const MenuBar = styled.div`
 	margin: -7rem 0 0 10rem;
 	@media (max-width: 768px) {
 		width: 100%;
-		margin-left: 30rem;
 		position: absolute;
+		margin-left: 0;
 		top: 45rem;
 		left: 0;
 
@@ -20,22 +20,22 @@ export const MenuBar = styled.div`
 			content: '';
 			position: absolute;
 			left: -20rem;
-			right: 40rem;
+			right: 0rem;
 			top: 8rem; // 원하는 위치에 따라 이 값을 변경할 수 있습니다.
 			height: 1px;
 			background: ${({ theme }) => theme.colors.gray300};
 
 			@media (max-width: 360px) {
 				left: -10rem;
-				right: 13rem;
+				right: 0rem;
 			}
 		}
+	}
 
-		@media (max-width: 360px) {
-			width: 100%;
-			margin-left: 10rem;
-			top: 35rem;
-		}
+	@media (max-width: 360px) {
+		width: 100%;
+		margin-left: 0;
+		top: 35rem;
 	}
 `;
 

@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 
 import { LoginType } from '@src/types/authType';
 
-const useIsLoginStore = create<LoginType>()(
+const useLoginStore = create<LoginType>()(
 	persist(
 		(set) => ({
 			isLogin: false,
@@ -20,4 +20,4 @@ const useIsLoginStore = create<LoginType>()(
 	),
 );
 
-export default useIsLoginStore;
+export default useLoginStore;

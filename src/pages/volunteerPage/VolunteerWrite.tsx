@@ -3,7 +3,6 @@ import Swal from 'sweetalert2';
 import alertData from '@src/utils/swalObject.ts';
 import VolunteerWritePage from '@components/WritePage/VolunteerWritePage';
 import { post } from '@api/api';
-import { getToken } from '@api/token';
 import { useNavigate } from 'react-router-dom';
 import { WriteImageArea, Container } from './style';
 import actTypes from '@src/types/actTypeConstants';
@@ -59,7 +58,6 @@ const VolunteerWrite = () => {
 				teamName,
 			});
 
-			const token = getToken();
 			const formData = new FormData();
 			const deadline = deadlineDate.toISOString();
 			const startDate = startDateData.toISOString();
@@ -84,12 +82,7 @@ const VolunteerWrite = () => {
 			for (let i = 0; i < selectedImage.length; i++) {
 				formData.append('images', selectedImage[i]);
 			}
-			await post('/api/volunteers', formData, {
-				headers: {
-					'Content-Type': 'multipart/form-data',
-					Authorization: `Bearer ${token}`,
-				},
-			});
+			await post('/api/volunteers', formData);
 			navigate('/volunteers/ongoing');
 		} catch (error) {
 			Swal.fire(

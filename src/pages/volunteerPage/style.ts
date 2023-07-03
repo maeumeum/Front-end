@@ -7,7 +7,20 @@ export const VolunteerCardBox = styled.div`
 	grid-column-gap: 3rem;
 	grid-row-gap: 3rem;
 	min-width: 112rem;
-	width: 112rem;
+
+	@media (max-width: 768px) {
+		grid-template-columns: repeat(3, 1fr);
+		grid-column-gap: 2rem;
+		grid-row-gap: 3rem;
+		min-width: 44rem;
+	}
+
+	@media (max-width: 430px) {
+		grid-template-columns: repeat(2, 1fr);
+		grid-column-gap: 2rem;
+		grid-row-gap: 3rem;
+		min-width: 33rem;
+	}
 `;
 
 export const PageContainer = styled.div`
@@ -54,26 +67,42 @@ export const MiddleContainer = styled.div`
 	margin: 0 auto;
 	margin-top: 10rem;
 	margin-bottom: 47rem;
+
+	@media (max-width: 768px) {
+		width: 90%;
+		margin: 5rem 2rem 4rem;
+	}
 `;
 
 export const BigText = styled.p`
 	font-size: 6rem;
 	color: ${({ theme }) => theme.colors.green100};
 	margin-bottom: 2rem;
-`;
 
-export const SubMain = styled.p`
-	font-size: 3rem;
+	@media (max-width: 768px) {
+		margin: 0 0 2rem;
+		font-size: 4rem;
+	}
 `;
 
 export const FfHighLight = styled.span`
 	font-size: 3rem;
 	color: black;
 	background-color: ${({ theme }) => theme.colors.green100};
+
+	@media (max-width: 768px) {
+		font-size: 2rem;
+		word-break: keep-all;
+	}
 `;
 
 export const Sub = styled.div`
 	position: relative;
+
+	@media (max-width: 768px) {
+		position: flex;
+		margin: 0 2rem 0 0;
+	}
 `;
 
 export const MainImage = styled.img`
@@ -98,6 +127,7 @@ export const DogImage = styled.img`
 	top: 20rem;
 	left: 30rem;
 `;
+
 export const MainContainer = styled.div`
 	display: flex;
 	justify-content: flex-end;
@@ -108,13 +138,22 @@ export const MainContainer = styled.div`
 
 export const SearchContainer = styled.div`
 	align-self: center;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `;
 
 export const CardListContainer = styled.div`
+	margin: 10rem auto 20rem;
 	width: 112rem;
-	margin: 0 auto;
-	margin-top: 10rem;
-	margin-bottom: 20rem;
+	min-width: 76rem;
+
+	@media (max-width: 768px) {
+		margin: 0 2rem 15rem;
+		width: auto;
+		min-width: 33rem;
+	}
 `;
 
 export const NumberWriteContainer = styled.div`
@@ -123,7 +162,6 @@ export const NumberWriteContainer = styled.div`
 	align-items: center;
 	width: 112rem;
 	margin: 5.8rem auto;
-	margin-left: 1rem;
 `;
 
 export const ReviewPageContainer = styled.div`
@@ -184,6 +222,12 @@ export const TabBtn1 = styled.button`
 	:hover {
 		background-color: ${({ theme }) => theme.colors.pink300};
 	}
+
+	@media (max-width: 768px) {
+		height: 5rem;
+		width: 12rem;
+		font-size: 1.5rem;
+	}
 `;
 
 export const TabBtn2 = styled.button`
@@ -199,6 +243,12 @@ export const TabBtn2 = styled.button`
 	font-size: 2rem;
 	:hover {
 		background-color: ${({ theme }) => theme.colors.green300};
+	}
+
+	@media (max-width: 768px) {
+		height: 5rem;
+		width: 12rem;
+		font-size: 1.5rem;
 	}
 `;
 
