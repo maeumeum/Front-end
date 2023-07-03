@@ -9,9 +9,14 @@ export const MainContainer = styled.div`
 		font-size: 6rem;
 		line-height: 2rem;
 		color: ${({ theme }) => theme.colors.green100};
+
+		@media (max-width: 360px) {
+			font-size: 3rem;
+		}
 	}
 	@media (max-width: 768px) {
 		margin-left: 5rem;
+		width: 90%;
 	}
 `;
 export const Descript = styled.span`
@@ -19,6 +24,10 @@ export const Descript = styled.span`
 	color: ${({ theme }) => theme.colors.text};
 	margin-top: 10rem;
 	background-color: ${({ theme }) => theme.colors.green100};
+	@media (max-width: 360px) {
+		font-size: 1.5rem;
+		width: 100%;
+	}
 `;
 export const MiddleContainer = styled.div`
 	position: relative;
@@ -111,4 +120,7 @@ export const ReviewPostContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	@media (max-width: 360px) {
+		width: 100%;
+	}
 `;

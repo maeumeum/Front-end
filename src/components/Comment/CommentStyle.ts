@@ -7,6 +7,10 @@ export const Container = styled.div`
 	@media (max-width: 768px) {
 		width: 90%;
 	}
+	@media (max-width: 360px) {
+		width: 80%;
+		margin-left: 2rem;
+	}
 `;
 export const Title = styled.div`
 	display: flex;
@@ -26,6 +30,9 @@ export const EditCommentArea = styled.textarea`
 	@media (max-width: 768px) {
 		width: 80%;
 	}
+	@media (max-width: 360px) {
+		font-size: 1.5rem;
+	}
 `;
 export const BtnContainer = styled.div`
 	margin-top: 4rem;
@@ -35,6 +42,9 @@ export const BtnContainer = styled.div`
 	gap: 1rem;
 	@media (max-width: 768px) {
 		margin-left: -32rem;
+	}
+	@media (max-width: 360px) {
+		margin-left: -85rem;
 	}
 `;
 export const BtnContainer2 = styled.div`
@@ -53,6 +63,9 @@ export const CommentLength = styled.p`
 	display: block;
 	margin: 1rem 2rem 0 106rem;
 	color: ${({ theme }) => theme.colors.gray400};
+	@media (max-width: 360px) {
+		font-size: 1.5rem;
+	}
 `;
 export const Box = styled.div`
 	width: 0.8rem;
@@ -62,6 +75,9 @@ export const Box = styled.div`
 `;
 export const Comment = styled.p`
 	font-size: 2.4rem;
+	@media (max-width: 360px) {
+		font-size: 1.5rem;
+	}
 `;
 
 export const Btn1 = styled.button`
@@ -74,6 +90,9 @@ export const Btn1 = styled.button`
 	font-size: ${({ theme }) => theme.typography.size.default};
 	margin-bottom: 2rem;
 	color: ${({ theme }) => theme.colors.background};
+	@media (max-width: 360px) {
+		font-size: 1.5rem;
+	}
 `;
 export const Btn2 = styled.button`
 	background-color: ${({ theme }) => theme.colors.pink200};
@@ -85,6 +104,9 @@ export const Btn2 = styled.button`
 	font-size: ${({ theme }) => theme.typography.size.default};
 	margin-bottom: 2rem;
 	color: ${({ theme }) => theme.colors.background};
+	@media (max-width: 360px) {
+		font-size: 1.5rem;
+	}
 `;
 export const Btn3 = styled.button`
 	background-color: ${({ theme }) => theme.colors.pink200};
@@ -97,6 +119,9 @@ export const Btn3 = styled.button`
 	margin-top: -13rem;
 	margin-bottom: 2rem;
 	margin-left: 10rem;
+	@media (max-width: 360px) {
+		font-size: 1.5rem;
+	}
 `;
 export const CommentContainer = styled.div`
 	height: 32rem;
@@ -127,6 +152,10 @@ export const PhotoContainer = styled.div`
 	margin-top: 4rem;
 	margin-left: 2rem;
 	overflow: hidden;
+	@media (max-width: 360px) {
+		width: 5rem;
+		height: 5rem;
+	}
 `;
 export const Img = styled.img`
 	width: auto;
@@ -145,6 +174,9 @@ export const CommentArea = styled.textarea`
 	@media (max-width: 768px) {
 		width: 90%;
 	}
+	@media (max-width: 360px) {
+		font-size: 1.5rem;
+	}
 `;
 export const UserContainer = styled.div`
 	margin: 0 0 0 2rem;
@@ -152,12 +184,18 @@ export const UserContainer = styled.div`
 export const UserName = styled.p`
 	font-size: 2.1rem;
 	margin-top: 5rem;
+	@media (max-width: 360px) {
+		font-size: 1rem;
+	}
 `;
 export const NanoId = styled.p`
 	font-size: 1.8rem;
 	color: ${({ theme }) => theme.colors.gray500};
 	margin-top: 5rem;
 	margin-left: 1rem;
+	@media (max-width: 360px) {
+		font-size: 1rem;
+	}
 `;
 
 export const NameContainer = styled.div`
@@ -169,6 +207,9 @@ export const Date = styled.p`
 	position: absolute;
 	top: 2rem;
 	right: 2rem;
+	@media (max-width: 360px) {
+		display: none;
+	}
 `;
 
 export const Contents = styled.p`
@@ -179,6 +220,9 @@ export const Contents = styled.p`
 	top: 8rem;
 	left: 10rem;
 	margin-bottom: 1rem;
+	@media (max-width: 360px) {
+		font-size: 1.5rem;
+	}
 `;
 
 export const CommentHolder = styled.p`
