@@ -2,9 +2,9 @@ import { useEffect, Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
+import useIsLoginStore from '@src/store/useLoginStore.tsx';
 import useAuthStore from '@src/store/useAuthStore';
 import useModalStore from '@src/store/userModalStore.ts';
-import { getToken } from '@api/token';
 import {
 	ButtonContainer,
 	ButtonWord,
@@ -25,12 +25,15 @@ const MyPageButton = ({ setClick, header }: ClickProps) => {
 		query: '(max-width:1023px)',
 	});
 	const { userData, getUserData } = useAuthStore();
+	const { isLogin } = useIsLoginStore();
 	const { toggleModal } = useModalStore();
 	const navigate = useNavigate();
 
 	// user 정보 불러오기
 	useEffect(() => {
-		getUserData();
+		if (isLogin) {
+			getUserData();
+		}
 	}, []);
 
 	// user page
@@ -50,7 +53,7 @@ const MyPageButton = ({ setClick, header }: ClickProps) => {
 
 	return (
 		<>
-			{getToken() !== null && isPc ? (
+			{isLogin && isPc ? (
 				<>
 					{userData !== null && userData.role === 'user' ? (
 						<ButtonContainer onClick={myPageHandler}>
@@ -62,7 +65,7 @@ const MyPageButton = ({ setClick, header }: ClickProps) => {
 						</ButtonContainer>
 					)}
 				</>
-			) : getToken() !== null && isMobile && !header ? (
+			) : isLogin && isMobile && !header ? (
 				<>
 					{userData !== null && userData.role === 'user' ? (
 						<MobileButton onClick={myPageHandler}>
