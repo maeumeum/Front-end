@@ -16,6 +16,10 @@ export const CardContainer = styled.div<CardProps>`
 	border-radius: ${({ theme }) => theme.radius.s2};
 	background-color: ${({ theme }) => theme.colors.background};
 	flex-wrap: nowrap;
+
+	@media (max-width: 768px) {
+		min-height: 15rem;
+	}
 `;
 
 export const ImgBox = styled.div`
@@ -26,6 +30,12 @@ export const ImgBox = styled.div`
 		width: 100%;
 		height: 26.5rem;
 		border-radius: ${({ theme }) => theme.radius.s1};
+	}
+
+	@media (max-width: 768px) {
+		img {
+			height: auto;
+		}
 	}
 `;
 
@@ -111,6 +121,14 @@ export const Badge = styled.div<CardProps>`
 		css`
 			background: #53595b;
 		`}
+
+  @media (max-width: 768px) {
+		width: 30px;
+		height: 30px;
+		font-size: 1.2rem;
+		left: 1rem;
+		top: 1rem;
+	}
 `;
 
 export const Button = styled.button`
@@ -509,6 +527,10 @@ export const TitleInfo = styled.h2`
 	margin-top: 2rem;
 	margin-bottom: 2rem;
 	color: ${({ theme }) => theme.colors.text};
+
+	@media (max-width: 768px) {
+		font-size: 2rem;
+	}
 `;
 
 export const InfoBox = styled.div<CardProps>`
@@ -536,12 +558,20 @@ export const InfoBox = styled.div<CardProps>`
 			css`
 				color: ${({ theme }) => theme.colors.gray500};
 			`}
+      
+    @media (max-width: 768px) {
+			font-size: 1.5rem;
+		}
 	}
 `;
 
 export const VolunteerUserInfo = styled(UserInfo)`
 	margin-top: 0;
 	margin-right: 0.5rem;
+
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
+	}
 `;
 
 // UserCard
