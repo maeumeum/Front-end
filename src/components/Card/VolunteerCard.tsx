@@ -15,7 +15,7 @@ interface VolunteerCardProps {
 	onClick: React.MouseEventHandler<HTMLDivElement>;
 }
 
-import imgData from '@assets/images/volunteer1.jpg';
+import imgData from '@assets/images/volunteer1.webp';
 
 const apiURL = import.meta.env.VITE_API_URL;
 

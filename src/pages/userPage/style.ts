@@ -195,6 +195,10 @@ export const SignUpForm = styled.div`
 
 export const InputContainer = styled.div`
 	width: 45rem;
+
+	@media (max-width: 768px) {
+		width: 80%;
+	}
 `;
 
 export const EmailContainer = styled.div`
@@ -212,6 +216,10 @@ export const EmailContainer = styled.div`
 	}};
 	border-radius: 8px;
 	box-sizing: border-box;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `;
 
 export const DataName = styled.p`
@@ -263,6 +271,10 @@ export const DataInput = styled.input<SignUpProps>`
 	border-radius: 8px;
 	box-sizing: border-box;
 	font-size: 1.6rem;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `;
 
 export const CheckValue = styled.p`

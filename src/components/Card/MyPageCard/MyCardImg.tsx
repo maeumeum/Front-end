@@ -15,7 +15,7 @@ import {
 	truncateCentName,
 	splitStatusName,
 } from '@utils/truncateDataFns';
-import defaultImage from '@src/assets/images/volunteer1.jpg';
+import defaultImage from '@src/assets/images/volunteer1.webp';
 import { VolunteerTypes } from '@src/types/myPageConstants.ts';
 import check from '@assets/icons/authentication.svg';
 import ReviewButton from '@components/Card/MyPageCard/ReviewButton';

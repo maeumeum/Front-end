@@ -205,6 +205,11 @@ export const SearchQna = styled.div`
 	background-color: ${({ theme }) => theme.colors.green200};
 	border-radius: 50%;
 	font-size: 1.8rem;
+
+	@media (max-width: 768px) {
+		width: 5rem;
+		font-size: 1.5rem;
+	}
 `;
 
 export const SearchTogether = styled.div`
@@ -217,12 +222,22 @@ export const SearchTogether = styled.div`
 	background-color: ${({ theme }) => theme.colors.pink200};
 	border-radius: 50%;
 	font-size: 1.8rem;
+
+	@media (max-width: 768px) {
+		width: 5rem;
+		font-size: 1.5rem;
+	}
 `;
 
 export const SearchTitle = styled.div`
 	min-width: 50%;
 	margin: 1rem 6rem 0 3rem;
 	font-size: 2.3rem;
+
+	@media (max-width: 768px) {
+		font-size: 1.8rem;
+		min-width: 40%;
+	}
 `;
 
 export const SearchNickname = styled.p`
@@ -231,6 +246,11 @@ export const SearchNickname = styled.p`
 	min-width: 20%;
 	font-size: 1.5rem;
 	color: ${({ theme }) => theme.colors.gray300};
+
+	@media (max-width: 768px) {
+		font-size: 1rem;
+		min-width: 20%;
+	}
 `;
 
 // Review Card

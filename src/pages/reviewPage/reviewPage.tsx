@@ -27,8 +27,8 @@ import {
 	LitCircle,
 	ReviewPostContainer,
 } from '@src/pages/reviewPage/ReviewStyle';
-import volunteer from '@assets/images/volunteer.jpeg';
-import volunteers from '@assets/images/volunteers.jpeg';
+import volunteer from '@assets/images/volunteer.webp';
+import volunteers from '@assets/images/volunteers.webp';
 type PostData = {
 	_id: string;
 	title: string;

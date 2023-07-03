@@ -10,7 +10,7 @@ import {
 	ReviewTitle,
 	ReviewContent,
 } from './card.ts';
-import imgData from '@assets/images/volunteer2.jpg';
+import imgData from '@assets/images/volunteer2.webp';
 
 interface ReviewCardProps {
 	reviewData: ReviewType;
