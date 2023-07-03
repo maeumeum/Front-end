@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+
 import background from '@assets/images/background.webp';
 import SearchBar from '@components/SearchBar/SearchBar.tsx';
 import WriteButton from '@components/Buttons/WriteButton/WriteButton.tsx';
@@ -37,7 +39,11 @@ const VolunteerOngoing = () => {
 	const [cardList, setCardList] = useState<VolunteerTogetherType[]>([]);
 	const [isLoad, setLoad] = useState<boolean>(false);
 	const [activeTab, setActiveTab] = useState('activeOn');
-	const [isAuthorizaion, isSetAuthorizaion] = useState<boolean>(false);
+	const [isAuthorization, setIsAuthorization] = useState<boolean>(false);
+
+	const isMobile = useMediaQuery({
+		query: '(max-width:768px)',
+	});
 
 	const handleTabChange = (tabName: string) => {
 		setActiveTab(tabName);
@@ -64,7 +70,7 @@ const VolunteerOngoing = () => {
 		const fetchData = async () => {
 			try {
 				const response = await get<DataType>('/api/users/info');
-				isSetAuthorizaion(response.data.authorizaion);
+				setIsAuthorization(response.data.authorization);
 			} catch (error) {
 				console.log(error);
 			}
@@ -123,7 +129,7 @@ const VolunteerOngoing = () => {
 		const fetchData = async () => {
 			try {
 				const response = await get<DataType>('/api/users/info');
-				isSetAuthorizaion(response.data.authorization);
+				setIsAuthorization(response.data.authorization);
 			} catch (error) {
 				console.log(error);
 			}
@@ -145,9 +151,13 @@ const VolunteerOngoing = () => {
 							더 나은 세상을 위해 지금 할 수 있는 일을 같이 봉사하기에서 찾아볼
 							수 있어요
 						</FfHighLight>
-						<MainImage src={volunteerImage} alt='main-image' />
-						<Background src={background} alt='background' />
-						<DogImage src={dog} alt='dog' />
+						{!isMobile && (
+							<>
+								<MainImage src={volunteerImage} alt='main-image' />
+								<Background src={background} alt='background' />
+								<DogImage src={dog} alt='dog' />
+							</>
+						)}
 					</Sub>
 				</MiddleContainer>
 				<SearchContainer>
@@ -161,7 +171,7 @@ const VolunteerOngoing = () => {
 					</BtnContainer>
 					<SearchBar onSearch={handleSearch} />
 					<NumberWriteContainer>
-						{isAuthorizaion && <WriteButton toNavigate={navigateWrite} />}
+						{isAuthorization && <WriteButton toNavigate={navigateWrite} />}
 					</NumberWriteContainer>
 				</SearchContainer>
 				<CardListContainer>
