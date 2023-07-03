@@ -9,7 +9,7 @@ export const Container = styled.div`
 	margin-left: 19rem;
 	min-height: 100rem;
 
-	@media (max-width: 768px) {
+	@media (max-width: 1024px) {
 		flex-direction: column;
 		margin: 0;
 		padding: 0;
@@ -24,7 +24,7 @@ export const MenuBar = styled.div`
 	margin: 15.5rem 0 0 10rem;
 	top: 9.8rem;
 
-	@media (max-width: 768px) {
+	@media (max-width: 1024px) {
 		width: 100%;
 		top: 0;
 		margin: 0;
@@ -54,6 +54,12 @@ export const CardBox = styled.div`
 	grid-template-columns: repeat(4, 1fr);
 	grid-column-gap: 3rem;
 	grid-row-gap: 2rem;
+
+	@media (max-width: 768px) {
+		margin: 0 2rem;
+		min-width: 33rem;
+		grid-template-columns: repeat(2, 1fr);
+	}
 `;
 
 // my-page 버튼

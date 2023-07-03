@@ -24,6 +24,10 @@ export const ImgContainer = styled.div`
 `;
 export const Image = styled.img`
 	width: 100%;
+
+	@media (max-width: 768px) {
+		width: 55%;
+	}
 `;
 export const ContentsContainer = styled.div`
 	width: 112rem;

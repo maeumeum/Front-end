@@ -181,7 +181,11 @@ export const SignUpForm = styled.div`
 	img {
 		position: absolute;
 		left: 11.3rem;
-		top: 15rem;
+		top: 15.3rem;
+
+		@media (max-width: 768px) {
+			left: 12.8rem;
+		}
 	}
 
 	@media (max-width: 768px) {

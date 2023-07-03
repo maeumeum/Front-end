@@ -105,7 +105,7 @@ function MyComment() {
 	const removePost = (postId: string) => {
 		setSelectedData(selectedData.filter((post) => post._id !== postId));
 	};
-
+	console.log(selectedData);
 	return (
 		<>
 			<Container>
