@@ -21,7 +21,7 @@ const LargeButton = styled.button<LargeButtonProps>`
 		width: 28rem;
 		height: 4rem;
 		font-size: 1.5rem;
-		margin-top: 2rem;
+		margin-top: 4rem;
 		padding: 1.5rem 0;
 	}
 `;

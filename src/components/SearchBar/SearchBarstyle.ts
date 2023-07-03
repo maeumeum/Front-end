@@ -6,9 +6,14 @@ export const SearchBarForm = styled.form`
 	justify-content: center;
 	width: 100%;
 	height: 5.8rem;
-	/* margin: 0 auto; */
 	margin-top: 6.4rem;
 	display: flex;
+
+	@media (max-width: 768px) {
+		margin-top: 5.8rem;
+		padding: 0;
+		height: 3rem;
+	}
 `;
 
 export const InputContainer = styled.div`
@@ -17,6 +22,11 @@ export const InputContainer = styled.div`
 	padding: 3.5rem 0;
 	border-radius: ${({ theme }) => theme.radius.s1};
 	border: 1px solid ${({ theme }) => theme.colors.gray300};
+
+	@media (max-width: 768px) {
+		width: 70%;
+		padding: 3rem 0;
+	}
 `;
 
 export const SearchBarInput = styled.input`
@@ -27,14 +37,21 @@ export const SearchBarInput = styled.input`
 	border: none;
 	outline: none;
 	font-size: ${({ theme }) => theme.typography.size.default};
+
 	@media (max-width: 768px) {
-		width: 75rem;
+		width: 100%;
+		height: 3rem;
 	}
 `;
 export const SearchLogo = styled.img`
 	margin-left: 2rem;
 	width: 3rem;
 	height: 4.4rem;
+
+	@media (max-width: 768px) {
+		width: 3rem;
+		height: 3rem;
+	}
 `;
 
 export const SearchBarBtn = styled.button`
@@ -55,5 +72,12 @@ export const SearchBarBtn = styled.button`
 
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.green300};
+	}
+
+	@media (max-width: 768px) {
+		margin-left: 5%;
+		padding: 3rem 0;
+		width: 15%;
+		height: 3rem;
 	}
 `;

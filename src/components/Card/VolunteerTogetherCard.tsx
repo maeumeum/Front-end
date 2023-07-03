@@ -19,7 +19,7 @@ import {
 
 import CardAvailableIcon from '@assets/icons/card_applier_is_available_icon.svg';
 import CardFullIcon from '@assets/icons/card_applier_is_full_icon.svg';
-import defaultImage from '@src/assets/images/volunteer1.jpg';
+import defaultImage from '@src/assets/images/volunteer1.webp';
 
 interface VolunteerCardProps {
 	volunteerData: VolunteerTogetherType;

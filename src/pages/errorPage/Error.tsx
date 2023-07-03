@@ -1,4 +1,4 @@
-import errorImg from '@assets/images/error.png';
+import errorImg from '@assets/images/error.webp';
 
 import styled from 'styled-components';
 

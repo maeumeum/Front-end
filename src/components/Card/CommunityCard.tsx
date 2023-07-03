@@ -37,6 +37,11 @@ const CommunityCard = ({
 			? `${communityData.title.slice(0, 25)}...`
 			: communityData.title;
 
+	const mobileSearchTitle =
+		communityData.title.length > 10
+			? `${communityData.title.slice(0, 10)}...`
+			: communityData.title;
+
 	return (
 		<>
 			<CommunityContainer onClick={onClick}>
@@ -63,7 +68,11 @@ const CommunityCard = ({
 						) : (
 							<SearchTogether>동행</SearchTogether>
 						)}
-						<SearchTitle>{searchTitle}</SearchTitle>
+						{isPc ? (
+							<SearchTitle>{searchTitle}</SearchTitle>
+						) : (
+							<SearchTitle>{mobileSearchTitle}</SearchTitle>
+						)}
 						<SearchNickname>{communityData.user_id.nickname}</SearchNickname>
 					</>
 				)}

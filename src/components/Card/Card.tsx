@@ -21,7 +21,7 @@ import { TabTypes } from '@src/types/myPageConstants.ts';
 import { post, patch, del } from '@api/api';
 import Swal from 'sweetalert2';
 import alertData from '@src/utils/swalObject.ts';
-import defaultImage from '@src/assets/images/volunteer1.jpg';
+import defaultImage from '@src/assets/images/volunteer1.webp';
 import { VolunteerTypes } from '@src/types/myPageConstants.ts';
 import check from '@assets/icons/authentication.svg';
 import { useNavigate } from 'react-router-dom';
