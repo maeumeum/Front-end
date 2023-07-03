@@ -10,6 +10,10 @@ export const TopArea = styled.div`
 	height: 18rem;
 	background: #ffffe8;
 	display: flex;
+
+	@media (max-width: 768px) {
+		width: 55%;
+	}
 `;
 export const Cover = styled.div`
 	margin: 3.5rem 0 3.5rem 7.5rem;

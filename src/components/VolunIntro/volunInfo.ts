@@ -10,8 +10,12 @@ export const IntroContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	width: 112rem;
-	height: 44.5rem;
 	margin: 8rem auto;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: flex-start;
+	}
 `;
 
 export const ImgContainer = styled.div`
@@ -24,6 +28,12 @@ export const ImgContainer = styled.div`
 	img {
 		width: 100%;
 		height: 40rem;
+
+		@media (max-width: 768px) {
+			width: 90%;
+			height: 40rem;
+			margin-left: 7rem;
+		}
 	}
 `;
 
@@ -31,10 +41,23 @@ export const TeamInfo = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-left: 8rem;
+
+	@media (max-width: 768px) {
+		margin-left: 3rem;
+		width: 55%;
+	}
 `;
 
 export const ButtonContainer = styled.div`
 	margin-top: 3rem;
+
+	button {
+		@media (max-width: 768px) {
+			width: 100%;
+			height: 40px;
+			font-size: 14px;
+		}
+	}
 `;
 
 export const Line = styled.div`
