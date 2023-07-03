@@ -5,6 +5,12 @@ export interface AuthType {
 	getUserData: () => void;
 }
 
+export interface LoginType {
+	isLogin: boolean;
+	setIsLogin: () => void;
+	resetLogin: () => void;
+}
+
 export interface SubmitType {
 	isSubmit: boolean;
 	setIsSubmit: () => void;
