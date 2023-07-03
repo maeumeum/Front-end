@@ -9,9 +9,17 @@ export const KeywordContainer = styled.div`
 	row-gap: 5rem;
 
 	@media (max-width: 768px) {
+		grid-template-columns: repeat(4, 1fr);
+		column-gap: 2rem;
+		row-gap: 3rem;
+		margin: 3rem 2rem 6rem;
+		min-width: 42rem;
+	}
+
+	@media (max-width: 420px) {
 		grid-template-columns: repeat(3, 1fr);
 		column-gap: 2rem;
-		row-gap: 1rem;
+		row-gap: 2rem;
 		margin: 3rem 2rem 6rem;
 		min-width: 33rem;
 	}
@@ -25,6 +33,7 @@ export const KeyWordTitle = styled.h1`
 	@media (max-width: 768px) {
 		margin: 3rem 2rem 6rem;
 		min-width: 33rem;
+		font-size: 1.8rem;
 	}
 `;
 
