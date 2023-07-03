@@ -2,7 +2,7 @@ import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactModal from 'react-modal';
 
-import { getToken, deleteToken } from '@api/token';
+import useLoginStore from '@src/store/useLoginStore';
 import MyPageButton from '@components/MyPage/MyPageButton';
 import {
 	MobileStyles,
@@ -20,6 +20,7 @@ interface ModalProps {
 
 const HamburgerModal = ({ isOpen, closeModal, setClick }: ModalProps) => {
 	const [checkToken, setCheckToken] = useState<boolean>(false);
+	const { isLogin, resetLogin } = useLoginStore();
 	const navigate = useNavigate();
 	const handleClose = () => {
 		closeModal();
@@ -27,7 +28,7 @@ const HamburgerModal = ({ isOpen, closeModal, setClick }: ModalProps) => {
 
 	// 토큰 유무
 	useEffect(() => {
-		if (getToken()) {
+		if (isLogin) {
 			setCheckToken(true);
 		}
 	}, []);
@@ -42,7 +43,7 @@ const HamburgerModal = ({ isOpen, closeModal, setClick }: ModalProps) => {
 
 	// 로그아웃 버튼 클릭하여 토큰 삭제
 	const logoutHandler = () => {
-		deleteToken();
+		resetLogin();
 		setClick(() => 'home');
 		navigate('/');
 		closeModal();

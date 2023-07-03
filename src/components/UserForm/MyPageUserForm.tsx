@@ -54,9 +54,7 @@ function MyPageUserForm({ pageType }: MyPageUserFormProps) {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const getUserInfoData = await get<DataType>('/api/users/info', {
-					withCredentials: true,
-				});
+				const getUserInfoData = await get<DataType>('/api/users/info');
 				const responseData = getUserInfoData.data as UserInfo;
 				const { email, nickname, phone, authorization } = responseData;
 				setEmail(email);
