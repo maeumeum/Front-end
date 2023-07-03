@@ -24,7 +24,19 @@ export const MenuBar = styled.div`
 			top:8rem; // 원하는 위치에 따라 이 값을 변경할 수 있습니다.
 			height: 1px;
 			background: ${({ theme }) => theme.colors.gray300};
+			
+			@media (max-width:360px){
+				left: -10rem;
+				right: 13rem;
+			}
 	
+	}
+
+	@media (max-width: 360px){
+		width: 100%;
+		margin-left: 10rem;
+		top: 35rem;
+
 	}
 `;
 
@@ -70,6 +82,10 @@ export const MiddleContainer = styled.div`
 		margin-left: 0rem;
 		margin-top: 20rem;
 	}
+	@media (max-width: 360px) {
+		margin-top: 15rem;
+		margin-left: -20rem;
+	}
 `;
 
 export const BigText = styled.p`
@@ -77,6 +93,9 @@ export const BigText = styled.p`
 	letter-spacing: 0.3rem;
 	color: #313739;
 	margin-left: 25rem;
+	@media (max-width: 360px) {
+		font-size: 3rem;
+	}
 `;
 
 export const Sub = styled.div`
@@ -87,6 +106,11 @@ export const Sub = styled.div`
 		font-size: ${({ theme }) => theme.typography.size.default};
 		margin-top: -2rem;
 		letter-spacing: 0.2rem;
+
+		@media (max-width: 360px) {
+			font-size: 1rem;
+			line-height: 3rem;
+		}
 	}
 `;
 
@@ -103,6 +127,9 @@ export const MainTitle = styled.p`
 	@media (max-width: 768px) {
 		font-size: 6rem;
 	}
+	@media (max-width: 360px) {
+		font-size: 4rem;
+	}
 `;
 
 export const Subtitle = styled.p`
@@ -113,6 +140,11 @@ export const Subtitle = styled.p`
 	@media (max-width: 768px) {
 		font-size: 2rem;
 		line-height: 3rem;
+	}
+	@media (max-width: 360px) {
+		font-size: 1rem;
+		margin-top: -4rem;
+		line-height: 2.2rem;
 	}
 `;
 
@@ -125,6 +157,9 @@ export const NumberWriteContainer = styled.div`
 	justify-content: end;
 	width: 101rem;
 	margin: 5.8rem auto;
+	@media (max-width: 360px) {
+		width: 110%;
+	}
 `;
 
 export const ReviewPageContainer = styled.div`

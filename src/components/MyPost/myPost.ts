@@ -21,6 +21,9 @@ export const PostBox = styled.div<PostProps>`
 		margin-left: 3rem;
 		width: 56rem;
 	}
+	@media (max-width: 360px) {
+		width: 30rem;
+	}
 `;
 
 export const Title = styled.p`
