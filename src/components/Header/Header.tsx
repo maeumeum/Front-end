@@ -42,9 +42,7 @@ const Header = () => {
 
 	// 로그아웃 버튼 클릭하여 토큰 삭제
 	const logoutHandler = async () => {
-		await get('/api/logout', {
-			withCredentials: true,
-		});
+		await get('/api/logout');
 		resetLogin();
 		setClick(() => 'home');
 		navigate('/');
