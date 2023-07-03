@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import WritePage from '@components/WritePage/WritePage';
 import { post } from '@api/api';
-import { getToken } from '@api/token';
 import { useNavigate } from 'react-router-dom';
 import { ImageArea, Container } from './style';
 import Swal from 'sweetalert2';
@@ -33,7 +32,6 @@ const QuestionWrite = () => {
 			postType: 'qna',
 		});
 
-		const token = getToken();
 		const formData = new FormData();
 		formData.append('title', inputTitle);
 		formData.append('content', content);
@@ -47,7 +45,6 @@ const QuestionWrite = () => {
 		await post('/api/community/create', formData, {
 			headers: {
 				'Content-Type': 'multipart/form-data',
-				Authorization: `Bearer ${token}`,
 			},
 		});
 		Swal.fire(alertData.successMessage('게시글이 등록되었습니다.'));

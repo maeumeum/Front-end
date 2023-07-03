@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getToken } from '@src/api/token';
 import {
 	Container,
 	Box,
@@ -118,19 +117,10 @@ const VolComment: React.FC<CommentProps> = ({ postId }) => {
 			return;
 		}
 		try {
-			const token = getToken();
-			await post(
-				'/api/volunteerComments/',
-				{
-					volunteer_id: postId,
-					content: inputArea,
-				},
-				{
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				},
-			);
+			await post('/api/volunteerComments/', {
+				volunteer_id: postId,
+				content: inputArea,
+			});
 			setInputArea('');
 			getComments();
 		} catch (error) {
@@ -153,44 +143,21 @@ const VolComment: React.FC<CommentProps> = ({ postId }) => {
 			alert('내용을 입력해주세요');
 			return;
 		}
-		const token = getToken();
-		await patch<DataType>(
-			`/api/volunteerComments/${comment_id}`,
-			{
-				content: editedComment,
-			},
-			{
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			},
-		);
+		await patch<DataType>(`/api/volunteerComments/${comment_id}`, {
+			content: editedComment,
+		});
 		setEditingCommentId('');
 		setEditedComment('');
 		getComments();
 	};
 
 	const handleDeleteComment = async (comment_id: string) => {
-		const token = getToken();
-		await del<DataType>(
-			`/api/volunteerComments/${comment_id}`,
-
-			{
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			},
-		);
+		await del<DataType>(`/api/volunteerComments/${comment_id}`);
 		getComments();
 	};
 
 	const handleReport = async (comment_id: string) => {
-		const token = getToken();
-		await patch<DataType>(`/api/volunteerComments/reports/${comment_id}`, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
+		await patch<DataType>(`/api/volunteerComments/reports/${comment_id}`);
 		Swal.fire(alertData.ReportCompleted);
 	};
 
