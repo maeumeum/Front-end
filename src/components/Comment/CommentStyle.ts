@@ -32,6 +32,7 @@ export const EditCommentArea = styled.textarea`
 	}
 	@media (max-width: 360px) {
 		font-size: 1.5rem;
+		width: 80%;
 	}
 `;
 export const BtnContainer = styled.div`
@@ -56,6 +57,10 @@ export const BtnContainer2 = styled.div`
 	margin-bottom: 2rem;
 	@media (max-width: 768px) {
 		margin-left: 75rem;
+	}
+	@media (max-width: 360px) {
+		margin-left: 25rem;
+		margin-top: 25rem;
 	}
 `;
 export const CommentLength = styled.p`
@@ -92,6 +97,7 @@ export const Btn1 = styled.button`
 	color: ${({ theme }) => theme.colors.background};
 	@media (max-width: 360px) {
 		font-size: 1.5rem;
+		width: 5rem;
 	}
 `;
 export const Btn2 = styled.button`
@@ -106,6 +112,7 @@ export const Btn2 = styled.button`
 	color: ${({ theme }) => theme.colors.background};
 	@media (max-width: 360px) {
 		font-size: 1.5rem;
+		width: 5rem;
 	}
 `;
 export const Btn3 = styled.button`
@@ -121,6 +128,8 @@ export const Btn3 = styled.button`
 	margin-left: 10rem;
 	@media (max-width: 360px) {
 		font-size: 1.5rem;
+		width: 5rem;
+		margin-left: 5rem;
 	}
 `;
 export const CommentContainer = styled.div`
@@ -132,6 +141,10 @@ export const CommentContainer = styled.div`
 	word-wrap: break-word;
 	word-break: break-word;
 	background-color: ${({ theme }) => theme.colors.gray100};
+	@media (max-width: 360px) {
+		width: 100%;
+		height: 40rem;
+	}
 `;
 
 export const ProfileContainer = styled.div`
@@ -222,6 +235,8 @@ export const Contents = styled.p`
 	margin-bottom: 1rem;
 	@media (max-width: 360px) {
 		font-size: 1.5rem;
+		top: 5rem;
+		left: 5rem;
 	}
 `;
 
@@ -240,4 +255,7 @@ export const BtnReport = styled.button`
 	font-size: ${({ theme }) => theme.typography.size.default};
 	color: ${({ theme }) => theme.colors.highlight};
 	margin-left: auto;
+	@media (max-width: 360px) {
+		font-size: 1rem;
+	}
 `;
