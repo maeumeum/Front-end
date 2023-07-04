@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import { useMediaQuery } from 'react-responsive';
+
 import alertData from '@src/utils/swalObject.ts';
 import VolunteerWritePage from '@components/WritePage/VolunteerWritePage';
 import { post } from '@api/api';
 import { useNavigate } from 'react-router-dom';
-import { WriteImageArea, Container } from './style';
+import { MobileTopBar, WriteImageArea, Container } from './style';
 import actTypes from '@src/types/actTypeConstants';
 import TopBar from '@components/TopBar/TopBar';
 
 const VolunteerWrite = () => {
-	const navigate = useNavigate();
 	const [selectedImage, setSelectedImage] = useState<File[]>([]);
 	const [_, setPostData] = useState({
 		title: '',
@@ -21,6 +22,10 @@ const VolunteerWrite = () => {
 		startDate: new Date(),
 		endDate: new Date(),
 		teamName: '',
+	});
+	const navigate = useNavigate();
+	const isPc = useMediaQuery({
+		query: '(min-width:768px)',
 	});
 
 	const handelImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -108,26 +113,28 @@ const VolunteerWrite = () => {
 	};
 
 	return (
-		<>
-			<Container>
+		<Container>
+			{isPc ? (
 				<TopBar
 					title={'글 작성하기'}
 					text={'우리 단체의 봉사활동을 홍보해요'}
 				/>
-				<VolunteerWritePage onSave={onSavePost} onCancel={onCancelPost} />
-				<WriteImageArea>
-					이미지업로드
-					<input
-						id='fileInput'
-						type='file'
-						accept='image/*'
-						name='image'
-						multiple
-						onChange={handelImageChange}
-					/>
-				</WriteImageArea>
-			</Container>
-		</>
+			) : (
+				<MobileTopBar>글 작성하기</MobileTopBar>
+			)}
+			<VolunteerWritePage onSave={onSavePost} onCancel={onCancelPost} />
+			<WriteImageArea>
+				이미지업로드
+				<input
+					id='fileInput'
+					type='file'
+					accept='image/*'
+					name='image'
+					multiple
+					onChange={handelImageChange}
+				/>
+			</WriteImageArea>
+		</Container>
 	);
 };
 

@@ -1,5 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+
+import { get } from '@api/api';
+import { DataType } from '@src/types/dataType';
+import { VolunteerType, TeamType } from '@src/types/cardType';
 import VolComment from '../Comment/VolComment';
 import ActivityIntro from './ActivityIntro';
 import IntroTeam from './IntroTeam';
@@ -15,13 +19,21 @@ import {
 const VolunMiddle = () => {
 	const { postId } = useParams() as { postId: string };
 	const [activeTab, setActiveTab] = useState('activityIntro');
-	window.scrollTo(0, 0);
+	const [volunteerData, setVolunteerData] = useState<VolunteerType>();
+	const [teamData, setTeamData] = useState<TeamType>();
 
 	const handleTabChange = (tabName: string) => {
 		setActiveTab(tabName);
 	};
 
-	const uuid = localStorage.getItem('uuid');
+	useEffect(() => {
+		const fetchData = async () => {
+			const responseData = await get<DataType>(`/api/volunteers/${postId}`);
+			setVolunteerData(responseData.data.volunteer);
+			setTeamData(responseData.data.teamAuthInfo);
+		};
+		fetchData();
+	}, []);
 
 	return (
 		<>
@@ -37,10 +49,12 @@ const VolunMiddle = () => {
 						<Text>댓글</Text>
 					</CommentBtn>
 				</Header>
-				{activeTab === 'activityIntro' && uuid && (
-					<ActivityIntro postId={postId} uuid={uuid} />
+				{activeTab === 'activityIntro' && volunteerData && (
+					<ActivityIntro volunteerData={volunteerData} />
 				)}
-				{activeTab === 'introTeam' && uuid && <IntroTeam uuid={uuid} />}
+				{activeTab === 'introTeam' && teamData && (
+					<IntroTeam teamData={teamData} />
+				)}
 				{activeTab === 'comment' && <VolComment postId={postId} />}
 			</Container>
 		</>

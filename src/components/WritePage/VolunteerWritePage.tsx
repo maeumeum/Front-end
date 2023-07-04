@@ -154,106 +154,104 @@ const VolunteerWritePage = ({ onSave, onCancel }: VolunteerWritePageProps) => {
 	};
 
 	return (
-		<>
-			<Container className='writePage'>
-				<div>
-					<TopTitle>제목</TopTitle>
-					<TitleInput
-						placeholder={`[${postData.centName}]만의 특별한 활동 제목을 작성해주세요.`}
-						value={postData.inputTitle}
-						onChange={handleInputTitle}
-						className='writePage'
+		<Container className='writePage'>
+			<div>
+				<TopTitle>제목</TopTitle>
+				<TitleInput
+					placeholder={`[${postData.centName}]만의 제목을 작성해주세요.`}
+					value={postData.inputTitle}
+					onChange={handleInputTitle}
+					className='writePage'
+				/>
+			</div>
+			<div>
+				<Title>미성년자 참여 여부</Title>
+				<TeamType>
+					<TeamTypeRadio
+						type='radio'
+						value='teenager'
+						checked={postData.teenager}
+						onChange={handleRadioChange}
 					/>
-				</div>
-				<div>
-					<Title>미성년자 참여 여부</Title>
-					<TeamType>
-						<TeamTypeRadio
-							type='radio'
-							value='teenager'
-							checked={postData.teenager}
-							onChange={handleRadioChange}
-						/>
-						나이에 상관없이 모두 신청할 수 있어요.
-					</TeamType>
-					<TeamType>
-						<TeamTypeRadio
-							type='radio'
-							value='adultOnly'
-							checked={!postData.teenager}
-							onChange={handleRadioChange}
-						/>
-						성인만 신청할 수 있어요.
-					</TeamType>
-				</div>
-				<div>
-					<Title>카테고리</Title>
-					<LargeSelector
-						value={postData.selectedActType}
-						onChange={handleInputCategory}
-						options={[
-							{ value: actTypes.OLD, label: '노인' },
-							{ value: actTypes.FOOD, label: '급식' },
-							{ value: actTypes.ECO, label: '환경' },
-							{ value: actTypes.ANIMAL, label: '동물' },
-							{ value: actTypes.DISABLE, label: '장애인' },
-							{ value: actTypes.SUPPORT, label: '생활편의지원' },
-							{ value: actTypes.MEDICAL, label: '의료' },
-							{ value: actTypes.EDU, label: '교육' },
-						]}
+					나이에 상관없이 모두 신청할 수 있어요.
+				</TeamType>
+				<TeamType>
+					<TeamTypeRadio
+						type='radio'
+						value='adultOnly'
+						checked={!postData.teenager}
+						onChange={handleRadioChange}
 					/>
-				</div>
-				<div>
-					<Title>모집인원</Title>
-					<TitleInput
-						placeholder='모집인원을 입력해주세요. (숫자만 입력 가능)'
-						value={postData.inputRegisterCount}
-						onChange={handleInputRegisterCount}
-						className='writePage'
+					성인만 신청할 수 있어요.
+				</TeamType>
+			</div>
+			<div>
+				<Title>카테고리</Title>
+				<LargeSelector
+					value={postData.selectedActType}
+					onChange={handleInputCategory}
+					options={[
+						{ value: actTypes.OLD, label: '노인' },
+						{ value: actTypes.FOOD, label: '급식' },
+						{ value: actTypes.ECO, label: '환경' },
+						{ value: actTypes.ANIMAL, label: '동물' },
+						{ value: actTypes.DISABLE, label: '장애인' },
+						{ value: actTypes.SUPPORT, label: '생활편의지원' },
+						{ value: actTypes.MEDICAL, label: '의료' },
+						{ value: actTypes.EDU, label: '교육' },
+					]}
+				/>
+			</div>
+			<div>
+				<Title style={{ marginBottom: 0 }}>모집인원</Title>
+				<TitleInput
+					placeholder='모집인원을 입력해주세요. (숫자만 입력 가능)'
+					value={postData.inputRegisterCount}
+					onChange={handleInputRegisterCount}
+					className='writePage'
+				/>
+			</div>
+			<LayoutContainer>
+				<LayoutChildContainer>
+					<DateTitle>모집 마감일</DateTitle>
+					<Calendar
+						selectedDate={postData.deadline}
+						setSelectedDate={(date) => handleDateChange(date, 'deadline')}
+						category='volunteer'
 					/>
-				</div>
-				<LayoutContainer>
-					<LayoutChildContainer>
-						<DateTitle>모집 마감일</DateTitle>
-						<Calendar
-							selectedDate={postData.deadline}
-							setSelectedDate={(date) => handleDateChange(date, 'deadline')}
-							category='volunteer'
-						/>
-					</LayoutChildContainer>
-					<LayoutChildContainer>
-						<DateTitle>활동 시작일</DateTitle>
-						<Calendar
-							selectedDate={postData.startDate}
-							setSelectedDate={(date) => handleDateChange(date, 'startDate')}
-							category='volunteer'
-						/>
-					</LayoutChildContainer>
-					<LayoutChildContainer>
-						<DateTitle>활동 종료일</DateTitle>
-						<Calendar
-							selectedDate={postData.endDate}
-							setSelectedDate={(date) => handleDateChange(date, 'endDate')}
-							category='volunteer'
-						/>
-					</LayoutChildContainer>
-				</LayoutContainer>
-				<WriteTextContainer>
-					<ContentInput
-						placeholder='봉사활동 주제와 일정을 포함하여 내용을 작성해주세요.&#13;&#10;썸네일을 올려서 활동을 나타내는 대표 이미지를 등록해보세요.'
-						value={postData.content}
-						onChange={handelInputContent}
-						maxLength={2000}
-						className='textWrite'
+				</LayoutChildContainer>
+				<LayoutChildContainer>
+					<DateTitle>활동 시작일</DateTitle>
+					<Calendar
+						selectedDate={postData.startDate}
+						setSelectedDate={(date) => handleDateChange(date, 'startDate')}
+						category='volunteer'
 					/>
-				</WriteTextContainer>
-				<TextLength>{postData.content.length}/2000</TextLength>
-				<ButtonContainer>
-					<CancelButton onClick={deleteContent}>취소</CancelButton>
-					<SubmitButton onClick={onClickHandler}>등록</SubmitButton>
-				</ButtonContainer>
-			</Container>
-		</>
+				</LayoutChildContainer>
+				<LayoutChildContainer>
+					<DateTitle>활동 종료일</DateTitle>
+					<Calendar
+						selectedDate={postData.endDate}
+						setSelectedDate={(date) => handleDateChange(date, 'endDate')}
+						category='volunteer'
+					/>
+				</LayoutChildContainer>
+			</LayoutContainer>
+			<WriteTextContainer>
+				<ContentInput
+					placeholder='봉사활동 주제와 일정을 포함하여 내용을 작성해주세요.&#13;&#10;썸네일을 올려서 활동을 나타내는 대표 이미지를 등록해보세요.'
+					value={postData.content}
+					onChange={handelInputContent}
+					maxLength={2000}
+					className='textWrite'
+				/>
+			</WriteTextContainer>
+			<TextLength>{postData.content.length}/2000</TextLength>
+			<ButtonContainer>
+				<CancelButton onClick={deleteContent}>취소</CancelButton>
+				<SubmitButton onClick={onClickHandler}>등록</SubmitButton>
+			</ButtonContainer>
+		</Container>
 	);
 };
 

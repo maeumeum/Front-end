@@ -38,6 +38,14 @@ export const VolunteerPageContainer = styled.div`
 `;
 
 // write page
+export const MobileTopBar = styled.h2`
+	margin-top: 5rem;
+	padding: 3rem 2rem;
+	font-size: 2.5rem;
+	color: ${({ theme }) => theme.colors.gray600};
+	background-color: ${({ theme }) => theme.colors.yellow100};
+`;
+
 export const WriteImageArea = styled.label`
 	display: inline-block;
 	margin-top: 9.2rem;
@@ -59,6 +67,12 @@ export const WriteImageArea = styled.label`
 		top: 0;
 		left: 0;
 		cursor: pointer;
+	}
+
+	@media (max-width: 768px) {
+		width: 25%;
+		top: 88%;
+		font-size: 1.7rem;
 	}
 `;
 
@@ -162,6 +176,12 @@ export const NumberWriteContainer = styled.div`
 	align-items: center;
 	width: 112rem;
 	margin: 5.8rem auto;
+
+	@media (max-width: 768px) {
+		margin: 6rem 2rem;
+		width: auto;
+		min-width: 33rem;
+	}
 `;
 
 export const ReviewPageContainer = styled.div`
@@ -304,6 +324,11 @@ export const Container = styled.div`
 	position: relative;
 	width: 112rem;
 	margin: 0 auto;
+
+	@media (max-width: 768px) {
+		width: calc(100% - 4rem);
+		margin: 0 2rem;
+	}
 `;
 
 export const ImageArea = styled.label`
