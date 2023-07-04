@@ -139,6 +139,7 @@ export const SignUpButton = styled(NavLink)`
 
 type SignUpProps = {
 	pageType?: string;
+	isWidthdrawal?: boolean;
 };
 
 // 회원가입 css
@@ -164,6 +165,11 @@ export const SignUpSection = styled.div<SignUpProps>`
 				width: 85%;
 				left: 0;
 			}
+
+			@media (max-width: 360px) {
+				width: 75%;
+				left: 0;
+			}
 		`}
 
 	@media (max-width: 768px) {
@@ -172,7 +178,7 @@ export const SignUpSection = styled.div<SignUpProps>`
 	}
 `;
 
-export const SignUpForm = styled.div`
+export const SignUpForm = styled.div<SignUpProps>`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -190,6 +196,13 @@ export const SignUpForm = styled.div`
 
 	@media (max-width: 768px) {
 		width: 100%;
+		align-items: ${({ isWidthdrawal }) =>
+			isWidthdrawal ? 'flex-start' : 'center'};
+	}
+
+	@media (max-width: 360px) {
+		width: 85%;
+		margin: 0 auto;
 	}
 `;
 
@@ -257,7 +270,7 @@ export const DataInput = styled.input<SignUpProps>`
 		if (props.name === 'long') {
 			return '60rem';
 		}
-		return '45rem';
+		return '100%';
 	}};
 	height: 5.6rem;
 	padding-left: 1rem;
@@ -273,7 +286,7 @@ export const DataInput = styled.input<SignUpProps>`
 	font-size: 1.6rem;
 
 	@media (max-width: 768px) {
-		width: 100%;
+		width: 45rem;
 	}
 `;
 
@@ -284,22 +297,34 @@ export const CheckValue = styled.p`
 	font-size: 1.2rem;
 `;
 
-export const WithdrawalSection = styled.div`
-	margin-left: 2rem;
-	margin-bottom: 3rem;
-	width: 70%;
-`;
-
 export const WithdrawalContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+
+	@media (max-width: 360px) {
+		align-items: flex-start;
+		margin: 0 auto;
+	}
+`;
+
+export const WithdrawalSection = styled.div`
+	margin-left: 2rem;
+	margin-bottom: 3rem;
+	width: 70%;
+
+	@media (max-width: 360px) {
+		width: 100%;
+		margin: 0 auto;
+	}
 `;
 
 export const ButtonContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 80%;
 	button + button {
 		margin-top: 3rem;
 	}

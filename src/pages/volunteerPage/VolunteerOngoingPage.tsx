@@ -25,6 +25,7 @@ import {
 
 import VolunteerTogetherCard from '@src/components/Card/VolunteerTogetherCard.tsx';
 import { VolunteerType, VolunteerTogetherType } from '@src/types/cardType.ts';
+import useLoginStore from '@src/store/useLoginStore.tsx';
 import { get } from '@api/api';
 import { DataType } from '@src/types/dataType.ts';
 import Swal from 'sweetalert2';
@@ -40,6 +41,7 @@ const VolunteerOngoing = () => {
 	const [isLoad, setLoad] = useState<boolean>(false);
 	const [activeTab, setActiveTab] = useState('activeOn');
 	const [isAuthorization, setIsAuthorization] = useState<boolean>(false);
+	const { isLogin } = useLoginStore();
 
 	const isMobile = useMediaQuery({
 		query: '(max-width:768px)',
@@ -66,17 +68,20 @@ const VolunteerOngoing = () => {
 		fetchData();
 	}, []);
 
+	const fetchData = async () => {
+		try {
+			const response = await get<DataType>('/api/users/info');
+			setIsAuthorization(response.data.authorization);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await get<DataType>('/api/users/info');
-				setIsAuthorization(response.data.authorization);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		fetchData();
-	}, []);
+		if (isLogin) {
+			fetchData();
+		}
+	}, [isLogin]);
 
 	// 검색 데이터 불러오기
 	const handleSearch = async (query: string) => {
@@ -125,20 +130,9 @@ const VolunteerOngoing = () => {
 		}
 	}, [cardList]);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await get<DataType>('/api/users/info');
-				setIsAuthorization(response.data.authorization);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		fetchData();
-	}, []);
-
 	const navigateWrite = () => {
 		navigate('/volunteers/ongoing/edit');
+		window.scrollTo(0, 0);
 	};
 
 	return (

@@ -13,6 +13,12 @@ export const InputContainer = styled.div`
 	p {
 		align-self: flex-start;
 	}
+
+	@media (max-width: 768px) {
+		button {
+			width: 73%;
+		}
+	}
 `;
 
 export const DataText = styled.textarea`
