@@ -19,6 +19,13 @@ export const CardContainer = styled.div<CardProps>`
 
 	@media (max-width: 768px) {
 		min-height: 15rem;
+		width: 90%;
+	}
+
+	@media (max-width: 360px) {
+		min-height: 15rem;
+		width: 70%;
+		margin: 0 auto;
 	}
 `;
 
@@ -27,13 +34,14 @@ export const ImgBox = styled.div`
 	overflow: hidden;
 	cursor: pointer;
 	img {
-		width: 100%;
+		width: 26rem;
 		height: 26.5rem;
 		border-radius: ${({ theme }) => theme.radius.s1};
 	}
 
 	@media (max-width: 768px) {
 		img {
+			width: 100%;
 			height: auto;
 		}
 	}
@@ -51,7 +59,7 @@ export const VolunInfo = styled.div`
 	cursor: pointer;
 	p {
 		word-break: keep-all;
-		font-size: 2rem;
+		font-size: ${({ theme }) => theme.typography.size.default};
 		line-height: 2.4rem;
 		letter-spacing: -0.1px;
 		text-align: left;
@@ -60,8 +68,18 @@ export const VolunInfo = styled.div`
 	p + p {
 		position: absolute;
 		font-weight: 500;
-		font-size: 1.3rem;
+		font-size: ${({ theme }) => theme.typography.size.subparagraph};
 		color: #999b9c;
+	}
+
+	@media (max-width: 768px) {
+		p {
+			font-size: ${({ theme }) => theme.typography.size.paragraph};
+		}
+		p + p {
+			font-weight: 500;
+			font-size: ${({ theme }) => theme.typography.size.subparagraph};
+		}
 	}
 `;
 
@@ -86,7 +104,7 @@ export const UserInfo = styled.div`
 	p {
 		margin-left: 1rem;
 		font-weight: 500;
-		font-size: 1.5rem;
+		font-size: ${({ theme }) => theme.typography.size.paragraph};
 		display: flex;
 		align-items: center;
 	}
@@ -97,8 +115,8 @@ export const Badge = styled.div<CardProps>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: white;
-	font-size: 1.7rem;
+	color: ${({ theme }) => theme.colors.background};
+	font-size: ${({ theme }) => theme.typography.size.paragraph};
 	position: absolute;
 	width: 50px;
 	height: 50px;
@@ -125,7 +143,7 @@ export const Badge = styled.div<CardProps>`
   @media (max-width: 768px) {
 		width: 30px;
 		height: 30px;
-		font-size: 1.2rem;
+		font-size: ${({ theme }) => theme.typography.size.subparagraph};
 		left: 1rem;
 		top: 1rem;
 	}
@@ -134,7 +152,7 @@ export const Badge = styled.div<CardProps>`
 export const Button = styled.button`
 	border: none;
 	background-color: var(--button--color);
-	color: #ffffff;
+	color: ${({ theme }) => theme.colors.background};
 	height: 4.4rem;
 	border-radius: 5%;
 	cursor: pointer;

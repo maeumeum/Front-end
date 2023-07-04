@@ -9,8 +9,8 @@ import Swal from 'sweetalert2';
 import useAuthStore from '@src/store/useAuthStore.ts';
 import { patch } from '@api/api';
 import alertData from '@utils/swalObject';
+import defaultImg from '@assets/images/기본프로필이미지.webp';
 
-const url = import.meta.env.VITE_API_URL;
 function ProfileImg() {
 	const { userData, getUserData } = useAuthStore();
 	const [beforeImg, setBeforeImg] = useState<string | undefined>('');
@@ -23,7 +23,11 @@ function ProfileImg() {
 	}, []);
 
 	useEffect(() => {
-		setBeforeImg(userData?.image);
+		if (!userData?.image) {
+			setBeforeImg(defaultImg);
+		} else {
+			setBeforeImg(userData?.image);
+		}
 	}, [userData]);
 
 	const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,7 +66,8 @@ function ProfileImg() {
 				} catch (error) {
 					Swal.fire(alertData.errorMessage('이미지 변경에 실패했습니다.'));
 				}
-				window.location.reload();
+				// window.location.reload();
+				getUserData();
 			}
 		} catch (error) {
 			Swal.fire(alertData.errorMessage('이미지 변경에 실패했습니다.'));
@@ -90,7 +95,8 @@ function ProfileImg() {
 			return;
 		}
 		Swal.fire(alertData.successMessage('프로필 이미지가 변경되었습니다.'));
-		window.location.reload();
+		// window.location.reload();
+		getUserData();
 	};
 
 	return (
@@ -101,7 +107,7 @@ function ProfileImg() {
 						{isUpload ? (
 							<img src={afterImg} alt='Uploaded' />
 						) : (
-							<img src={`${url}/${beforeImg}`} alt='Original' />
+							<img src={beforeImg} alt='Original' />
 						)}
 					</ImgPreview>
 					<InputConatiner>

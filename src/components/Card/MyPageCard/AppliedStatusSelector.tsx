@@ -3,7 +3,6 @@ import { AppliedStatusSelectorProps } from '@src/types/cardType';
 import Selector from '@components/Selector/Selector.tsx';
 import { SelectContainer } from '@components/Card/Card.ts';
 import Swal from 'sweetalert2';
-
 import alertData from '@src/utils/swalObject.ts';
 import { post, del } from '@api/api';
 

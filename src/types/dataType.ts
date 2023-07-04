@@ -7,7 +7,7 @@ export interface VolunteerDataType {
 	title: string;
 	registerCount: string;
 	deadline: string;
-	image: string;
+	image?: string;
 	startDate: string;
 	endDate: string;
 	applyCount: string;

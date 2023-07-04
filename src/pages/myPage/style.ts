@@ -8,6 +8,7 @@ export const TeamForm = styled.form`
 	width: 112rem;
 
 	@media (max-width: 768px) {
+		width: 90%;
 		align-items: flex-start;
 		margin-left: 5rem;
 	}
@@ -16,6 +17,10 @@ export const TeamForm = styled.form`
 export const TopTitle = styled.h2`
 	margin: 2rem auto 2.5rem;
 	font-size: 2.8rem;
+
+	@media (max-width: 360px) {
+		font-size: 2.5rem;
+	}
 `;
 
 export const Title = styled.h2`
@@ -29,7 +34,7 @@ export const Title = styled.h2`
 `;
 
 export const TeamType = styled.p`
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 `;
 
 export const TeamTypeRadio = styled.input`
@@ -47,8 +52,12 @@ export const ButtonContainer = styled.div`
 	margin-top: 3rem;
 
 	button {
+		width: 60rem;
+	}
+
+	button {
 		@media (max-width: 768px) {
-			width: 50rem;
+			width: 56rem;
 			height: 5rem;
 		}
 	}

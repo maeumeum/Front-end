@@ -19,7 +19,7 @@ const LargeButton = styled.button<LargeButtonProps>`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: ${({ isMyPage }) => (isMyPage === 'mypage' ? '45rem' : '28rem')};
+		width: ${({ isMyPage }) => (isMyPage === 'mypage' ? '95%' : '28rem')};
 		height: ${({ isMyPage }) => (isMyPage ? '6%' : '4rem')};
 		font-size: 1.5rem;
 		margin-top: 4rem;

@@ -3,19 +3,17 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	display: flex;
 	justify-content: center;
-	position: relative;
-	left: 45px;
 	margin-bottom: 5rem;
 
 	button {
 		margin-top: 2rem;
 		border: none;
-		background-color: white;
+		background-color: ${({ theme }) => theme.colors.background};
 		cursor: pointer;
 		color: #afcd81;
 		font-size: 16px;
 		&:hover {
-			color: #ffd4d4;
+			color: ${({ theme }) => theme.colors.pink200};
 		}
 
 		&.clicked {

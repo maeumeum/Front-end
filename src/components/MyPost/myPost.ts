@@ -22,15 +22,16 @@ export const PostBox = styled.div<PostProps>`
 		width: 56rem;
 	}
 	@media (max-width: 360px) {
-		width: 30rem;
+		width: 35rem;
+		margin: 2rem auto;
 	}
 `;
 
 export const Title = styled.p`
 	padding: 4px;
 	font-family: kakaoBig;
-	font-size: 2rem;
-	font-weight: 700;
+	font-size: ${({ theme }) => theme.typography.size.subparagraph};
+	font-weight: ${({ theme }) => theme.typography.weight.bold};
 	letter-spacing: 0em;
 	text-align: left;
 	border-bottom: 3px solid #afcd81;
@@ -41,7 +42,7 @@ export const Description = styled.div`
 	padding: 4px;
 	font-family: kakaoReg;
 	word-break: keep-all;
-	font-size: 1.6rem;
+	font-size: ${({ theme }) => theme.typography.size.paragraph};
 	line-height: 24px;
 	letter-spacing: 0em;
 	text-align: left;
@@ -54,8 +55,8 @@ export const PostInfo = styled.div`
 	p {
 		color: #666666;
 		font-family: kakaoReg;
-		font-size: 1.5rem;
-		font-weight: 400;
+		font-size: ${({ theme }) => theme.typography.size.paragraph};
+		font-weight: ${({ theme }) => theme.typography.weight.regular};
 		line-height: 18px;
 		letter-spacing: 0em;
 		text-align: left;
@@ -69,7 +70,19 @@ export const ButtonContainer = styled.div`
 	position: absolute;
 	right: 0;
 	margin-right: 4rem;
+	display: flex;
+
 	button + button {
 		margin-left: 2rem;
+	}
+
+	@media (max-width: 360px) {
+		margin-right: 0;
+		flex-direction: column;
+
+		button + button {
+			margin-top: 1rem;
+			margin-left: 0;
+		}
 	}
 `;
