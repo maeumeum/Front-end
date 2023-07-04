@@ -59,7 +59,7 @@ export const SubTitle = styled.p`
 	font-size: 3rem;
 	margin-right: 3rem;
 `;
-export const Content = styled.p`
+export const Content = styled.span`
 	font-size: 2rem;
 `;
 export const BottomContainer = styled.div`

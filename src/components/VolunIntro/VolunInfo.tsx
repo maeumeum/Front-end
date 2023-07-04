@@ -35,35 +35,14 @@ const truncateTitle = (title: string) => {
 
 function VolunInfo() {
 	const { postId } = useParams() as { postId: string };
-	const [volunteerData, setVolunteerData] = useState<VolunteerDataType>({
-		title: '',
-		registerCount: '',
-		deadline: '',
-		image: '',
-		startDate: '',
-		endDate: '',
-		applyCount: '',
-		actType: '',
-		statusName: '',
-	});
+	const [volunteerData, setVolunteerData] = useState<VolunteerDataType>();
 	const currentDate = dateFormatter(getCurrent(), 'YYYY-MM-DD');
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchData = async () => {
 			const responseData = await get<DataType>(`/api/volunteers/${postId}`);
-			setVolunteerData({
-				...volunteerData,
-				title: responseData.data.title,
-				registerCount: responseData.data.registerCount,
-				deadline: dateFormatter(responseData.data.deadline, 'YYYY-MM-DD'),
-				image: responseData.data.register_user_id.image,
-				startDate: dateFormatter(responseData.data.startDate, 'YYYY-MM-DD'),
-				endDate: dateFormatter(responseData.data.endDate, 'YYYY-MM-DD'),
-				applyCount: responseData.data.applyCount,
-				actType: responseData.data.actType,
-				statusName: responseData.data.statusName,
-			});
+			setVolunteerData(responseData.data.volunteer);
 		};
 		fetchData();
 	}, []);
@@ -85,49 +64,54 @@ function VolunInfo() {
 
 	return (
 		<>
-			<div>
-				<IntroContainer>
-					<ImgContainer>
-						<img src={`${apiURL}/${volunteerData.image}`} alt='팀대표이미지' />
-						<Badge>{volunteerData.statusName}</Badge>
-					</ImgContainer>
-					<TeamInfo>
-						<Title>{truncateTitle(volunteerData.title)}</Title>
-						<Line></Line>
-						<InfoBox>
-							<ApplyBox>
-								<img src={star} alt='스타배지' />
-								<h1>현재 {volunteerData.applyCount}명 신청중!</h1>
-							</ApplyBox>
-							<Divider />
-							<p>목표인원 : {volunteerData.registerCount}명</p>
-							<p>활동유형 : {volunteerData.actType}</p>
-							<p>
-								모집기간 : {truncateDate(currentDate)} ~{' '}
-								{truncateDate(volunteerData.deadline)} (현재&nbsp;
-								{remainingDaysCalculator(currentDate, volunteerData.deadline)}
-								일) 남음
-							</p>
-							<p>
-								활동기간 : {truncateDate(volunteerData.startDate)} ~{' '}
-								{truncateDate(volunteerData.endDate)}
-							</p>
-						</InfoBox>
-						<ButtonContainer>
-							<LargeButton
-								onClick={clickApply}
-								apply={true}
-								disabled={
-									volunteerData.applyCount === volunteerData.registerCount
-								}>
-								{volunteerData.applyCount === volunteerData.registerCount
-									? '신청마감'
-									: '같이 참여하기'}
-							</LargeButton>
-						</ButtonContainer>
-					</TeamInfo>
-				</IntroContainer>
-			</div>
+			{volunteerData && (
+				<div>
+					<IntroContainer>
+						<ImgContainer>
+							<img
+								src={`${apiURL}/${volunteerData.image}`}
+								alt='팀대표이미지'
+							/>
+							<Badge>{volunteerData.statusName}</Badge>
+						</ImgContainer>
+						<TeamInfo>
+							<Title>{truncateTitle(volunteerData.title)}</Title>
+							<Line></Line>
+							<InfoBox>
+								<ApplyBox>
+									<img src={star} alt='스타배지' />
+									<h1>현재 {volunteerData.applyCount}명 신청중!</h1>
+								</ApplyBox>
+								<Divider />
+								<p>목표인원 : {volunteerData.registerCount}명</p>
+								<p>활동유형 : {volunteerData.actType}</p>
+								<p>
+									모집기간 : {truncateDate(currentDate)} ~{' '}
+									{truncateDate(volunteerData.deadline)} (현재&nbsp;
+									{remainingDaysCalculator(currentDate, volunteerData.deadline)}
+									일) 남음
+								</p>
+								<p>
+									활동기간 : {truncateDate(volunteerData.startDate)} ~{' '}
+									{truncateDate(volunteerData.endDate)}
+								</p>
+							</InfoBox>
+							<ButtonContainer>
+								<LargeButton
+									onClick={clickApply}
+									apply={true}
+									disabled={
+										volunteerData.applyCount === volunteerData.registerCount
+									}>
+									{volunteerData.applyCount === volunteerData.registerCount
+										? '신청마감'
+										: '같이 참여하기'}
+								</LargeButton>
+							</ButtonContainer>
+						</TeamInfo>
+					</IntroContainer>
+				</div>
+			)}
 		</>
 	);
 }

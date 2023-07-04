@@ -70,7 +70,7 @@ export interface TeamType {
 		nickname: string;
 	};
 	createdAt: string;
-	image?: string;
+	image: string;
 	isSubmit: boolean;
 }
 
