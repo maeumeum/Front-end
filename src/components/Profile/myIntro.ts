@@ -59,7 +59,7 @@ export const FormBtn = styled.button`
 	border-radius: 5%;
 	border: none;
 	background-color: var(--button--color);
-	color: #ffffff;
+	color: ${({ theme }) => theme.colors.background};
 	margin: 4rem 0 3rem 0;
 	cursor: pointer;
 	display: block;
@@ -79,7 +79,7 @@ export const ImageLabel = styled.label`
 	display: flex;
 	align-items: center;
 	margin-bottom: 3rem;
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 	color: #888888;
 `;
 

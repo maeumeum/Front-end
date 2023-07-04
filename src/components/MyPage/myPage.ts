@@ -23,7 +23,7 @@ export const Container = styled.div`
 export const MenuBar = styled.div`
 	width: 10%;
 	min-width: 15.7rem;
-	border-radius: 5px;
+	border-radius: ${({ theme }) => theme.radius.s1};
 	margin: 15.5rem 0 0 10rem;
 	top: 9.8rem;
 

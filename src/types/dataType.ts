@@ -7,7 +7,7 @@ export interface VolunteerDataType {
 	title: string;
 	registerCount: string;
 	deadline: string;
-	image: string;
+	image?: string;
 	startDate: string;
 	endDate: string;
 	applyCount: string;
@@ -50,4 +50,11 @@ export interface VolunteerWritePageProps
 export interface ImageData {
 	setFile: (file: File | null) => void;
 	imageType: 'thumbnail' | 'image';
+}
+
+export interface CardStateType {
+	appliedData: DataType | null;
+	completedData: DataType | null;
+	getAppliedData: () => Promise<void>;
+	getCompletedData: () => Promise<void>;
 }

@@ -39,7 +39,7 @@ export const MenuMobileOl = styled.div`
 	flex-wrap: wrap;
 `;
 
-export const MenuMobileList = styled.p`
+export const MenuMobileList = styled.li`
 	width: 25%;
 	height: 5.3rem;
 	display: flex;

@@ -32,7 +32,7 @@ export const Title = styled.h2`
 `;
 
 export const TeamType = styled.p`
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 `;
 
 export const TeamTypeRadio = styled.input`

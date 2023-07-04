@@ -1,5 +1,5 @@
 import { UserType } from '@src/types/userType';
-
+import { DataType } from '@src/types/dataType';
 export interface AuthType {
 	userData: UserType | null;
 	getUserData: () => void;
