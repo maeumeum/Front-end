@@ -56,13 +56,19 @@ export const IntroBox = styled.textarea`
 export const FormBtn = styled.button`
 	height: 5rem;
 	width: 17rem;
-	border-radius: 13px;
+	border-radius: 5%;
 	border: none;
 	background-color: var(--button--color);
 	color: #ffffff;
 	margin: 4rem 0 3rem 0;
 	cursor: pointer;
 	display: block;
+
+	@media (max-width: 360px) {
+		font-size: 10px;
+		height: 4rem;
+		width: 14rem;
+	}
 `;
 
 export const CheckLength = styled.div`

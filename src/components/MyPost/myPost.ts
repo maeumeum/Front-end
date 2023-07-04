@@ -22,7 +22,8 @@ export const PostBox = styled.div<PostProps>`
 		width: 56rem;
 	}
 	@media (max-width: 360px) {
-		width: 30rem;
+		width: 35rem;
+		margin: 2rem auto;
 	}
 `;
 
@@ -69,7 +70,19 @@ export const ButtonContainer = styled.div`
 	position: absolute;
 	right: 0;
 	margin-right: 4rem;
+	display: flex;
+
 	button + button {
 		margin-left: 2rem;
+	}
+
+	@media (max-width: 360px) {
+		margin-right: 0;
+		flex-direction: column;
+
+		button + button {
+			margin-top: 1rem;
+			margin-left: 0;
+		}
 	}
 `;

@@ -215,6 +215,7 @@ const AuthTeam = () => {
 							</MainContainer>
 							<ButtonContainer>
 								<LargeButton
+									isMyPage={'mypage'}
 									onClick={clickHandler}
 									disabled={isSubmit ? true : false}>
 									제출하기

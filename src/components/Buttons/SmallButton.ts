@@ -7,4 +7,9 @@ export const SmallButton = styled.button`
 	height: 4.4rem;
 	border-radius: 5%;
 	cursor: pointer;
+
+	@media (max-width: 360px) {
+		height: 4rem;
+		font-size: 8px;
+	}
 `;

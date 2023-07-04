@@ -3,8 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	display: flex;
 	justify-content: center;
-	position: relative;
-	left: 45px;
 	margin-bottom: 5rem;
 
 	button {

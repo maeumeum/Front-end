@@ -50,6 +50,10 @@ export const Main = styled.div`
 
 export const TabMenu = styled.div`
 	display: flex;
+
+	@media (max-width: 768px) {
+		margin-bottom: 4rem;
+	}
 `;
 
 export const CardBox = styled.div`
@@ -62,6 +66,12 @@ export const CardBox = styled.div`
 		margin: 0 2rem;
 		min-width: 33rem;
 		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (max-width: 360px) {
+		margin: 0 auto;
+		min-width: 33rem;
+		grid-template-columns: repeat(1, 1fr);
 	}
 `;
 

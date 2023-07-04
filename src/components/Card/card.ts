@@ -19,6 +19,13 @@ export const CardContainer = styled.div<CardProps>`
 
 	@media (max-width: 768px) {
 		min-height: 15rem;
+		width: 90%;
+	}
+
+	@media (max-width: 360px) {
+		min-height: 15rem;
+		width: 70%;
+		margin: 0 auto;
 	}
 `;
 
@@ -27,13 +34,14 @@ export const ImgBox = styled.div`
 	overflow: hidden;
 	cursor: pointer;
 	img {
-		width: 100%;
+		width: 26rem;
 		height: 26.5rem;
 		border-radius: ${({ theme }) => theme.radius.s1};
 	}
 
 	@media (max-width: 768px) {
 		img {
+			width: 100%;
 			height: auto;
 		}
 	}
@@ -62,6 +70,16 @@ export const VolunInfo = styled.div`
 		font-weight: 500;
 		font-size: 1.3rem;
 		color: #999b9c;
+	}
+
+	@media (max-width: 768px) {
+		p {
+			font-size: 1.8rem;
+		}
+		p + p {
+			font-weight: 500;
+			font-size: 1rem;
+		}
 	}
 `;
 

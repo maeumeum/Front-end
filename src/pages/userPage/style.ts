@@ -210,7 +210,7 @@ export const InputContainer = styled.div`
 	width: 45rem;
 
 	@media (max-width: 768px) {
-		width: 80%;
+		width: 94%;
 	}
 `;
 
@@ -286,7 +286,11 @@ export const DataInput = styled.input<SignUpProps>`
 	font-size: 1.6rem;
 
 	@media (max-width: 768px) {
-		width: 45rem;
+		width: 100%;
+	}
+
+	@media (max-width: 360px) {
+		width: 100%;
 	}
 `;
 
