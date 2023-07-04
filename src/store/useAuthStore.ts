@@ -7,10 +7,16 @@ import { DataType } from '@src/types/dataType';
 const useAuthStore = create<AuthType>((set) => ({
 	userData: null,
 	getUserData: async () => {
-		const responseData = await get<DataType>('/api/users/info', {
-			withCredentials: true,
-		});
-		set({ userData: await responseData.data });
+		try {
+			const responseData = await get<DataType>('/api/users/info', {
+				withCredentials: true,
+			});
+			set({ userData: await responseData.data });
+		} catch (err) {
+			await get<DataType>('/api/refresh', {
+				withCredentials: true,
+			});
+		}
 	},
 }));
 
