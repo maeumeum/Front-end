@@ -49,14 +49,13 @@ function VolunInfo() {
 
 	const clickApply = async () => {
 		try {
-			const response = await post('/api/applications', {
+			await post('/api/applications', {
 				volunteer_id: postId,
 			});
-			console.log(response);
 			navigate('/mypage/history');
 			Swal.fire(alertData.successMessage('참여신청 되었습니다!:)'));
-		} catch (e) {
-			Swal.fire(alertData.successMessage('참여신청에 실패했습니다 :('));
+		} catch (err) {
+			Swal.fire(alertData.successMessage(String(err)));
 		}
 	};
 
