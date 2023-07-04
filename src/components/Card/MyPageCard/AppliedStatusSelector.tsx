@@ -3,7 +3,6 @@ import { AppliedStatusSelectorProps } from '@src/types/cardType';
 import Selector from '@components/Selector/Selector.tsx';
 import { SelectContainer } from '@components/Card/Card.ts';
 import Swal from 'sweetalert2';
-import useCardDataStore from '@src/store/volunCardStore';
 import alertData from '@src/utils/swalObject.ts';
 import { post, del } from '@api/api';
 
@@ -13,7 +12,6 @@ function AppliedStatusSelector({
 }: AppliedStatusSelectorProps) {
 	const [selectedParticipationStatus, setSelectedParticipationStatus] =
 		useState<string>('');
-	const { getAppliedData } = useCardDataStore();
 
 	const handleParticipationStatusChange = async (selectedValue: string) => {
 		try {
@@ -27,8 +25,7 @@ function AppliedStatusSelector({
 				if (result.isConfirmed) {
 					await post(`/api/review/users/participation/${volunId}`, {});
 					setSelectedParticipationStatus(selectedValue);
-					//window.location.reload();
-					getAppliedData();
+					window.location.reload();
 					await Swal.fire('완료된 봉사로 변경되었습니다!', 'success');
 				}
 			} else if (selectedValue === 'cancel') {
@@ -45,8 +42,7 @@ function AppliedStatusSelector({
 					await Swal.fire(
 						alertData.successMessage('봉사활동이 취소되었습니다'),
 					);
-					//window.location.reload();
-					getAppliedData();
+					window.location.reload();
 				}
 			}
 		} catch (error) {
