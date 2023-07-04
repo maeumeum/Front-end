@@ -7,6 +7,11 @@ export const Container = styled.div`
 	flex-direction: column;
 	width: ${(props) => (props.className === 'writePage' ? '112rem' : '95rem')};
 	margin-bottom: 20rem;
+
+	@media (max-width: 768px) {
+		margin-top: 2rem;
+		width: 100%;
+	}
 `;
 
 export const CategoryContainer = styled.div`
@@ -15,21 +20,27 @@ export const CategoryContainer = styled.div`
 `;
 
 export const LayoutContainer = styled.div`
-	display: flex;
-	justify-content: space-between;
-	grid-template-columns: 1fr 1fr 1fr;
-	gap: 3rem;
+	display: grid;
 `;
 
 export const LayoutChildContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	height: 20rem;
+
+	@media (max-width: 768px) {
+		height: auto;
+	}
 `;
 
 export const TopTitle = styled.h2`
 	margin: 0 auto 2.5rem;
 	font-size: 2.8rem;
+
+	@media (max-width: 768px) {
+		margin: 2rem 0 0;
+		font-size: 2.5rem;
+	}
 `;
 
 export const DateTitle = styled.h2`
@@ -37,6 +48,11 @@ export const DateTitle = styled.h2`
 	text-align: left;
 	padding-right: 20rem;
 	font-size: 2rem;
+
+	@media (max-width: 768px) {
+		margin: 3rem 0 2rem;
+		font-size: 2.5rem;
+	}
 `;
 
 export const WriteTextContainer = styled.div`
@@ -51,8 +67,12 @@ export const TitleInput = styled.input`
 	font-size: 3.5rem;
 	font-weight: 600;
 	color: #a7a7a7;
+
 	@media (max-width: 768px) {
-		margin-top: 5rem;
+		margin: 2rem 0;
+		width: 80%;
+		padding: 1rem 0.5rem;
+		font-size: 2rem;
 	}
 `;
 
@@ -77,17 +97,20 @@ export const TextLength = styled.p`
 	margin-top: -9rem;
 	margin-bottom: 10rem;
 	color: ${({ theme }) => theme.colors.gray400};
+
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
+	}
 `;
 
 export const ButtonContainer = styled.div`
 	display: flex;
 	gap: 1rem;
 	margin-left: auto;
+
 	@media (max-width: 768px) {
 		justify-content: space-between;
 		width: 95%;
-		position: absolute;
-		top: -7rem;
 	}
 `;
 

@@ -7,6 +7,11 @@ export const CustomDateInput = styled(DatePicker)`
 	font-size: 1.8rem;
 	color: ${({ theme }) => theme.colors.gray600};
 	cursor: pointer;
+
+	@media (max-width: 768px) {
+		padding: 0;
+		font-size: 2rem;
+	}
 `;
 
 export const CustomDatePicker = styled.div`
