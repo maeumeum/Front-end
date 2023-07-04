@@ -7,7 +7,6 @@ import {
 	RecruitStatus,
 	VolunteerIntroContainer,
 	VolunteerTitle,
-	VolunteerContent,
 } from '@components/Card/card';
 
 interface VolunteerCardProps {
