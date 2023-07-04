@@ -21,6 +21,11 @@ export const TopTitle = styled.h2`
 export const Title = styled.h2`
 	margin: 10rem auto 2.5rem;
 	font-size: 2.8rem;
+
+	@media (max-width: 768px) {
+		margin: 2rem 0;
+		font-size: 2.5rem;
+	}
 `;
 
 export const TeamType = styled.p`
