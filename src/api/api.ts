@@ -15,7 +15,7 @@ export const get = async <T>(
 		});
 		return response.data;
 	} catch (err) {
-		throw new Error('API 요청에 실패했습니다.');
+		throw new Error((err as any).response.data.name);
 	}
 };
 
@@ -33,7 +33,7 @@ export const post = async <T>(
 		});
 		return response.data;
 	} catch (err) {
-		throw new Error('API 요청에 실패했습니다.');
+		throw new Error((err as any).response.data.name);
 	}
 };
 
@@ -50,7 +50,7 @@ export const patch = async <T>(
 			withCredentials: true,
 		});
 	} catch (err) {
-		throw new Error('API 요청에 실패했습니다.');
+		throw new Error((err as any).response.data.name);
 	}
 };
 
@@ -66,6 +66,6 @@ export const del = async <T>(
 			withCredentials: true,
 		});
 	} catch (err) {
-		throw new Error('API 요청에 실패했습니다.');
+		throw new Error((err as any).response.data.name);
 	}
 };

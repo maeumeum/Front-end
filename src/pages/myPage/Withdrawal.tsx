@@ -80,7 +80,7 @@ function Withdrawal() {
 				</TabMenu>
 				<WithdrawalContainer>
 					<WithdrawalSection>
-						<SignUpForm>
+						<SignUpForm isWidthdrawal={true}>
 							<InputForm
 								submit={submit}
 								dataName='이메일'
@@ -103,7 +103,9 @@ function Withdrawal() {
 								errorMessage={passwordError}
 								validPassword={validPassword}
 							/>
-							<LargeButton onClick={handleSubmit}>탈퇴하기</LargeButton>
+							<LargeButton isMyPage={'mypage'} onClick={handleSubmit}>
+								탈퇴하기
+							</LargeButton>
 						</SignUpForm>
 					</WithdrawalSection>
 				</WithdrawalContainer>

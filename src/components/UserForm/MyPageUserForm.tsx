@@ -178,6 +178,7 @@ function MyPageUserForm({ pageType }: MyPageUserFormProps) {
 							</LargeButton>
 						)}
 						<LargeButton
+							isMyPage={'mypage'}
 							onClick={UserInfoChangeHandler}
 							disabled={isButtonDisabled}>
 							회원정보수정

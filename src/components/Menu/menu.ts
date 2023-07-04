@@ -34,6 +34,17 @@ export const Menus = styled.div`
 
 //mobile
 
-export const MenuMobileContainer = styled.div`
-	width: 100%;
+export const MenuMobileOl = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+`;
+
+export const MenuMobileList = styled.p`
+	width: 25%;
+	height: 5.3rem;
+	display: flex;
+	p {
+		padding-left: 3rem;
+		word-break: keep-all;
+	}
 `;

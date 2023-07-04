@@ -6,6 +6,11 @@ export const TeamForm = styled.form`
 	align-items: center;
 	margin-bottom: 7rem;
 	width: 112rem;
+
+	@media (max-width: 768px) {
+		align-items: flex-start;
+		margin-left: 5rem;
+	}
 `;
 
 export const TopTitle = styled.h2`
@@ -35,6 +40,13 @@ export const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	margin-top: 3rem;
+
+	button {
+		@media (max-width: 768px) {
+			width: 50rem;
+			height: 5rem;
+		}
+	}
 `;
 
 export const WaitMessage = styled.div`

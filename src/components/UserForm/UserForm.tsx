@@ -117,7 +117,9 @@ function UserForm({ closeModal, isChangePasswordModal }: UserFormProps) {
 							/>
 						</div>
 					)}
-					<LargeButton onClick={changePasswordHandle}>확인하기</LargeButton>
+					<LargeButton isMyPage={'mypage'} onClick={changePasswordHandle}>
+						확인하기
+					</LargeButton>
 				</InputContainer>
 			</UserFormContainer>
 		</>
