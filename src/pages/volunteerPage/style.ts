@@ -162,6 +162,12 @@ export const NumberWriteContainer = styled.div`
 	align-items: center;
 	width: 112rem;
 	margin: 5.8rem auto;
+
+	@media (max-width: 768px) {
+		margin: 6rem 2rem;
+		width: auto;
+		min-width: 33rem;
+	}
 `;
 
 export const ReviewPageContainer = styled.div`

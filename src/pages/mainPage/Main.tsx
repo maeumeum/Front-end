@@ -48,7 +48,6 @@ const Main = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			const responseData = await get<DataType>('/api/randomReviews');
-			console.log(responseData);
 			setReviewList(responseData.data);
 		};
 		fetchData();
