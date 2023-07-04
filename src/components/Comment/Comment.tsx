@@ -33,6 +33,7 @@ import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
 import throttle from '@utils/throttle.ts';
 import { CommentListType, CommentType } from '@src/types/commentType';
+import profileImage from '@assets/images/profileImg.webp';
 
 const apiURL = import.meta.env.VITE_API_URL;
 
@@ -65,6 +66,7 @@ const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 			`/api/postComments/${postId}?skip=0&limit=3`,
 		);
 		setCommentList(response.data.postCommentList);
+		console.log('profile', response.data);
 	};
 
 	const loadMoreData = async () => {
