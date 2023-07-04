@@ -70,14 +70,13 @@ function VolunInfo() {
 
 	const clickApply = async () => {
 		try {
-			const response = await post('/api/applications', {
+			await post('/api/applications', {
 				volunteer_id: postId,
 			});
-			console.log(response);
 			navigate('/mypage/history');
 			Swal.fire(alertData.successMessage('참여신청 되었습니다!:)'));
-		} catch (e) {
-			Swal.fire(alertData.successMessage('참여신청에 실패했습니다 :('));
+		} catch (err) {
+			Swal.fire(alertData.successMessage(String(err)));
 		}
 	};
 
@@ -103,8 +102,8 @@ function VolunInfo() {
 							<p>목표인원 : {volunteerData.registerCount}명</p>
 							<p>활동유형 : {volunteerData.actType}</p>
 							<p>
-								모집기간 : {truncateDate(currentDate)} ~{' '}
-								{truncateDate(volunteerData.deadline)} (현재&nbsp;
+								모집기간 : {truncateDate(volunteerData.deadline)}까지
+								(현재&nbsp;
 								{remainingDaysCalculator(currentDate, volunteerData.deadline)}
 								일) 남음
 							</p>

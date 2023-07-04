@@ -80,7 +80,7 @@ function Withdrawal() {
 				</TabMenu>
 				<WithdrawalContainer>
 					<WithdrawalSection>
-						<SignUpForm>
+						<SignUpForm isWidthdrawal={true}>
 							<InputForm
 								submit={submit}
 								dataName='이메일'
