@@ -64,7 +64,6 @@ const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 			`/api/postComments/${postId}?skip=0&limit=3`,
 		);
 		setCommentList(response.data.postCommentList);
-		console.log('profile', response.data);
 	};
 
 	const loadMoreData = async () => {
