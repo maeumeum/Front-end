@@ -45,6 +45,9 @@ export const TeamTypeRadio = styled.input`
 `;
 
 export const MainContainer = styled.div`
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
 	@media (max-width: 768px) {
 		width: 100%;
 	}
@@ -62,7 +65,16 @@ export const ButtonContainer = styled.div`
 	margin-top: 3rem;
 	width: 100%;
 
+	@media (max-width: 700px) {
+		justify-content: flex-start;
+	}
+
+	@media (min-width: 400px) and (max-width: 600px) {
+		justify-content: center;
+	}
+
 	button {
+		width: 94%;
 		@media (min-width: 0px) and (max-width: 600px) {
 			width: 43rem;
 			height: 5rem;
