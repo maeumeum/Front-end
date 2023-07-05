@@ -16,20 +16,20 @@ export const TeamForm = styled.form`
 
 export const TopTitle = styled.h2`
 	margin: 2rem auto 2.5rem;
-	font-size: 2.8rem;
+	font-size: 2.5rem;
 
 	@media (max-width: 360px) {
-		font-size: 2.5rem;
+		font-size: 2rem;
 	}
 `;
 
 export const Title = styled.h2`
 	margin: 10rem auto 2.5rem;
-	font-size: 2.8rem;
+	font-size: 2.5rem;
 
 	@media (max-width: 768px) {
 		margin: 2rem 0;
-		font-size: 2.5rem;
+		font-size: 2rem;
 	}
 `;
 

@@ -1,7 +1,7 @@
 import ReactModal from 'react-modal';
-
+import { useMediaQuery } from 'react-responsive';
 import UserForm from '@components/UserForm/UserForm.tsx';
-import { customStyles } from '@components/Modal/modal';
+import { customStyles, mobileTeamStyles } from '@components/Modal/modal';
 import MyReview from '@components/MyPost/MyReview';
 
 interface ModalProps {
@@ -22,12 +22,15 @@ const Modal = ({
 	const handleClose = () => {
 		closeModal();
 	};
+	const isMobile = useMediaQuery({
+		query: '(max-width:360px)',
+	});
 
 	return (
 		<ReactModal
 			isOpen={isOpen}
 			onRequestClose={handleClose}
-			style={customStyles}>
+			style={isMobile ? mobileTeamStyles : customStyles}>
 			{user ? (
 				<UserForm
 					closeModal={closeModal}

@@ -6,7 +6,7 @@ import {
 	UserInfo,
 	Badge,
 	VolunInfo,
-} from '@components/Card/Card.ts';
+} from '@components/Card/card.ts';
 
 import { useNavigate } from 'react-router-dom';
 import { TabTypes } from '@src/types/myPageConstants.ts';

@@ -86,7 +86,6 @@ function UserForm({ closeModal, isChangePasswordModal }: UserFormProps) {
 		<>
 			<UserFormContainer>
 				<TopBar title={modalTitle} text={modalText} modal='modal' />
-
 				<InputContainer>
 					<div>
 						<InputForm
@@ -117,6 +116,7 @@ function UserForm({ closeModal, isChangePasswordModal }: UserFormProps) {
 							/>
 						</div>
 					)}
+
 					<LargeButton isMyPage={'mypage'} onClick={changePasswordHandle}>
 						확인하기
 					</LargeButton>
