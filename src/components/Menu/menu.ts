@@ -25,7 +25,6 @@ export const Menus = styled.div`
 	}
 	p {
 		font-size: 1.6rem;
-		line-height: 3rem;
 		&:hover {
 			color: var(--button--color);
 		}
