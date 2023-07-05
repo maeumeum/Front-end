@@ -9,17 +9,32 @@ export const MainContainer = styled.div`
 		font-size: 6rem;
 		line-height: 2rem;
 		color: ${({ theme }) => theme.colors.green100};
+
+		@media (max-width: 360px) {
+			font-size: 3rem;
+		}
+	}
+	@media (max-width: 768px) {
+		margin-left: 5rem;
+		width: 90%;
 	}
 `;
 export const Descript = styled.span`
 	font-size: 3rem;
-	color: black;
+	color: ${({ theme }) => theme.colors.text};
 	margin-top: 10rem;
 	background-color: ${({ theme }) => theme.colors.green100};
+	@media (max-width: 360px) {
+		font-size: 1.5rem;
+		width: 100%;
+	}
 `;
 export const MiddleContainer = styled.div`
 	position: relative;
 	margin-bottom: 70rem;
+	@media (max-width: 768px) {
+		display: none;
+	}
 `;
 export const FirstCircle = styled.div`
 	width: 70rem;
@@ -85,14 +100,14 @@ export const TextBox1 = styled.div`
 	width: 30rem;
 `;
 export const TextTitle = styled.p`
-	font-size: 3rem;
+	font-size: ${({ theme }) => theme.typography.size.subtitle};
 	color: #2596be;
 `;
 export const TextName = styled.p`
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 `;
 export const TextContent = styled.p`
-	font-size: 2rem;
+	font-size: ${({ theme }) => theme.typography.size.default};
 `;
 export const TextBox2 = styled.div`
 	position: absolute;
@@ -105,4 +120,7 @@ export const ReviewPostContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	@media (max-width: 360px) {
+		width: 100%;
+	}
 `;

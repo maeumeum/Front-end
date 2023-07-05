@@ -18,6 +18,29 @@ export const customStyles = {
 	},
 };
 
+export const mobileTeamStyles = {
+	content: {
+		top: '40%',
+		left: '50%',
+		right: 'auto',
+		bottom: 'auto',
+		margin: 'auto',
+		transform: 'translate(-50%, -50%)',
+		width: '70%',
+		maxHeight: '40%',
+	},
+};
+
+export const MobileStyles = {
+	content: {
+		top: 0,
+		left: 0,
+		width: '50%',
+		minHeight: '100%',
+	},
+	overlay: { zIndex: 1000 },
+};
+
 export const TitleInput = styled.input`
 	height: 1.8rem;
 	margin-top: 2rem;
@@ -36,10 +59,18 @@ export const TopContainer = styled.div`
 
 export const MainTitle = styled.h1`
 	font-size: 2.5rem;
+
+	@media (max-width: 768px) {
+		font-size: 2rem;
+	}
 `;
 
 export const Title = styled.h1`
 	font-size: 2rem;
+
+	@media (max-width: 768px) {
+		font-size: 1.8rem;
+	}
 `;
 
 export const TeamLogo = styled.img`
@@ -68,4 +99,26 @@ export const RemainContainer = styled.div`
 
 export const RemainDesc = styled.div`
 	font-size: 1.3rem;
+`;
+
+// Mobile Modal
+export const MobileTopContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
+
+export const LoginContainer = styled.div`
+	font-size: 2rem;
+	cursor: pointer;
+`;
+
+export const ExitContainer = styled.div`
+	width: 2.5rem;
+	height: 2.5rem;
+	cursor: pointer;
+
+	img {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
 `;

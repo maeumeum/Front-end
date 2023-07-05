@@ -19,13 +19,11 @@ import {
 
 import CardAvailableIcon from '@assets/icons/card_applier_is_available_icon.svg';
 import CardFullIcon from '@assets/icons/card_applier_is_full_icon.svg';
-import defaultImage from '@src/assets/images/volunteer1.jpg';
+import defaultImage from '@src/assets/images/volunteer1.webp';
 
 interface VolunteerCardProps {
 	volunteerData: VolunteerTogetherType;
 }
-
-const url = import.meta.env.VITE_API_URL;
 
 const VolunteerTogetherCard = ({ volunteerData }: VolunteerCardProps) => {
 	const navigate = useNavigate();
@@ -47,12 +45,8 @@ const VolunteerTogetherCard = ({ volunteerData }: VolunteerCardProps) => {
 	const shortTitle = title.length > 13 ? `${title.slice(0, 13)}...` : title;
 	const onClick = () => {
 		if (statusName === '모집중') {
-			// uuid 저장
-			localStorage.setItem('uuid', volunteerData.register_user_id.uuid);
 			navigate(`/volunteers/ongoing/detail/${_id}`);
 		} else {
-			// uuid 저장
-			localStorage.setItem('uuid', volunteerData.register_user_id.uuid);
 			navigate(`/volunteers/close/detail/${_id}`);
 		}
 	};
@@ -61,7 +55,7 @@ const VolunteerTogetherCard = ({ volunteerData }: VolunteerCardProps) => {
 		<CardContainer statusName={statusName} onClick={onClick}>
 			<ImgBox>
 				{images.length > 0 ? (
-					<img src={`${url}/${thumbnail}`} alt='Logo' />
+					<img src={thumbnail} alt='Logo' />
 				) : (
 					<img src={defaultImage} alt={'게시글 기본이미지'} />
 				)}
@@ -91,10 +85,7 @@ const VolunteerTogetherCard = ({ volunteerData }: VolunteerCardProps) => {
 			<TitleInfo>{`[${teamName}] ${shortTitle}`}</TitleInfo>
 			<InfoBox statusName={statusName}>
 				<VolunteerUserInfo>
-					<img
-						src={`${url}/${register_user_id.image}`}
-						alt='작성자 프로필사진'
-					/>
+					<img src={register_user_id.image} alt='작성자 프로필사진' />
 					<p>{register_user_id.nickname}</p>
 				</VolunteerUserInfo>
 				{statusName === VolunteerTypes.CONTINUE && (

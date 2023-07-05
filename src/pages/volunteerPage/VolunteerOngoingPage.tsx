@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import background from '@assets/images/background.jpg';
+import { useMediaQuery } from 'react-responsive';
+
+import background from '@assets/images/background.webp';
 import SearchBar from '@components/SearchBar/SearchBar.tsx';
 import WriteButton from '@components/Buttons/WriteButton/WriteButton.tsx';
 import {
@@ -23,13 +25,14 @@ import {
 
 import VolunteerTogetherCard from '@src/components/Card/VolunteerTogetherCard.tsx';
 import { VolunteerType, VolunteerTogetherType } from '@src/types/cardType.ts';
+import useLoginStore from '@src/store/useLoginStore.tsx';
 import { get } from '@api/api';
-import DataType from '@src/types/dataType.ts';
+import { DataType } from '@src/types/dataType.ts';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
 import throttle from '@utils/throttle.ts';
-import volunteerImage from '@assets/images/volunteerPage.png';
-import dog from '@assets/images/dog.png';
+import volunteerImage from '@assets/images/volunteerPage.webp';
+import dog from '@assets/images/dog.webp';
 import VolunteerClose from './VolunteerClosePage.tsx';
 
 const VolunteerOngoing = () => {
@@ -37,7 +40,12 @@ const VolunteerOngoing = () => {
 	const [cardList, setCardList] = useState<VolunteerTogetherType[]>([]);
 	const [isLoad, setLoad] = useState<boolean>(false);
 	const [activeTab, setActiveTab] = useState('activeOn');
-	const [isAuthorizaion, isSetAuthorizaion] = useState<boolean>(false);
+	const [isAuthorization, setIsAuthorization] = useState<boolean>(false);
+	const { isLogin } = useLoginStore();
+
+	const isMobile = useMediaQuery({
+		query: '(max-width:768px)',
+	});
 
 	const handleTabChange = (tabName: string) => {
 		setActiveTab(tabName);
@@ -60,17 +68,20 @@ const VolunteerOngoing = () => {
 		fetchData();
 	}, []);
 
+	const fetchData = async () => {
+		try {
+			const response = await get<DataType>('/api/users/info');
+			setIsAuthorization(response.data.authorization);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await get<DataType>('/api/users/info');
-				isSetAuthorizaion(response.data.authorizaion);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		fetchData();
-	}, []);
+		if (isLogin) {
+			fetchData();
+		}
+	}, [isLogin]);
 
 	// 검색 데이터 불러오기
 	const handleSearch = async (query: string) => {
@@ -119,20 +130,9 @@ const VolunteerOngoing = () => {
 		}
 	}, [cardList]);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await get<DataType>('/api/users/info');
-				isSetAuthorizaion(response.data.authorization);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		fetchData();
-	}, []);
-
 	const navigateWrite = () => {
 		navigate('/volunteers/ongoing/edit');
+		window.scrollTo(0, 0);
 	};
 
 	return (
@@ -145,9 +145,13 @@ const VolunteerOngoing = () => {
 							더 나은 세상을 위해 지금 할 수 있는 일을 같이 봉사하기에서 찾아볼
 							수 있어요
 						</FfHighLight>
-						<MainImage src={volunteerImage} alt='main-image' />
-						<Background src={background} alt='background' />
-						<DogImage src={dog} alt='dog' />
+						{!isMobile && (
+							<>
+								<MainImage src={volunteerImage} alt='main-image' />
+								<Background src={background} alt='background' />
+								<DogImage src={dog} alt='dog' />
+							</>
+						)}
 					</Sub>
 				</MiddleContainer>
 				<SearchContainer>
@@ -161,7 +165,7 @@ const VolunteerOngoing = () => {
 					</BtnContainer>
 					<SearchBar onSearch={handleSearch} />
 					<NumberWriteContainer>
-						{isAuthorizaion && <WriteButton toNavigate={navigateWrite} />}
+						{isAuthorization && <WriteButton toNavigate={navigateWrite} />}
 					</NumberWriteContainer>
 				</SearchContainer>
 				<CardListContainer>

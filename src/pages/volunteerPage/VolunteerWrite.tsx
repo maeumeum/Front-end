@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import { useMediaQuery } from 'react-responsive';
+
 import alertData from '@src/utils/swalObject.ts';
 import VolunteerWritePage from '@components/WritePage/VolunteerWritePage';
 import { post } from '@api/api';
-import { getToken } from '@api/token';
 import { useNavigate } from 'react-router-dom';
-import { ImageArea, Container, MiddleContainer } from './style';
+import { MobileTopBar, WriteImageArea, Container } from './style';
 import actTypes from '@src/types/actTypeConstants';
 import TopBar from '@components/TopBar/TopBar';
+
 const VolunteerWrite = () => {
-	const navigate = useNavigate();
 	const [selectedImage, setSelectedImage] = useState<File[]>([]);
 	const [_, setPostData] = useState({
 		title: '',
@@ -21,6 +22,10 @@ const VolunteerWrite = () => {
 		startDate: new Date(),
 		endDate: new Date(),
 		teamName: '',
+	});
+	const navigate = useNavigate();
+	const isPc = useMediaQuery({
+		query: '(min-width:768px)',
 	});
 
 	const handelImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +63,6 @@ const VolunteerWrite = () => {
 				teamName,
 			});
 
-			const token = getToken();
 			const formData = new FormData();
 			const deadline = deadlineDate.toISOString();
 			const startDate = startDateData.toISOString();
@@ -83,12 +87,7 @@ const VolunteerWrite = () => {
 			for (let i = 0; i < selectedImage.length; i++) {
 				formData.append('images', selectedImage[i]);
 			}
-			await post('/api/volunteers', formData, {
-				headers: {
-					'Content-Type': 'multipart/form-data',
-					Authorization: `Bearer ${token}`,
-				},
-			});
+			await post('/api/volunteers', formData);
 			navigate('/volunteers/ongoing');
 		} catch (error) {
 			Swal.fire(
@@ -114,34 +113,28 @@ const VolunteerWrite = () => {
 	};
 
 	return (
-		<>
-			<Container>
-				<MiddleContainer
-					style={{
-						backgroundColor: '#FFFFE8',
-						marginBottom: '0',
-						paddingBottom: '1rem',
-						textAlign: 'center',
-					}}>
-					<TopBar
-						title={'글 작성하기'}
-						text={'우리 단체의 봉사활동을 홍보해요'}
-					/>
-				</MiddleContainer>
-				<VolunteerWritePage onSave={onSavePost} onCancel={onCancelPost} />
-				<ImageArea style={{ marginTop: '9.2rem' }}>
-					이미지업로드
-					<input
-						id='fileInput'
-						type='file'
-						accept='image/*'
-						name='image'
-						multiple
-						onChange={handelImageChange}
-					/>
-				</ImageArea>
-			</Container>
-		</>
+		<Container>
+			{isPc ? (
+				<TopBar
+					title={'글 작성하기'}
+					text={'우리 단체의 봉사활동을 홍보해요'}
+				/>
+			) : (
+				<MobileTopBar>글 작성하기</MobileTopBar>
+			)}
+			<VolunteerWritePage onSave={onSavePost} onCancel={onCancelPost} />
+			<WriteImageArea>
+				이미지업로드
+				<input
+					id='fileInput'
+					type='file'
+					accept='image/*'
+					name='image'
+					multiple
+					onChange={handelImageChange}
+				/>
+			</WriteImageArea>
+		</Container>
 	);
 };
 

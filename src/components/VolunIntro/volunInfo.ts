@@ -3,19 +3,35 @@ import styled from 'styled-components';
 export const Title = styled.h1`
 	font-size: 3.6rem;
 	word-break: keep-all;
+	@media (max-width: 768px) {
+		font-size: 3rem;
+	}
+	@media (max-width: 360px) {
+		font-size: 2.5rem;
+	}
 `;
 
 export const IntroContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 112rem;
-	height: 44.5rem;
+	width: 100%;
 	margin: 8rem auto;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	@media (max-width: 360px) {
+		flex-direction: column;
+		align-items: flex-start;
+		width: 50rem;
+		margin-left: 2.3rem;
+	}
 `;
 
 export const ImgContainer = styled.div`
-	width: 50%;
 	height: 48rem;
 	display: flex;
 	align-items: center;
@@ -31,10 +47,29 @@ export const TeamInfo = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-left: 8rem;
+
+	@media (max-width: 768px) {
+		margin-left: 5rem;
+		/* width: 55%; */
+	}
+
+	@media (max-width: 360px) {
+		margin-left: 3rem;
+		width: 80%;
+		height: 60%;
+	}
 `;
 
 export const ButtonContainer = styled.div`
 	margin-top: 3rem;
+
+	button {
+		@media (max-width: 768px) {
+			width: 100%;
+			height: 40px;
+			font-size: 14px;
+		}
+	}
 `;
 
 export const Line = styled.div`
@@ -58,6 +93,10 @@ export const InfoBox = styled.div`
 	p {
 		font-size: 1.5rem;
 	}
+
+	@media (max-width: 768px) {
+		font-size: 10px;
+	}
 `;
 
 export const ApplyBox = styled.div`
@@ -65,5 +104,11 @@ export const ApplyBox = styled.div`
 	align-items: center;
 	img {
 		margin-right: 5px;
+	}
+
+	h1 {
+		@media (max-width: 360px) {
+			font-size: 2.5rem;
+		}
 	}
 `;

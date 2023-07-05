@@ -1,3 +1,5 @@
+import { useMediaQuery } from 'react-responsive';
+
 import { ReviewType } from '@src/types/cardType.ts';
 import {
 	ReviewSection,
@@ -8,29 +10,30 @@ import {
 	ReviewTitle,
 	ReviewContent,
 } from './card.ts';
-import imgData from '@assets/images/volunteer2.jpg';
+import imgData from '@assets/images/volunteer2.webp';
 
 interface ReviewCardProps {
 	reviewData: ReviewType;
 	onClick: React.MouseEventHandler<HTMLDivElement>;
 }
 
-const apiURL = import.meta.env.VITE_API_URL;
-
 const ReviewCard = ({ reviewData, onClick }: ReviewCardProps) => {
+	const isPc = useMediaQuery({
+		query: '(min-width:769px)',
+	});
 	const key = reviewData.index;
-	const reviewImg = `${apiURL}/${reviewData.images[0]}`;
+	const reviewImg = `${reviewData.images[0]}`;
 
 	//Content 미리보기 함수
-	const previewContent = (reviewData: ReviewType) => {
-		const content = reviewData.content;
+	const content =
+		reviewData.content.length > 60
+			? `${reviewData.content.slice(0, 60)}...`
+			: reviewData.content;
 
-		// content의 길이가 35자 이상이라면 ... 처리
-		if (content.length >= 60) {
-			return `${content.slice(0, 59)}...`;
-		}
-		return content;
-	};
+	const mobileContent =
+		reviewData.content.length > 30
+			? `${reviewData.content.slice(0, 30)}...`
+			: reviewData.content;
 
 	//다른 색상 카드 구현
 	const colorClass = (key: number) => {
@@ -54,7 +57,7 @@ const ReviewCard = ({ reviewData, onClick }: ReviewCardProps) => {
 					{reviewData.title}
 				</ReviewTitle>
 				<ReviewContent className={colorClass(key)}>
-					{previewContent(reviewData)}
+					{isPc ? content : mobileContent}
 				</ReviewContent>
 			</ReviewContainer>
 		</ReviewSection>

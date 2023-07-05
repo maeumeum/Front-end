@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 import {
 	Container,
 	TopArea,
@@ -18,44 +16,23 @@ import {
 	BottomContainer,
 } from './IntroTeamStyle';
 import { dateFormatter } from '@utils/dateUtils';
-import DataType from '@src/types/dataType.ts';
-import { post } from '@api/api';
 import { TeamType } from '@src/types/userType';
 import phoneNumSplit from '@utils/phoneNumSplit';
 
 type IntroTeamProps = {
-	uuid: string;
+	teamData: TeamType;
 };
 
 const apiURL = import.meta.env.VITE_API_URL;
 
 // eslint-disable-next-line react/prop-types
-const IntroTeam: React.FC<IntroTeamProps> = ({ uuid }) => {
-	const [teamData, setTeamData] = useState<TeamType>({
-		category: '',
-		teamName: '',
-		introduction: '',
-		briefHistory: '',
-		establishmentDate: '',
-		phone: '',
-		location: '',
-		image: '',
-	});
+const IntroTeam = ({ teamData }: IntroTeamProps) => {
 	const establishDate = dateFormatter(
 		teamData.establishmentDate,
 		'YYYY년 MM월 DD일',
 	);
 	const image = `${apiURL}/${teamData.image}`;
-
-	useEffect(() => {
-		const fetchData = async () => {
-			const responseData = await post<DataType>('/api/team/detail', {
-				uuid,
-			});
-			setTeamData(responseData.data);
-		};
-		fetchData();
-	}, []);
+	const briefHistory = teamData.briefHistory.split('\n');
 
 	return (
 		<>
@@ -85,7 +62,11 @@ const IntroTeam: React.FC<IntroTeamProps> = ({ uuid }) => {
 							<Square></Square>
 							<SubTitle>주요활동과 목적</SubTitle>
 						</TextCover>
-						<Content>{teamData.briefHistory}</Content>
+						<Content>
+							{briefHistory.map((content, index) => (
+								<p key={index}>{content}</p>
+							))}
+						</Content>
 					</DivideContent>
 					<BottomContainer>
 						<SubTitle>설립일자</SubTitle>

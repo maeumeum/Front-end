@@ -3,7 +3,7 @@ export interface UserType {
 	email: string;
 	nickname: string;
 	phone: string;
-	image: string;
+	image?: string;
 	introduction: string;
 	role: string;
 	nanoid: string;

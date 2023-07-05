@@ -78,23 +78,20 @@ const PostList = ({
 	};
 
 	return (
-		<>
-			{/* <PostListLine /> */}
-			<PostBoxStyle isCommunity={true}>
-				<PostBox onClick={onClick}>
-					<Title>{postTitle}</Title>
-					<PostBox>
-						<PostContents>{postContents}</PostContents>
-					</PostBox>
+		<PostBoxStyle isCommunity={true}>
+			<PostBox onClick={onClick}>
+				<Title>{postTitle}</Title>
+				<PostBox>
+					<PostContents>{postContents}</PostContents>
 				</PostBox>
-				{isAdmin && (
-					<>
-						<AcceptButtons onClick={AcceptClick}>수락</AcceptButtons>
-						<PostButtons onClick={CancelClick}>취소</PostButtons>
-					</>
-				)}
-			</PostBoxStyle>
-		</>
+			</PostBox>
+			{isAdmin && (
+				<>
+					<AcceptButtons onClick={AcceptClick}>수락</AcceptButtons>
+					<PostButtons onClick={CancelClick}>취소</PostButtons>
+				</>
+			)}
+		</PostBoxStyle>
 	);
 };
 

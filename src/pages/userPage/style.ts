@@ -13,17 +13,32 @@ export const LoginSection = styled(flexcenter)`
 	position: relative;
 	margin: 8rem 68.5rem 34rem;
 	height: 75rem;
+
+	@media (max-width: 768px) {
+		margin: 8rem 2rem 25rem;
+	}
 `;
 
 export const LogoContainer = styled.div`
 	margin: 5rem 0 1.5rem;
 	width: 12rem;
 	height: 12rem;
+
+	@media (max-width: 768px) {
+		margin-bottom: 3rem;
+		width: 10rem;
+		height: 10rem;
+	}
 `;
 
 export const LogoImage = styled.img`
 	width: 12rem;
 	height: 12rem;
+
+	@media (max-width: 768px) {
+		width: 10rem;
+		height: 10rem;
+	}
 `;
 
 export const LoginForm = styled.form`
@@ -32,7 +47,12 @@ export const LoginForm = styled.form`
 	align-items: center;
 	width: 55rem;
 	height: 55rem;
-	border: 1px solid #d9d9d9;
+	border: 1px solid ${({ theme }) => theme.colors.gray300};
+
+	@media (max-width: 768px) {
+		width: 40rem;
+		height: 40rem;
+	}
 `;
 
 export const EmailInput = styled.input`
@@ -41,9 +61,15 @@ export const EmailInput = styled.input`
 	height: 6rem;
 	border: none;
 	outline: none;
-	border-bottom: 2px solid #ccc;
+	border-bottom: 2px solid ${({ theme }) => theme.colors.gray400};
 	font-size: 2rem;
 	font-weight: bold;
+
+	@media (max-width: 768px) {
+		width: 28rem;
+		height: 4rem;
+		font-size: 1.6rem;
+	}
 `;
 
 export const PasswordInput = styled.input`
@@ -51,26 +77,49 @@ export const PasswordInput = styled.input`
 	height: 6rem;
 	border: none;
 	outline: none;
-	border-bottom: 2px solid #ccc;
+	border-bottom: 2px solid ${({ theme }) => theme.colors.gray400};
 	font-size: 2rem;
 	font-weight: bold;
+
+	@media (max-width: 768px) {
+		width: 28rem;
+		height: 4rem;
+		font-size: 1.6rem;
+		margin-top: 1.5rem;
+	}
 `;
 export const CheckData = styled(flexcenter)`
 	margin-top: 3rem;
 	width: 45rem;
 	height: 6rem;
-	background-color: #fafafa;
-	color: #eb5757;
+	background-color: ${({ theme }) => theme.colors.gray100};
+	color: ${({ theme }) => theme.colors.error};
 	font-size: 1.3rem;
+
+	@media (max-width: 768px) {
+		width: 28rem;
+		height: 4rem;
+		font-size: 1.5rem;
+		margin-top: 2rem;
+		padding: 1.5rem 0;
+	}
 `;
 
 export const CheckEmail = styled(flexcenter)`
 	margin-top: 3rem;
 	width: 45rem;
 	height: 6rem;
-	background-color: #fafafa;
-	color: #eb5757;
+	background-color: ${({ theme }) => theme.colors.gray100};
+	color: ${({ theme }) => theme.colors.error};
 	font-size: 1.3rem;
+
+	@media (max-width: 768px) {
+		width: 28rem;
+		height: 4rem;
+		font-size: 1.5rem;
+		margin-top: 2rem;
+		padding: 1.5rem 0;
+	}
 `;
 
 export const SignUpButton = styled(NavLink)`
@@ -80,10 +129,17 @@ export const SignUpButton = styled(NavLink)`
 	font-size: 1.6rem;
 	font-weight: 300;
 	text-decoration: none;
+
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
+		margin-top: 2rem;
+		padding: 1.5rem 0;
+	}
 `;
 
 type SignUpProps = {
 	pageType?: string;
+	isWidthdrawal?: boolean;
 };
 
 // 회원가입 css
@@ -93,7 +149,7 @@ export const SignUpSection = styled.div<SignUpProps>`
 	margin: 17rem 68.5rem 26.5rem;
 	height: 77rem;
 	width: 60rem;
-	background-color: #f7f8f9;
+	background-color: ${({ theme }) => theme.colors.gray100};
 	border-radius: 20px;
 	filter: drop-shadow(0 4px 4px rgb(0, 0, 0, 25%));
 
@@ -104,10 +160,25 @@ export const SignUpSection = styled.div<SignUpProps>`
 			height: 50rem;
 			margin: 5rem 0 10rem;
 			left: 30.5rem;
+
+			@media (max-width: 768px) {
+				width: 85%;
+				left: 0;
+			}
+
+			@media (max-width: 360px) {
+				width: 75%;
+				left: 0;
+			}
 		`}
+
+	@media (max-width: 768px) {
+		margin: 13rem 4% 15rem;
+		width: 92%;
+	}
 `;
 
-export const SignUpForm = styled.div`
+export const SignUpForm = styled.div<SignUpProps>`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -116,12 +187,31 @@ export const SignUpForm = styled.div`
 	img {
 		position: absolute;
 		left: 11.3rem;
-		top: 15rem;
+		top: 15.3rem;
+
+		@media (max-width: 768px) {
+			left: 6.3rem;
+		}
+	}
+
+	@media (max-width: 768px) {
+		width: 100%;
+		align-items: ${({ isWidthdrawal }) =>
+			isWidthdrawal ? 'flex-start' : 'center'};
+	}
+
+	@media (max-width: 360px) {
+		width: 85%;
+		margin: 0 auto;
 	}
 `;
 
 export const InputContainer = styled.div`
 	width: 45rem;
+
+	@media (max-width: 768px) {
+		width: 94%;
+	}
 `;
 
 export const EmailContainer = styled.div`
@@ -139,6 +229,10 @@ export const EmailContainer = styled.div`
 	}};
 	border-radius: 8px;
 	box-sizing: border-box;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `;
 
 export const DataName = styled.p`
@@ -176,7 +270,7 @@ export const DataInput = styled.input<SignUpProps>`
 		if (props.name === 'long') {
 			return '60rem';
 		}
-		return '45rem';
+		return '100%';
 	}};
 	height: 5.6rem;
 	padding-left: 1rem;
@@ -190,6 +284,14 @@ export const DataInput = styled.input<SignUpProps>`
 	border-radius: 8px;
 	box-sizing: border-box;
 	font-size: 1.6rem;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
+
+	@media (max-width: 360px) {
+		width: 100%;
+	}
 `;
 
 export const CheckValue = styled.p`
@@ -199,22 +301,34 @@ export const CheckValue = styled.p`
 	font-size: 1.2rem;
 `;
 
-export const WithdrawalSection = styled.div`
-	margin-left: 2rem;
-	margin-bottom: 3rem;
-	width: 70%;
-`;
-
 export const WithdrawalContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+
+	@media (max-width: 360px) {
+		align-items: flex-start;
+		margin: 0 auto;
+	}
+`;
+
+export const WithdrawalSection = styled.div`
+	margin-left: 2rem;
+	margin-bottom: 3rem;
+	width: 70%;
+
+	@media (max-width: 360px) {
+		width: 100%;
+		margin: 0 auto;
+	}
 `;
 
 export const ButtonContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 80%;
 	button + button {
 		margin-top: 3rem;
 	}

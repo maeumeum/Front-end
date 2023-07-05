@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { get, del, patch } from '@api/api';
-import { getToken } from '@api/token';
-import { dateFormatter } from '@src/utils/dateUtils.ts';
+import { dateFormatter } from '@utils/dateUtils.ts';
+import alertData from '@utils/swalObject.ts';
 import {
 	DetailContainer,
 	Header,
@@ -21,31 +22,25 @@ import {
 	NanoId,
 	NameBox,
 } from './style.ts';
-import CommentSection from '@src/components/Comment/Comment.tsx';
-import DataType from '@src/types/dataType.ts';
+import CommentSection from '@components/Comment/Comment.tsx';
+import { DataType } from '@src/types/dataType.ts';
 import useAuthStore from '@src/store/useAuthStore.ts';
-import Swal from 'sweetalert2';
-import alertData from '@src/utils/swalObject.ts';
+import { CommunityType } from '@src/types/communityType';
 
 const apiURL = import.meta.env.VITE_API_URL;
 
 const FindFriendDetail = () => {
 	const navigate = useNavigate();
 	const { postId } = useParams() as { postId: string };
-	const [post, setPost] = useState<any>([]);
-	const [datauser, setDataUser] = useState<any>('');
+	const [post, setPost] = useState<CommunityType | null>(null);
+	const [datauser, setDataUser] = useState<CommunityType | null>(null);
 	const [loginUser, setLoginUser] = useState(false);
 	const { userData, getUserData } = useAuthStore();
 
 	useEffect(() => {
 		const fetchPost = async () => {
 			try {
-				const token = getToken();
-				const response = await get<DataType>(`/api/community/${postId}`, {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
+				const response = await get<DataType>(`/api/community/${postId}`);
 				setPost(response.data.post.post);
 				setDataUser(response.data.post.post.user_id);
 			} catch (error) {
@@ -63,12 +58,7 @@ const FindFriendDetail = () => {
 	useEffect(() => {
 		const loginUserLogic = async () => {
 			try {
-				const token = getToken();
-				const response = await get<DataType>(`/api/community/check/${postId}`, {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
+				const response = await get<DataType>(`/api/community/check/${postId}`);
 				setLoginUser(response.data);
 			} catch (error) {
 				console.error('Error fetching post:', error);
@@ -84,23 +74,13 @@ const FindFriendDetail = () => {
 	};
 
 	const handleReport = async () => {
-		const token = getToken();
-		await patch<DataType>(`/api/community/reports/${postId}`, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
+		await patch<DataType>(`/api/community/reports/${postId}`);
 		Swal.fire(alertData.ReportCompleted);
 	};
 
 	const handleDelete = async () => {
 		try {
-			const token = getToken();
-			await del<DataType>(`/api/community/${postId}`, {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			});
+			await del<DataType>(`/api/community/${postId}`);
 			Swal.fire(alertData.successMessage('게시글이 삭제되었습니다.'));
 			navigate('/community/findfriend');
 		} catch (error) {
@@ -113,14 +93,15 @@ const FindFriendDetail = () => {
 	}
 
 	const { title, createdAt, images, content } = post;
-	const hasPostImage = !!images;
+
+	const hasPostImage = !!images && images.length > 0;
 	const formattedDate = dateFormatter(
 		createdAt,
 		'YYYY년 MM월 DD일 HH:mm:ss',
 		'ko',
 	);
 
-	let formattedContent = [];
+	let formattedContent: string[] = [];
 	if (content) {
 		formattedContent = content.split('\n');
 	}
@@ -133,8 +114,12 @@ const FindFriendDetail = () => {
 					<SubContainer>
 						<InfoBox>
 							<NameBox>
-								<UserName>{datauser.nickname}</UserName>
-								<NanoId> #{datauser.nanoid}</NanoId>
+								{datauser && (
+									<>
+										<UserName>{datauser.nickname}</UserName>
+										<NanoId> #{datauser.nanoid}</NanoId>
+									</>
+								)}
 							</NameBox>
 							<Date>작성일 : {formattedDate}</Date>
 						</InfoBox>
@@ -152,7 +137,7 @@ const FindFriendDetail = () => {
 				<ContentContainer>
 					{hasPostImage && (
 						<div>
-							{images.map((image: any, index: any) => (
+							{images.map((image: string, index: number) => (
 								<Image
 									key={index}
 									src={`${apiURL}/${image}`}
@@ -161,13 +146,11 @@ const FindFriendDetail = () => {
 							))}
 						</div>
 					)}
-					{/* <Contentdiv> */}
 					<Content>
 						{formattedContent.map((item: string, index: number) => (
 							<p key={index}>{item}</p>
 						))}
 					</Content>
-					{/* </Contentdiv> */}
 				</ContentContainer>
 			</DetailContainer>
 			<CommentSection postId={postId} />

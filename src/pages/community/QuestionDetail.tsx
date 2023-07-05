@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { get, del, patch } from '@api/api';
-import { getToken } from '@api/token';
 import { dateFormatter } from '@src/utils/dateUtils';
 import {
 	DetailContainer,
@@ -22,30 +21,26 @@ import {
 	NanoId,
 } from './style.ts';
 import CommentSection from '@src/components/Comment/Comment.tsx';
-import DataType from '@src/types/dataType.ts';
+import { DataType } from '@src/types/dataType.ts';
 import useAuthStore from '@src/store/useAuthStore.ts';
 import Swal from 'sweetalert2';
 import alertData from '@src/utils/swalObject.ts';
+import { CommunityType } from '@src/types/communityType';
 
 const apiURL = import.meta.env.VITE_API_URL;
 
 const QuestionDetail = () => {
 	const navigate = useNavigate();
 	const { postId } = useParams() as { postId: string };
-	const [post, setPost] = useState<any>([]);
-	const [datauser, setDataUser] = useState<any>('');
+	const [post, setPost] = useState<CommunityType | null>(null);
+	const [datauser, setDataUser] = useState<CommunityType | null>(null);
 	const [loginUser, setLoginUser] = useState(false);
 	const { userData, getUserData } = useAuthStore();
 
 	useEffect(() => {
 		const fetchPost = async () => {
 			try {
-				const token = getToken();
-				const response = await get<DataType>(`/api/community/${postId}`, {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
+				const response = await get<DataType>(`/api/community/${postId}`);
 				setPost(response.data.post.post);
 				setDataUser(response.data.post);
 			} catch (error) {
@@ -63,12 +58,7 @@ const QuestionDetail = () => {
 	useEffect(() => {
 		const loginUserLogic = async () => {
 			try {
-				const token = getToken();
-				const response = await get<DataType>(`/api/community/check/${postId}`, {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
+				const response = await get<DataType>(`/api/community/check/${postId}`);
 				setLoginUser(response.data);
 				console.log(response);
 			} catch (error) {
@@ -86,12 +76,7 @@ const QuestionDetail = () => {
 
 	const handleDelete = async () => {
 		try {
-			const token = getToken();
-			await del<DataType>(`/api/community/${postId}`, {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			});
+			await del<DataType>(`/api/community/${postId}`);
 			Swal.fire(alertData.successMessage('게시글이 삭제되었습니다.'));
 			navigate('/community/question');
 		} catch (error) {
@@ -104,12 +89,7 @@ const QuestionDetail = () => {
 	}
 
 	const handleReport = async () => {
-		const token = getToken();
-		await patch<DataType>(`/api/community/reports/${postId}`, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
+		await patch<DataType>(`/api/community/reports/${postId}`);
 		Swal.fire(alertData.ReportCompleted);
 	};
 	const { title, createdAt, images, content } = post;
@@ -120,11 +100,10 @@ const QuestionDetail = () => {
 		'ko',
 	);
 
-	let formattedContent = [];
+	let formattedContent: string[] = [];
 	if (content) {
 		formattedContent = content.split('\n');
 	}
-
 	return (
 		<>
 			<DetailContainer>
@@ -133,8 +112,12 @@ const QuestionDetail = () => {
 					<SubContainer>
 						<InfoBox>
 							<NameBox>
-								<UserName>{datauser.nickname}</UserName>
-								<NanoId> #{datauser.nanoid}</NanoId>
+								{datauser && (
+									<>
+										<UserName>{datauser.nickname}</UserName>
+										<NanoId> #{datauser.nanoid}</NanoId>
+									</>
+								)}
 							</NameBox>
 							<Date>작성일 : {formattedDate}</Date>
 						</InfoBox>
@@ -152,7 +135,7 @@ const QuestionDetail = () => {
 				<ContentContainer>
 					{hasPostImage && (
 						<div>
-							{images.map((image: any, index: any) => (
+							{images.map((image: string, index: number) => (
 								<Image
 									key={index}
 									src={`${apiURL}/${image}`}

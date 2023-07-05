@@ -4,7 +4,7 @@ export const MainSection = styled.div`
 	position: relative;
 	margin: 0;
 	padding-bottom: 2rem;
-	background-color: #f7f7f7;
+	background-color: ${({ theme }) => theme.colors.gray100};
 `;
 
 export const TopSlogan = styled.h2`
@@ -14,6 +14,13 @@ export const TopSlogan = styled.h2`
 	min-height: 8rem;
 	font-size: 2.6rem;
 	font-weight: 700;
+
+	@media (max-width: 768px) {
+		margin: 0 2rem -2rem;
+		padding-top: 3rem;
+		min-width: 33rem;
+		font-size: 2rem;
+	}
 `;
 
 export const TopContainer = styled.div`
@@ -22,14 +29,28 @@ export const TopContainer = styled.div`
 	min-width: 112rem;
 	justify-content: space-between;
 	margin: 0 40rem;
+
+	@media (max-width: 768px) {
+		margin: 0 2rem;
+		min-width: 33rem;
+		flex-direction: column;
+	}
 `;
 
 export const ReviewContainer = styled.div`
 	width: 60%;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `;
 
 export const IntroduceContainer = styled.div`
 	width: 35%;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `;
 
 export const IntroducePage = styled.div`
@@ -48,7 +69,7 @@ export const IntroduceTitle = styled.div`
 	flex-direction: column;
 	width: 100%;
 	height: 50%;
-	background-color: var(--color--footer);
+	background-color: ${({ theme }) => theme.colors.pink200};
 	border: none;
 	border-radius: 12px 12px 0 0;
 	overflow: hidden;
@@ -69,7 +90,7 @@ export const IntroImg = styled.img`
 
 export const IntroduceDesc = styled.div`
 	height: 29rem;
-	color: #4a4a4a;
+	color: ${({ theme }) => theme.colors.gray600};
 `;
 
 export const Title = styled.h2`
@@ -91,6 +112,13 @@ export const MidSlogan = styled.h2`
 	min-height: 8rem;
 	font-size: 3rem;
 	font-weight: 900;
+
+	@media (max-width: 768px) {
+		margin: 0 2rem -2rem;
+		padding-top: 3rem;
+		min-width: 33rem;
+		font-size: 2rem;
+	}
 `;
 
 export const VolunteerContainer = styled.div`
@@ -99,6 +127,12 @@ export const VolunteerContainer = styled.div`
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	column-gap: 2rem;
+
+	@media (max-width: 768px) {
+		margin: 0 2rem;
+		min-width: 33rem;
+		grid-template-columns: repeat(2, 1fr);
+	}
 `;
 
 export const CommunityTitle = styled.h2`
@@ -148,4 +182,8 @@ export const WebName = styled.div`
 	color: ${({ theme }) => theme.colors.gray600};
 	font-size: 2rem;
 	font-weight: ${({ theme }) => theme.typography.weight.bold};
+
+	@media (max-width: 768px) {
+		display: relative;
+	}
 `;

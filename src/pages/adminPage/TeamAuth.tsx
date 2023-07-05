@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 import { get } from '@api/api';
 import TeamCard from '@components/Card/TeamCard';
 import TeamModal from '@components/Modal/TeamModal';
 import Menu from '@components/Menu/Menu.tsx';
 import { TeamListType } from '@src/types/cardType';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import { MenuBar, TopBarContainer, TopBar, TeamCardContainer } from './style';
 
 const TeamAuth = () => {
 	const [teamList, setTeamList] = useState<TeamListType>([]);
 	const [select, setSelect] = useState<number | null>(null);
 	const [isModified, setIsModified] = useState<boolean>(false);
+	const isMobile = useMediaQuery({
+		query: '(max-width:768px)',
+	});
 
 	// teamList 불러오기
 	useEffect(() => {
@@ -37,16 +41,18 @@ const TeamAuth = () => {
 			<MenuBar>
 				<Menu title='관리자' />
 			</MenuBar>
-			<TopBarContainer>
-				<TopBar>단체 인증 요청</TopBar>
-			</TopBarContainer>
+			{!isMobile && (
+				<TopBarContainer>
+					<TopBar>단체 인증 요청</TopBar>
+				</TopBarContainer>
+			)}
 			<TeamCardContainer>
 				{teamList &&
 					teamList.map((item, index) => (
 						<>
 							<TeamCard
 								teamData={item}
-								key={item.user_id._id}
+								key={item._id}
 								onClick={() => modalClick(index)}
 							/>
 							<TeamModal

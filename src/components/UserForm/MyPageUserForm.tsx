@@ -25,7 +25,7 @@ import { useNavigate } from 'react-router-dom';
 import { TabTypes } from '@src/types/myPageConstants';
 import { get, patch } from '@api/api';
 import alertData from '@utils/swalObject';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import check from '@assets/icons/authentication.svg';
 
 interface MyPageUserFormProps {
@@ -54,7 +54,7 @@ function MyPageUserForm({ pageType }: MyPageUserFormProps) {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const getUserInfoData = await get<DataType>('/api/users/info', {});
+				const getUserInfoData = await get<DataType>('/api/users/info');
 				const responseData = getUserInfoData.data as UserInfo;
 				const { email, nickname, phone, authorization } = responseData;
 				setEmail(email);
@@ -173,11 +173,12 @@ function MyPageUserForm({ pageType }: MyPageUserFormProps) {
 					/>
 					<ButtonContainer>
 						{!canModify && (
-							<LargeButton onClick={changePwClickHandler}>
+							<LargeButton onClick={changePwClickHandler} isMyPage={'mypage'}>
 								비밀번호변경
 							</LargeButton>
 						)}
 						<LargeButton
+							isMyPage={'mypage'}
 							onClick={UserInfoChangeHandler}
 							disabled={isButtonDisabled}>
 							회원정보수정

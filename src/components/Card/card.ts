@@ -16,6 +16,17 @@ export const CardContainer = styled.div<CardProps>`
 	border-radius: ${({ theme }) => theme.radius.s2};
 	background-color: ${({ theme }) => theme.colors.background};
 	flex-wrap: nowrap;
+
+	@media (max-width: 768px) {
+		min-height: 15rem;
+		width: 90%;
+	}
+
+	@media (max-width: 360px) {
+		min-height: 15rem;
+		width: 70%;
+		margin: 0 auto;
+	}
 `;
 
 export const ImgBox = styled.div`
@@ -23,9 +34,19 @@ export const ImgBox = styled.div`
 	overflow: hidden;
 	cursor: pointer;
 	img {
-		width: 100%;
+		width: 26rem;
 		height: 26.5rem;
 		border-radius: ${({ theme }) => theme.radius.s1};
+	}
+
+	@media (max-width: 768px) {
+		overflow: hidden;
+		width: 100%;
+		height: 20rem;
+		img {
+			width: 100%;
+			height: 20rem;
+		}
 	}
 `;
 
@@ -37,22 +58,31 @@ export const ContentBox = styled.div`
 `;
 
 export const VolunInfo = styled.div`
-	height: 100px;
+	height: 82px;
 	cursor: pointer;
 	p {
 		word-break: keep-all;
-
-		font-size: 2rem;
+		font-size: ${({ theme }) => theme.typography.size.default};
 		line-height: 2.4rem;
 		letter-spacing: -0.1px;
 		text-align: left;
-		height: 40px;
+		height: 20px;
 	}
 	p + p {
 		position: absolute;
 		font-weight: 500;
-		font-size: 1.3rem;
+		font-size: ${({ theme }) => theme.typography.size.subparagraph};
 		color: #999b9c;
+	}
+
+	@media (max-width: 768px) {
+		p {
+			font-size: ${({ theme }) => theme.typography.size.paragraph};
+		}
+		p + p {
+			font-weight: 500;
+			font-size: ${({ theme }) => theme.typography.size.subparagraph};
+		}
 	}
 `;
 
@@ -77,7 +107,7 @@ export const UserInfo = styled.div`
 	p {
 		margin-left: 1rem;
 		font-weight: 500;
-		font-size: 1.5rem;
+		font-size: ${({ theme }) => theme.typography.size.paragraph};
 		display: flex;
 		align-items: center;
 	}
@@ -88,8 +118,8 @@ export const Badge = styled.div<CardProps>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: white;
-	font-size: 1.7rem;
+	color: ${({ theme }) => theme.colors.background};
+	font-size: ${({ theme }) => theme.typography.size.paragraph};
 	position: absolute;
 	width: 50px;
 	height: 50px;
@@ -112,12 +142,20 @@ export const Badge = styled.div<CardProps>`
 		css`
 			background: #53595b;
 		`}
+
+  @media (max-width: 768px) {
+		width: 30px;
+		height: 30px;
+		font-size: ${({ theme }) => theme.typography.size.subparagraph};
+		left: 1rem;
+		top: 1rem;
+	}
 `;
 
 export const Button = styled.button`
 	border: none;
 	background-color: var(--button--color);
-	color: #ffffff;
+	color: ${({ theme }) => theme.colors.background};
 	height: 4.4rem;
 	border-radius: 5%;
 	cursor: pointer;
@@ -146,6 +184,10 @@ export const CommunityContainer = styled.div`
 	&:hover {
 		transform: scale(1.03);
 	}
+
+	@media (max-width: 768px) {
+		max-height: 25%;
+	}
 `;
 
 export const QnaType = styled.div`
@@ -158,6 +200,10 @@ export const QnaType = styled.div`
 	background-color: ${({ theme }) => theme.colors.green200};
 	border-radius: 50%;
 	font-size: 1.5rem;
+
+	@media (max-width: 768px) {
+		width: 5rem;
+	}
 `;
 
 export const TogetherType = styled.div`
@@ -171,6 +217,10 @@ export const TogetherType = styled.div`
 	background-color: ${({ theme }) => theme.colors.pink200};
 	border-radius: 50%;
 	font-size: 1.5rem;
+
+	@media (max-width: 768px) {
+		width: 5rem;
+	}
 `;
 
 export const CommunityTitle = styled.p`
@@ -194,6 +244,11 @@ export const SearchQna = styled.div`
 	background-color: ${({ theme }) => theme.colors.green200};
 	border-radius: 50%;
 	font-size: 1.8rem;
+
+	@media (max-width: 768px) {
+		width: 5rem;
+		font-size: 1.5rem;
+	}
 `;
 
 export const SearchTogether = styled.div`
@@ -206,12 +261,22 @@ export const SearchTogether = styled.div`
 	background-color: ${({ theme }) => theme.colors.pink200};
 	border-radius: 50%;
 	font-size: 1.8rem;
+
+	@media (max-width: 768px) {
+		width: 5rem;
+		font-size: 1.5rem;
+	}
 `;
 
 export const SearchTitle = styled.div`
 	min-width: 50%;
 	margin: 1rem 6rem 0 3rem;
 	font-size: 2.3rem;
+
+	@media (max-width: 768px) {
+		font-size: 1.8rem;
+		min-width: 40%;
+	}
 `;
 
 export const SearchNickname = styled.p`
@@ -220,6 +285,11 @@ export const SearchNickname = styled.p`
 	min-width: 20%;
 	font-size: 1.5rem;
 	color: ${({ theme }) => theme.colors.gray300};
+
+	@media (max-width: 768px) {
+		font-size: 1rem;
+		min-width: 20%;
+	}
 `;
 
 // Review Card
@@ -247,6 +317,10 @@ export const ImageContainer = styled.div`
 	height: 100%;
 	overflow: hidden;
 	border-radius: 12px 0 0 12px;
+
+	@media (max-width: 768px) {
+		width: 40%;
+	}
 `;
 
 export const ReviewImage = styled.img`
@@ -254,6 +328,12 @@ export const ReviewImage = styled.img`
 	height: 100%;
 	border: none;
 	transform: translateX(-1.5rem);
+
+	@media (max-width: 768px) {
+		width: auto;
+		height: 100%;
+		transform: translateX(-3.5rem);
+	}
 `;
 
 export const ReviewContainer = styled.div`
@@ -267,6 +347,10 @@ export const ReviewContainer = styled.div`
 export const ReviewTitle = styled.h2`
 	min-height: 20%;
 	font-size: 2rem;
+
+	@media (max-width: 768px) {
+		min-height: 25%;
+	}
 `;
 
 export const Nickname = styled.p`
@@ -353,6 +437,15 @@ export const TeamCardSection = styled.div`
 	border-radius: 12px;
 	word-break: keep-all;
 	cursor: pointer;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
+
+	@media (max-width: 450px) {
+		width: 100%;
+		height: 35rem;
+	}
 `;
 
 export const TeamImageContainer = styled.div`
@@ -378,6 +471,11 @@ export const TeamDescContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	@media (max-width: 450px) {
+		flex-direction: column;
+		align-items: start;
+	}
 `;
 
 export const WriteDate = styled.p`
@@ -388,6 +486,10 @@ export const WriteDate = styled.p`
 export const TeamUserNickname = styled.p`
 	font-size: 1.2rem;
 	color: #202020;
+
+	@media (max-width: 768px) {
+		margin-top: 0;
+	}
 `;
 
 export const TeamButtonContainer = styled.div`
@@ -463,7 +565,12 @@ export const TitleInfo = styled.h2`
 	line-height: 120%;
 	margin-top: 2rem;
 	margin-bottom: 2rem;
+	min-height: 5rem;
 	color: ${({ theme }) => theme.colors.text};
+
+	@media (max-width: 768px) {
+		font-size: 2rem;
+	}
 `;
 
 export const InfoBox = styled.div<CardProps>`
@@ -491,12 +598,20 @@ export const InfoBox = styled.div<CardProps>`
 			css`
 				color: ${({ theme }) => theme.colors.gray500};
 			`}
+      
+    @media (max-width: 768px) {
+			font-size: 1.5rem;
+		}
 	}
 `;
 
 export const VolunteerUserInfo = styled(UserInfo)`
 	margin-top: 0;
 	margin-right: 0.5rem;
+
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
+	}
 `;
 
 // UserCard

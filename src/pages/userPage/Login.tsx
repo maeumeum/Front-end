@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
+import useLoginStore from '@src/store/useLoginStore';
 import { post } from '@api/api';
-import { setToken } from '@api/token';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import {
 	LoginSection,
 	LogoContainer,
@@ -26,7 +26,7 @@ const Login = () => {
 	const [password, setPassword] = useState<string>('');
 	const [checkEmail, setCheckEmail] = useState<boolean>(true);
 	const [checkData, setCheckData] = useState<boolean>(true);
-
+	const { setIsLogin } = useLoginStore();
 	const navigate = useNavigate();
 
 	//이메일, 비밀번호 value
@@ -49,15 +49,17 @@ const Login = () => {
 		setCheckData(true);
 
 		try {
-			const response = await post<DataType>('/api/login', {
-				email,
-				password,
-			});
-			console.log(response.data);
-			// 토큰이 있다면 localStorage에 토큰 저장
-			if (response.data.token) {
-				setToken(response.data.token);
-			}
+			await post<DataType>(
+				'/api/login',
+				{
+					email,
+					password,
+				},
+				{
+					withCredentials: true,
+				},
+			);
+			setIsLogin();
 			window.location.reload();
 			setCheckData(true);
 			navigate('/');

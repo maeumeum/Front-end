@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const UserFormContainer = styled.div`
 	width: 70rem;
 	min-height: 50rem;
+	@media (max-width: 360px) {
+		width: 35rem;
+	}
 `;
 
 export const InputContainer = styled.div`
@@ -12,6 +15,24 @@ export const InputContainer = styled.div`
 	align-items: center;
 	p {
 		align-self: flex-start;
+	}
+
+	@media (max-width: 768px) {
+		button {
+			width: 73%;
+		}
+		input {
+			width: 50rem;
+		}
+	}
+
+	@media (max-width: 360px) {
+		button {
+			width: 58%;
+		}
+		input {
+			width: 100%;
+		}
 	}
 `;
 

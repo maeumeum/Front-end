@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
-import { MenuTitle, Menus } from '@components/Menu/menu';
-
+import {
+	MenuTitle,
+	Menus,
+	MenuMobileOl,
+	MenuMobileList,
+} from '@components/Menu/menu';
+import { useMediaQuery } from 'react-responsive';
 type MenuProps = {
 	title: keyof MenuItems;
 };
@@ -41,20 +46,36 @@ const MENU_ITEMS: MenuItems = {
 
 function Menu({ title }: MenuProps) {
 	const menuItems = MENU_ITEMS[title] || [];
-
+	const isPc = useMediaQuery({
+		query: '(min-width:1024px)',
+	});
 	return (
 		<>
-			{menuItems.length > 0 && (
-				<>
-					<MenuTitle>{title}</MenuTitle>
-					<Menus>
+			{isPc ? (
+				menuItems.length > 0 && (
+					<>
+						<MenuTitle>{title}</MenuTitle>
+						<Menus>
+							{menuItems.map((item) => (
+								<Link to={item.link} key={item.label}>
+									<p>{item.label}</p>
+								</Link>
+							))}
+						</Menus>
+					</>
+				)
+			) : (
+				<Menus>
+					<MenuMobileOl>
 						{menuItems.map((item) => (
-							<Link to={item.link} key={item.label}>
-								<p>{item.label}</p>
-							</Link>
+							<MenuMobileList key={item.label}>
+								<Link to={item.link}>
+									<p>{item.label}</p>
+								</Link>
+							</MenuMobileList>
 						))}
-					</Menus>
-				</>
+					</MenuMobileOl>
+				</Menus>
 			)}
 		</>
 	);

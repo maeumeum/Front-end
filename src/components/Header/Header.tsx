@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { getToken, deleteToken } from '@api/token';
+import { get } from '@api/api';
+import useLoginStore from '@src/store/useLoginStore';
 import MyPageButton from '@components/MyPage/MyPageButton';
+import HamburgerComponent from './Hamburger';
 import {
 	HeaderSection,
 	HeaderContainer,
 	LogoContainer,
 	MainLogo,
 	NavContainer,
+	MobileNavContainer,
 	NavCategory,
 	UtilContainer,
 	LoginButton,
@@ -20,15 +23,15 @@ import searchLogo from '@assets/icons/search.svg';
 
 const Header = () => {
 	const [checkToken, setCheckToken] = useState<boolean>(false);
-	const [click, setClick] = useState<string>('home');
+	const [click, setClick] = useState<string>('main');
+	const { isLogin, resetLogin } = useLoginStore();
 	const navigate = useNavigate();
 
-	// 토큰 유무
 	useEffect(() => {
-		if (getToken()) {
+		if (isLogin) {
 			setCheckToken(true);
 		}
-	}, []);
+	});
 
 	// 로그인 버튼을 클릭하여 로그인 화면으로 이동
 	const loginHandler = () => {
@@ -38,8 +41,9 @@ const Header = () => {
 	};
 
 	// 로그아웃 버튼 클릭하여 토큰 삭제
-	const logoutHandler = () => {
-		deleteToken();
+	const logoutHandler = async () => {
+		await get('/api/logout');
+		resetLogin();
 		setClick(() => 'home');
 		navigate('/');
 		window.location.reload();
@@ -47,7 +51,7 @@ const Header = () => {
 
 	// 로고를 클릭하여 메인 페이지로 이동
 	const mainHandler = () => {
-		setClick(() => 'home');
+		setClick(() => 'main');
 		navigate('/');
 	};
 
@@ -61,6 +65,7 @@ const Header = () => {
 	return (
 		<HeaderSection>
 			<HeaderContainer>
+				<HamburgerComponent setClick={setClick} />
 				<LogoContainer onClick={mainHandler}>
 					<MainLogo src={mainLogo} alt='mainLogo' />
 				</LogoContainer>
@@ -94,7 +99,7 @@ const Header = () => {
 					</NavCategory>
 				</NavContainer>
 				<UtilContainer>
-					<MyPageButton setClick={setClick} />
+					<MyPageButton setClick={setClick} header={true} />
 					{!checkToken ? (
 						<LoginButton onClick={loginHandler}>로그인</LoginButton>
 					) : (
@@ -105,6 +110,44 @@ const Header = () => {
 					</SearchButton>
 				</UtilContainer>
 			</HeaderContainer>
+			<MobileNavContainer>
+				<NavCategory
+					to='/'
+					className={click === 'main' ? 'main' : ''}
+					onClick={() => {
+						setClick(() => 'main');
+						window.scrollTo(0, 0);
+					}}>
+					홈
+				</NavCategory>
+				<NavCategory
+					to='/volunteers/ongoing'
+					className={click === 'volunteers' ? 'volunteers' : ''}
+					onClick={() => {
+						setClick(() => 'volunteers');
+						window.scrollTo(0, 0);
+					}}>
+					같이봉사해요
+				</NavCategory>
+				<NavCategory
+					to='/community/findfriend'
+					className={click === 'community' ? 'community' : ''}
+					onClick={() => {
+						setClick(() => 'community');
+						window.scrollTo(0, 0);
+					}}>
+					커뮤니티
+				</NavCategory>
+				<NavCategory
+					to='/review'
+					className={click === 'review' ? 'review' : ''}
+					onClick={() => {
+						setClick(() => 'review');
+						window.scrollTo(0, 0);
+					}}>
+					봉사후기
+				</NavCategory>
+			</MobileNavContainer>
 		</HeaderSection>
 	);
 };

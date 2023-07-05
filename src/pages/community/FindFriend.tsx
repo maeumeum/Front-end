@@ -21,8 +21,8 @@ import {
 import PostList from '@components/PostList/PostList.tsx';
 import Menu from '@components/Menu/Menu.tsx';
 import { get } from '@api/api';
-import DataType from '@src/types/dataType.ts';
-import findfriendImage from '@assets/images/findfriendImage.png';
+import { DataType } from '@src/types/dataType.ts';
+import findfriendImage from '@assets/images/findfriendImage.webp';
 import throttle from '@utils/throttle.ts';
 
 type PostData = {

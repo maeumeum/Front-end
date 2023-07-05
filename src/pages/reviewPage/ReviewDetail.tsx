@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { get, del, patch } from '@api/api';
-import { getToken } from '@api/token';
 import { dateFormatter } from '@src/utils/dateUtils';
 import {
 	DetailContainer,
@@ -21,19 +20,20 @@ import {
 	NameBox,
 	NanoId,
 } from '@src/pages/community/style';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import useAuthStore from '@src/store/useAuthStore.ts';
 import Swal from 'sweetalert2';
 import alertData from '@src/utils/swalObject';
+import { CommunityType } from '@src/types/communityType';
 
 const apiURL = import.meta.env.VITE_API_URL;
 
 const ReviewDetail = () => {
 	const navigate = useNavigate();
 	const { postId } = useParams() as { postId: string };
-	const [post, setPost] = useState<any>([]);
+	const [post, setPost] = useState<CommunityType | null>(null);
 	const [loginUser, setLoginUser] = useState(false);
-	const [datauser, setDataUser] = useState<any>('');
+	const [datauser, setDataUser] = useState<CommunityType | null>(null);
 	const { userData, getUserData } = useAuthStore();
 
 	useEffect(() => {
@@ -70,12 +70,7 @@ const ReviewDetail = () => {
 
 	const handleDelete = async () => {
 		try {
-			const token = getToken();
-			await del<DataType>(`/api/review/users/${postId}`, {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			});
+			await del<DataType>(`/api/review/users/${postId}`);
 			Swal.fire(alertData.successMessage('게시글이 삭제되었습니다.'));
 			navigate('/review');
 		} catch (error) {
@@ -84,12 +79,7 @@ const ReviewDetail = () => {
 	};
 
 	const handleReport = async () => {
-		const token = getToken();
-		await patch<DataType>(`/api/review/users/reports/${postId}`, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
+		await patch<DataType>(`/api/review/users/reports/${postId}`);
 		Swal.fire(alertData.ReportCompleted);
 	};
 
@@ -102,11 +92,10 @@ const ReviewDetail = () => {
 		'ko',
 	);
 
-	let formattedContent = [];
+	let formattedContent: string[] = [];
 	if (content) {
 		formattedContent = content.split('\n');
 	}
-
 	return (
 		<>
 			<DetailContainer>
@@ -115,8 +104,12 @@ const ReviewDetail = () => {
 					<SubContainer>
 						<InfoBox>
 							<NameBox>
-								<UserName>{datauser.nickname}</UserName>
-								<NanoId> #{datauser.nanoid}</NanoId>
+								{datauser && (
+									<>
+										<UserName>{datauser.nickname}</UserName>
+										<NanoId> #{datauser.nanoid}</NanoId>
+									</>
+								)}
 							</NameBox>
 							<Date>작성일 : {formattedDate}</Date>
 						</InfoBox>
@@ -134,7 +127,7 @@ const ReviewDetail = () => {
 				<ContentContainer>
 					{hasPostImage && (
 						<div>
-							{images.map((image: any, index: any) => (
+							{images.map((image: string, index: number) => (
 								<Image
 									key={index}
 									src={`${apiURL}/${image}`}

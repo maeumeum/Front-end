@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { useMediaQuery } from 'react-responsive';
 
 import {
 	Container,
@@ -17,10 +18,9 @@ import UploadTeamImg from '@components/Profile/TeamImg';
 import Tab from '@components/Tab/Tab.tsx';
 import alertData from '@utils/swalObject';
 import { validPhoneNum } from '@utils/signUpCheck.ts';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import { TabTypes } from '@src/types/myPageConstants';
 import { post, get } from '@api/api';
-import useSummitStore from '@src/store/useSummitStore';
 import {
 	teamNameError,
 	introduceError,
@@ -39,7 +39,7 @@ import {
 	WaitMessage,
 	InfoMessage,
 } from './style';
-import hug from '@assets/images/포옹.png';
+import hug from '@assets/images/jug.webp';
 
 const AuthTeam = () => {
 	const [category, setCategory] = useState<string>('');
@@ -51,10 +51,12 @@ const AuthTeam = () => {
 	const [location, setLocation] = useState<string>('');
 	const [phoneNum, setPhoneNum] = useState<string>('');
 	const [submit, setSubmit] = useState<boolean>(false);
-	const [isAuthorizaion, isSetAuthorizaion] = useState<boolean>(false);
+	const [isAuthorization, isSetAuthorization] = useState<boolean>(false);
+	const isMobile = useMediaQuery({
+		query: '(max-width:768px)',
+	});
 
 	const tabs = [TabTypes.GROUP_CERTIFICATION];
-	const { isSubmit, setIsSubmit } = useSummitStore();
 	const navigate = useNavigate();
 
 	//제출 여부 확인
@@ -62,11 +64,9 @@ const AuthTeam = () => {
 		const fetchData = async () => {
 			try {
 				const response = await get<DataType>('/api/users/info');
-				isSetAuthorizaion(response.data.authorization);
+				isSetAuthorization(response.data.authorization);
 			} catch (error) {
 				console.log(error);
-			} finally {
-				setIsSubmit();
 			}
 		};
 		fetchData();
@@ -98,7 +98,7 @@ const AuthTeam = () => {
 		if (file) {
 			formData.append('image', file);
 		}
-		await post<DataType>('/api/team/auth', formData, {});
+		await post<DataType>('/api/team/auth', formData);
 		navigate('/mypage');
 		Swal.fire(alertData.waitTeamCert);
 	};
@@ -109,13 +109,18 @@ const AuthTeam = () => {
 				<Menu title={'마이페이지'} />
 			</MenuBar>
 			<Main>
-				<TabMenu>
-					<Tab tabs={tabs} />
-				</TabMenu>
-
-				{isAuthorizaion ? (
+				{!isMobile && (
+					<TabMenu>
+						<Tab tabs={tabs} />
+					</TabMenu>
+				)}
+				{isAuthorization ? (
 					<InfoMessage>
-						<img src={hug} alt='인증유저' />
+						<img
+							src={hug}
+							alt='인증유저'
+							style={{ width: '30rem', height: '30rem' }}
+						/>
 						<h1>이미 인증된 유저입니다.</h1>
 						<h1>문의사항은 관리자에게 연락주세요:)</h1>
 						<h2>maum.elice@gmail.com</h2>
@@ -124,12 +129,11 @@ const AuthTeam = () => {
 					<>
 						<TeamForm>
 							<MainContainer>
-								{isSubmit && (
+								{isAuthorization && (
 									<WaitMessage>
 										<h1>현재 관리자가 검토중입니다. 조금만 기다려주세요:)</h1>
 									</WaitMessage>
 								)}
-
 								<TopTitle>팀 유형</TopTitle>
 								<TeamType>
 									<TeamTypeRadio
@@ -162,7 +166,13 @@ const AuthTeam = () => {
 								<Title>대표 이미지 등록</Title>
 								<UploadTeamImg setFile={setFile} />
 								<Title>설립일</Title>
-								<Calendar selectedDate={date} setSelectedDate={setDate} />
+								<Calendar
+									selectedDate={date}
+									setSelectedDate={(prevDate: Date | null) =>
+										setDate(prevDate as Date)
+									}
+									category='teamAuth'
+								/>
 								<Title>프로젝트 팀 소개</Title>
 								<TextAreaForm
 									submit={submit}
@@ -186,7 +196,7 @@ const AuthTeam = () => {
 									submit={submit}
 									inputType='text'
 									name='long'
-									placeholder='전화번호를 입력해주세요.'
+									placeholder='전화번호를 하이픈(-) 없이 입력해주세요.'
 									value={phoneNum}
 									onChangeFn={getFormChanger(setPhoneNum)}
 									errorMessage={phoneNumError}
@@ -205,8 +215,9 @@ const AuthTeam = () => {
 							</MainContainer>
 							<ButtonContainer>
 								<LargeButton
+									isMyPage={'mypage'}
 									onClick={clickHandler}
-									disabled={isSubmit ? true : false}>
+									disabled={isAuthorization ? true : false}>
 									제출하기
 								</LargeButton>
 							</ButtonContainer>

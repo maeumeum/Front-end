@@ -11,6 +11,11 @@ export const VolunteerTitle = styled.h2`
 	width: 50rem;
 	font-size: 3rem;
 	font-weight: 900;
+
+	@media (max-width: 768px) {
+		margin: 15rem 2rem 0;
+		font-size: 2rem;
+	}
 `;
 
 export const VolunteerContainer = styled.div`
@@ -19,6 +24,12 @@ export const VolunteerContainer = styled.div`
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	column-gap: 2rem;
+
+	@media (max-width: 768px) {
+		min-width: 33rem;
+		margin: 4rem 2rem;
+		grid-template-columns: repeat(2, 1fr);
+	}
 `;
 
 export const CommunityTitle = styled.h2`
@@ -26,12 +37,22 @@ export const CommunityTitle = styled.h2`
 	width: 30rem;
 	font-size: 3rem;
 	font-weight: 900;
+
+	@media (max-width: 768px) {
+		margin: 4rem 2rem 3rem;
+		font-size: 2rem;
+	}
 `;
 
 export const CommunityContainer = styled.div`
 	margin: 0 40rem;
 	padding-bottom: 12rem;
 	min-width: 112rem;
+
+	@media (max-width: 768px) {
+		min-width: 33rem;
+		margin: 0 2rem;
+	}
 `;
 
 export const ButtonContainer = styled.div`
@@ -56,6 +77,11 @@ export const Arrow = styled.div`
 		border: solid ${({ theme }) => theme.colors.green300};
 		border-width: 0 10px 10px 0;
 	}
+
+	@media (max-width: 768px) {
+		border-width: 0 8px 8px 0;
+		padding: 1.3rem;
+	}
 `;
 
 export const MoreContent = styled.p`
@@ -64,6 +90,10 @@ export const MoreContent = styled.p`
 
 export const NoSearchContainer = styled.div`
 	min-height: 100rem;
+
+	@media (max-width: 768px) {
+		min-height: 50rem;
+	}
 `;
 
 export const NoKeyword = styled.h2`
@@ -72,4 +102,9 @@ export const NoKeyword = styled.h2`
 	font-size: 3rem;
 	font-weight: 900;
 	color: #888888;
+
+	@media (max-width: 768px) {
+		margin: 15rem 0;
+		font-size: 2rem;
+	}
 `;

@@ -7,7 +7,7 @@ import {
 	VolunteerListType,
 	ReviewListType,
 } from '@src/types/cardType';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
 import {
 	MainSection,
 	TopSlogan,
@@ -32,8 +32,8 @@ import VolunteerCard from '@components/Card/VolunteerCard';
 import ReviewCard from '@components/Card/ReviewCard';
 import CommunityCard from '@components/Card/CommunityCard';
 import MainSkeleton from '@components/Skeleton/MainSkeleton';
-import CardImage from '@assets/images/mainImage.png';
-import MainImage from '@assets/images/mainImage2.png';
+import CardImage from '@assets/images/mainImage.webp';
+import MainImage from '@assets/images/mainImage2.webp';
 
 const Main = () => {
 	const [reviewList, setReviewList] = useState<ReviewListType>([]);
@@ -57,7 +57,7 @@ const Main = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			const responseData = await get<DataType>(
-				'/api/volunteers?skip=0&limit=16&status=true',
+				'/api/volunteers?skip=0&limit=8&status=true',
 			);
 			setVolunteerList(responseData.data.volunteerList);
 		};

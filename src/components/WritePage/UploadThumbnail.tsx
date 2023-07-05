@@ -1,11 +1,7 @@
 import React from 'react';
 
 import { ImageLabel, ImageInput } from '@components/Profile/myIntro';
-
-interface ImageData {
-	setFile: (file: File | null) => void;
-	imageType: 'thumbnail' | 'image';
-}
+import { ImageData } from '@src/types/dataType';
 
 const UploadThumbnail = ({ setFile, imageType }: ImageData) => {
 	const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ReviewCard from './ReviewCard.tsx';
-import img1 from '@src/assets/images/volunteer1.jpg';
-import img2 from '@src/assets/images/volunteer2.jpg';
+import img1 from '@src/assets/images/volunteer1.webp';
+import img2 from '@src/assets/images/volunteer2.webp';
 
 const meta: Meta<typeof ReviewCard> = {
 	title: 'Components/Card/ReviewCard',

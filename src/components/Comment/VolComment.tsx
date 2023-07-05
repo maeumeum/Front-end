@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getToken } from '@src/api/token';
 import {
 	Container,
 	Box,
@@ -23,18 +22,18 @@ import {
 	NameContainer,
 	NanoId,
 	Btn3,
-	RandomPhoto,
+	PhotoContainer,
 	Img,
-} from './CommentStyle';
-import DataType from '@src/types/dataType';
+} from './VolCommentStyle';
+import { DataType } from '@src/types/dataType';
 import { get, post, patch, del } from '@api/api';
 import { dateFormatter } from '@src/utils/dateUtils';
 import useAuthStore from '@src/store/useAuthStore';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
 import throttle from '@utils/throttle.ts';
-
-const apiURL = import.meta.env.VITE_API_URL;
+import { CommentListType, CommentType } from '@src/types/commentType';
+import defaultImage from '@assets/images/profileImg.webp';
 
 type CommentProps = {
 	postId: string;
@@ -46,7 +45,7 @@ type UserType = {
 
 const VolComment: React.FC<CommentProps> = ({ postId }) => {
 	const [inputArea, setInputArea] = useState('');
-	const [value, setValue] = useState<any[]>([]);
+	const [CommentList, setCommentList] = useState<CommentListType>([]);
 	const [editingCommentId, setEditingCommentId] = useState('');
 	const [editedComment, setEditedComment] = useState('');
 	const { userData, getUserData } = useAuthStore();
@@ -65,18 +64,18 @@ const VolComment: React.FC<CommentProps> = ({ postId }) => {
 			`/api/volunteerComments/${postId}?skip=0&limit=3`,
 			{},
 		);
-		setValue(response.data.volunteerCommentList);
+		setCommentList(response.data.volunteerCommentList);
 	};
 
 	const loadMoreData = async () => {
 		try {
 			if (!isLoad) {
 				const response = await get<DataType>(
-					`/api/volunteerComments/${postId}?skip=${value.length}&limit=3`,
+					`/api/volunteerComments/${postId}?skip=${CommentList.length}&limit=3`,
 					{},
 				);
 				const newPostListData = response.data.volunteerCommentList;
-				setValue((prevData) => [...prevData, ...newPostListData]);
+				setCommentList((prevData) => [...prevData, ...newPostListData]);
 				setLoad(response.data.hasMore);
 			}
 		} catch (error) {
@@ -86,7 +85,7 @@ const VolComment: React.FC<CommentProps> = ({ postId }) => {
 
 	// 무한 스크롤
 	useEffect(() => {
-		if (value.length > 0) {
+		if (CommentList.length > 0) {
 			const handleScroll = throttle(() => {
 				const { scrollTop, offsetHeight } = document.documentElement;
 				if (offsetHeight - window.innerHeight - scrollTop < 200) {
@@ -97,9 +96,11 @@ const VolComment: React.FC<CommentProps> = ({ postId }) => {
 			window.addEventListener('scroll', handleScroll);
 			return () => window.removeEventListener('scroll', handleScroll);
 		}
-	}, [value]);
+	}, [CommentList]);
 
-	const handleCommentChange = (event: any) => {
+	const handleCommentChange = (
+		event: React.ChangeEvent<HTMLTextAreaElement>,
+	) => {
 		const text = event.target.value;
 		if (text.length <= 200) {
 			setInputArea(text);
@@ -115,19 +116,10 @@ const VolComment: React.FC<CommentProps> = ({ postId }) => {
 			return;
 		}
 		try {
-			const token = getToken();
-			await post(
-				'/api/volunteerComments/',
-				{
-					volunteer_id: postId,
-					content: inputArea,
-				},
-				{
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				},
-			);
+			await post('/api/volunteerComments/', {
+				volunteer_id: postId,
+				content: inputArea,
+			});
 			setInputArea('');
 			getComments();
 		} catch (error) {
@@ -136,7 +128,9 @@ const VolComment: React.FC<CommentProps> = ({ postId }) => {
 	};
 
 	const handelEditingComment = (comment_id: string) => {
-		const comment = value.find((comment: any) => comment._id === comment_id);
+		const comment = CommentList.find(
+			(comment: CommentType) => comment._id === comment_id,
+		);
 		if (comment) {
 			setEditingCommentId(comment_id);
 			setEditedComment(comment.content);
@@ -148,44 +142,21 @@ const VolComment: React.FC<CommentProps> = ({ postId }) => {
 			alert('내용을 입력해주세요');
 			return;
 		}
-		const token = getToken();
-		await patch<DataType>(
-			`/api/volunteerComments/${comment_id}`,
-			{
-				content: editedComment,
-			},
-			{
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			},
-		);
+		await patch<DataType>(`/api/volunteerComments/${comment_id}`, {
+			content: editedComment,
+		});
 		setEditingCommentId('');
 		setEditedComment('');
 		getComments();
 	};
 
 	const handleDeleteComment = async (comment_id: string) => {
-		const token = getToken();
-		await del<DataType>(
-			`/api/volunteerComments/${comment_id}`,
-
-			{
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			},
-		);
+		await del<DataType>(`/api/volunteerComments/${comment_id}`);
 		getComments();
 	};
 
 	const handleReport = async (comment_id: string) => {
-		const token = getToken();
-		await patch<DataType>(`/api/volunteerComments/reports/${comment_id}`, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
+		await patch<DataType>(`/api/volunteerComments/reports/${comment_id}`);
 		Swal.fire(alertData.ReportCompleted);
 	};
 
@@ -212,19 +183,19 @@ const VolComment: React.FC<CommentProps> = ({ postId }) => {
 				<Box></Box>
 				<Comment>댓글 목록</Comment>
 			</Title>
-			{!value || value.length === 0 ? (
+			{!CommentList || CommentList.length === 0 ? (
 				<CommentHolder>등록된 댓글이 없습니다.</CommentHolder>
 			) : (
-				value &&
-				value.map((comment: any) => (
+				CommentList &&
+				CommentList.map((comment: CommentType) => (
 					<CommentContainer key={comment._id}>
 						<ProfileContainer>
-							<RandomPhoto>
+							<PhotoContainer>
 								<Img
-									src={`${apiURL}/${comment.user_id.image}`}
+									src={comment.user_id.image || defaultImage}
 									alt='profile-image'
 								/>
-							</RandomPhoto>
+							</PhotoContainer>
 							<UserContainer>
 								<NameContainer>
 									<UserName>{comment.user_id.nickname}</UserName>

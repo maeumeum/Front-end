@@ -3,6 +3,7 @@ import styled from 'styled-components';
 interface LargeButtonProps {
 	disabled?: boolean;
 	apply?: boolean;
+	isMyPage?: string;
 }
 const LargeButton = styled.button<LargeButtonProps>`
 	margin-top: ${({ apply }) => (apply ? '0' : '6rem')};
@@ -13,6 +14,17 @@ const LargeButton = styled.button<LargeButtonProps>`
 	border: none;
 	border-radius: 8px;
 	cursor: ${({ disabled }) => (disabled ? 'auto' : 'pointer')};
+
+	@media (max-width: 768px) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: ${({ isMyPage }) => (isMyPage === 'mypage' ? '95%' : '28rem')};
+		height: ${({ isMyPage }) => (isMyPage ? '6%' : '4rem')};
+		font-size: 1.5rem;
+		margin-top: 4rem;
+		padding: 1.5rem 0;
+	}
 `;
 
 export default LargeButton;

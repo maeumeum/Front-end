@@ -7,7 +7,8 @@ import LargeButton from '@components/Buttons/LargeButton';
 import TopBar from '@components/TopBar/TopBar';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
-import DataType from '@src/types/dataType';
+import { DataType } from '@src/types/dataType';
+import { useNavigate } from 'react-router-dom';
 interface MyReviewProps {
 	closeModal: () => void;
 	id?: string;
@@ -19,6 +20,7 @@ function MyReview({ closeModal, id }: MyReviewProps) {
 	const [files, setFiles] = useState<File[]>([]);
 	const [_, setIsUploaded] = useState<boolean>(false);
 	const volunteer_id = id;
+	const navigate = useNavigate();
 
 	const handleContentChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		setContent(e.target.value);
@@ -61,13 +63,13 @@ function MyReview({ closeModal, id }: MyReviewProps) {
 					'Content-Type': 'multipart/form-data',
 				},
 			});
-			window.location.reload();
 			setIsUploaded(true);
 		} catch (error) {
 			console.log(error);
 		}
 		Swal.fire(alertData.successMessage('리뷰가 성공적으로 등록되었습니다:)'));
 		closeModal();
+		navigate('/mypage/review');
 	};
 
 	return (

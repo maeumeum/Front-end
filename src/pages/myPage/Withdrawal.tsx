@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 import {
 	Container,
 	Main,
@@ -18,15 +20,15 @@ import {
 import { validEmail, validPassword } from '@src/utils/signUpCheck.ts';
 import { emailError, passwordError } from '@src/utils/errorMessage.ts';
 import InputForm from '@src/components/UserForm/InputForm.tsx';
-import Swal from 'sweetalert2';
-import { del } from '@api/api';
-import { deleteToken } from '@api/token';
+import { get, del } from '@api/api';
+import useLoginStore from '@src/store/useLoginStore';
 import alertData from '@utils/swalObject';
 
 function Withdrawal() {
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [submit, setSubmit] = useState<boolean>(false);
+	const { resetLogin } = useLoginStore();
 	const tabs = [TabTypes.WITHDRAWAL];
 	const navigate = useNavigate();
 
@@ -57,7 +59,8 @@ function Withdrawal() {
 				);
 				return;
 			}
-			deleteToken();
+			await get('/api/logout');
+			resetLogin();
 			navigate('/');
 			Swal.fire(
 				alertData.successMessage('다음에 다시 만날 날을 기대합니다!👋🏻'),
@@ -77,7 +80,7 @@ function Withdrawal() {
 				</TabMenu>
 				<WithdrawalContainer>
 					<WithdrawalSection>
-						<SignUpForm>
+						<SignUpForm isWidthdrawal={true}>
 							<InputForm
 								submit={submit}
 								dataName='이메일'
@@ -100,7 +103,9 @@ function Withdrawal() {
 								errorMessage={passwordError}
 								validPassword={validPassword}
 							/>
-							<LargeButton onClick={handleSubmit}>탈퇴하기</LargeButton>
+							<LargeButton isMyPage={'mypage'} onClick={handleSubmit}>
+								탈퇴하기
+							</LargeButton>
 						</SignUpForm>
 					</WithdrawalSection>
 				</WithdrawalContainer>

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import {
 	Container,
 	TitleContainer,
@@ -9,37 +8,31 @@ import {
 	Content,
 	Image,
 } from './ActivityStyle';
-import DataType from '@src/types/dataType.ts';
-import { get } from '@api/api';
+import { VolunteerType } from '@src/types/cardType';
 
-const apiURL = import.meta.env.VITE_API_URL;
-
-type ActivityIntroProps = {
-	postId: string;
-	uuid: string;
-};
+interface ActivityIntroProps {
+	volunteerData: VolunteerType;
+}
 
 // eslint-disable-next-line react/prop-types
-const ActivityIntro: React.FC<ActivityIntroProps> = ({ postId, uuid }) => {
-	const [post, setPost] = useState<any>([]);
-	useEffect(() => {
-		const fetchPost = async () => {
-			const response = await get<DataType>(`/api/volunteers/${postId}`, {
-				data: {
-					uuid: uuid,
-				},
-			});
-			setPost(response.data);
-		};
-		fetchPost();
-	}, []);
+const ActivityIntro = ({ volunteerData }: ActivityIntroProps) => {
+	const hasPostImage = !!volunteerData.images;
 
-	const hasPostImage = !!post.images;
-
-	let formattedContent = [];
-	if (post.content) {
-		formattedContent = post.content.split('\n');
+	let formattedContent: string[] = [];
+	if (volunteerData.content) {
+		formattedContent = volunteerData.content.split('\n');
 	}
+
+	const getImageWidth = (imageCount: number) => {
+		if (imageCount >= 4) {
+			return '25%';
+		} else if (imageCount === 2) {
+			return '50%';
+		} else if (imageCount === 1) {
+			return '100%';
+		}
+	};
+
 	return (
 		<>
 			<Container>
@@ -50,10 +43,11 @@ const ActivityIntro: React.FC<ActivityIntroProps> = ({ postId, uuid }) => {
 
 				{hasPostImage && (
 					<ImgContainer>
-						{post.images.map((image: any, index: any) => (
+						{volunteerData.images.map((image: string, index: number) => (
 							<Image
 								key={index}
-								src={`${apiURL}/${image}`}
+								src={image}
+								style={{ width: getImageWidth(volunteerData.images.length) }}
 								alt='content-image'
 							/>
 						))}
@@ -62,7 +56,7 @@ const ActivityIntro: React.FC<ActivityIntroProps> = ({ postId, uuid }) => {
 
 				<ContentsContainer>
 					<Content>
-						{formattedContent.map((line: string, index: string) => {
+						{formattedContent.map((line: string, index: number) => {
 							return (
 								<span key={index}>
 									{line}

@@ -1,5 +1,6 @@
-import { CommunityType } from '@src/types/cardType';
+import { useMediaQuery } from 'react-responsive';
 
+import { CommunityCardProps } from '@src/types/cardType';
 import {
 	CommunityContainer,
 	QnaType,
@@ -12,17 +13,15 @@ import {
 	SearchNickname,
 } from '@components/Card/card';
 
-interface CommunityCardProps {
-	communityData: CommunityType;
-	onClick: React.MouseEventHandler<HTMLDivElement>;
-	searchPage?: boolean;
-}
-
 const CommunityCard = ({
 	communityData,
 	onClick,
 	searchPage,
 }: CommunityCardProps) => {
+	const isPc = useMediaQuery({
+		query: '(min-width:769px)',
+	});
+
 	const title =
 		communityData.title.length > 15
 			? `${communityData.title.slice(0, 15)}...`
@@ -31,6 +30,16 @@ const CommunityCard = ({
 	const searchTitle =
 		communityData.title.length > 30
 			? `${communityData.title.slice(0, 30)}...`
+			: communityData.title;
+
+	const mobileTitle =
+		communityData.title.length > 25
+			? `${communityData.title.slice(0, 25)}...`
+			: communityData.title;
+
+	const mobileSearchTitle =
+		communityData.title.length > 10
+			? `${communityData.title.slice(0, 10)}...`
 			: communityData.title;
 
 	return (
@@ -44,7 +53,11 @@ const CommunityCard = ({
 							<TogetherType>동행</TogetherType>
 						)}
 						<div>
-							<CommunityTitle>{title}</CommunityTitle>
+							{isPc ? (
+								<CommunityTitle>{title}</CommunityTitle>
+							) : (
+								<CommunityTitle>{mobileTitle}</CommunityTitle>
+							)}
 							<WriterNickname>{communityData.user_id.nickname}</WriterNickname>
 						</div>
 					</>
@@ -55,7 +68,11 @@ const CommunityCard = ({
 						) : (
 							<SearchTogether>동행</SearchTogether>
 						)}
-						<SearchTitle>{searchTitle}</SearchTitle>
+						{isPc ? (
+							<SearchTitle>{searchTitle}</SearchTitle>
+						) : (
+							<SearchTitle>{mobileSearchTitle}</SearchTitle>
+						)}
 						<SearchNickname>{communityData.user_id.nickname}</SearchNickname>
 					</>
 				)}

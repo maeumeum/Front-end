@@ -1,21 +1,39 @@
 import { useEffect, Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
+import useLoginStore from '@src/store/useLoginStore.tsx';
 import useAuthStore from '@src/store/useAuthStore';
-import { getToken } from '@api/token';
-import { ButtonContainer, ButtonWord } from './myPage.ts';
+import useModalStore from '@src/store/userModalStore.ts';
+import {
+	ButtonContainer,
+	ButtonWord,
+	MobileButton,
+	MobileWord,
+} from './myPage.ts';
 
 interface ClickProps {
 	setClick: Dispatch<SetStateAction<string>>;
+	header?: boolean;
 }
 
-const MyPageButton = ({ setClick }: ClickProps) => {
+const MyPageButton = ({ setClick, header }: ClickProps) => {
+	const isPc = useMediaQuery({
+		query: '(min-width:1024px)',
+	});
+	const isMobile = useMediaQuery({
+		query: '(max-width:1023px)',
+	});
 	const { userData, getUserData } = useAuthStore();
+	const { isLogin } = useLoginStore();
+	const { toggleModal } = useModalStore();
 	const navigate = useNavigate();
 
 	// user 정보 불러오기
 	useEffect(() => {
-		getUserData();
+		if (isLogin) {
+			getUserData();
+		}
 	}, []);
 
 	// user page
@@ -23,6 +41,7 @@ const MyPageButton = ({ setClick }: ClickProps) => {
 		navigate('/mypage');
 		window.scrollTo(0, 0);
 		setClick(() => 'home');
+		toggleModal();
 	};
 
 	// admin page
@@ -30,13 +49,14 @@ const MyPageButton = ({ setClick }: ClickProps) => {
 		navigate('/admin/team_auth');
 		window.scrollTo(0, 0);
 		setClick(() => 'home');
+		toggleModal();
 	};
 
 	return (
 		<>
-			{getToken() !== null ? (
+			{isLogin && userData !== null && isPc ? (
 				<>
-					{userData !== null && userData.role === 'user' ? (
+					{userData.role === 'user' ? (
 						<ButtonContainer onClick={myPageHandler}>
 							<ButtonWord>MY</ButtonWord>
 						</ButtonContainer>
@@ -44,6 +64,18 @@ const MyPageButton = ({ setClick }: ClickProps) => {
 						<ButtonContainer onClick={adminHandler}>
 							<ButtonWord>관리자</ButtonWord>
 						</ButtonContainer>
+					)}
+				</>
+			) : isLogin && isMobile && !header ? (
+				<>
+					{userData !== null && userData.role === 'user' ? (
+						<MobileButton onClick={myPageHandler}>
+							<MobileWord>마이페이지</MobileWord>
+						</MobileButton>
+					) : (
+						<MobileButton onClick={adminHandler}>
+							<MobileWord>관리자 페이지</MobileWord>
+						</MobileButton>
 					)}
 				</>
 			) : (

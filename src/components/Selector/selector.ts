@@ -25,6 +25,11 @@ export const OptionColorLarge = styled.option`
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.green200};
 	}
+
+	@media (max-width: 768px) {
+		width: 13rem;
+		font-size: 2rem;
+	}
 `;
 
 export const SelectColorLarge = styled.select`
@@ -35,4 +40,9 @@ export const SelectColorLarge = styled.select`
 	border: none;
 	color: ${({ theme }) => theme.colors.green200};
 	z-index: 1;
+
+	@media (max-width: 768px) {
+		width: 13rem;
+		font-size: 2rem;
+	}
 `;
