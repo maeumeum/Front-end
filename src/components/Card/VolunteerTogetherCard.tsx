@@ -25,8 +25,6 @@ interface VolunteerCardProps {
 	volunteerData: VolunteerTogetherType;
 }
 
-const url = import.meta.env.VITE_API_URL;
-
 const VolunteerTogetherCard = ({ volunteerData }: VolunteerCardProps) => {
 	const navigate = useNavigate();
 
