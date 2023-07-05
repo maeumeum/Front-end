@@ -24,10 +24,10 @@ export const ImgContainer = styled.div`
 	margin-left: 2rem;
 	display: flex;
 	flex-wrap: nowrap;
-	justify-content: center;
+	/* justify-content: center; */
 `;
 export const Image = styled.img`
-	width: 70%;
+	width: 25%;
 	height: 40rem;
 
 	@media (max-width: 768px) {
