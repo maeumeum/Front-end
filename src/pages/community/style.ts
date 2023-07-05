@@ -230,6 +230,10 @@ export const Btn = styled.button`
 		margin-right: 2rem;
 		font-size: 1.5rem;
 	}
+	@media (max-width: 360px) {
+		margin-left: -1rem;
+		width: 8rem;
+	}
 `;
 
 export const BtnDelete = styled.button`
@@ -248,6 +252,10 @@ export const BtnDelete = styled.button`
 	}
 	@media (max-width: 768px) {
 		font-size: 1.5rem;
+	}
+	@media (max-width: 360px) {
+		margin-left: -8rem;
+		width: 8rem;
 	}
 `;
 

@@ -33,8 +33,7 @@ import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
 import throttle from '@utils/throttle.ts';
 import { CommentListType, CommentType } from '@src/types/commentType';
-
-const apiURL = import.meta.env.VITE_API_URL;
+import defaultImage from '@assets/images/profileImg.webp';
 
 type CommentProps = {
 	postId: string;
@@ -192,7 +191,7 @@ const CommentSection: React.FC<CommentProps> = ({ postId }) => {
 						<ProfileContainer>
 							<PhotoContainer>
 								<Img
-									src={`${apiURL}/${comment.user_id.image}`}
+									src={comment.user_id.image || defaultImage}
 									alt='profile-image'
 								/>
 							</PhotoContainer>
