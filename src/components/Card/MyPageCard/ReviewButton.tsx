@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ButtonContainer } from '@components/Card/Card.ts';
+import { ButtonContainer } from '@components/Card/card.ts';
 import { SmallButton } from '@components/Buttons/SmallButton.ts';
 import { ReviewProps } from '@src/types/cardType';
 import Modal from '@components/Modal/Modal.tsx';
