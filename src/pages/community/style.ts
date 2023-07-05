@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const PageContainer = styled.div`
 	margin-bottom: 40rem;
 	margin-top: 0;
+	width: 100%;
 `;
 
 export const MenuBar = styled.div`
@@ -76,14 +77,13 @@ export const MiddleContainer = styled.div`
 	display: block;
 	margin-left: 25rem;
 	margin-bottom: 10rem;
-
+	width: 100%;
 	@media (max-width: 768px) {
-		margin-left: 0rem;
+		margin-left: -15rem;
 		margin-top: 20rem;
 	}
 	@media (max-width: 360px) {
 		margin-top: 15rem;
-		margin-left: -20rem;
 	}
 `;
 
@@ -154,10 +154,10 @@ export const Highlight = styled.span`
 export const NumberWriteContainer = styled.div`
 	display: flex;
 	justify-content: end;
-	width: 101rem;
+	width: 100%;
 	margin: 5.8rem auto;
 	@media (max-width: 360px) {
-		width: 110%;
+		width: 100%;
 	}
 `;
 
@@ -341,5 +341,6 @@ export const BottomArea = styled.div`
 	@media (max-width: 768px) {
 		margin-left: 3rem;
 		margin-top: -10rem;
+		width: 100%;
 	}
 `;
