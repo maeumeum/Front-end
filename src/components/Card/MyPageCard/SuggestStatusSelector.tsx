@@ -1,5 +1,5 @@
 import { SuggestStatusSelectorProps } from '@src/types/cardType';
-import { SelectContainer } from '@components/Card/Card.ts';
+import { SelectContainer } from '@components/Card/card.ts';
 import Selector from '@components/Selector/Selector.tsx';
 import Swal from 'sweetalert2';
 import alertData from '@src/utils/swalObject.ts';
