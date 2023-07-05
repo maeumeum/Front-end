@@ -30,6 +30,8 @@ function ProfileImg() {
 		}
 	}, [userData]);
 
+	console.log(userData);
+
 	const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedFile = e.target.files?.[0];
 		if (selectedFile) {

@@ -40,9 +40,12 @@ export const ImgBox = styled.div`
 	}
 
 	@media (max-width: 768px) {
+		overflow: hidden;
+		width: 100%;
+		height: 20rem;
 		img {
 			width: 100%;
-			height: auto;
+			height: 20rem;
 		}
 	}
 `;
@@ -434,6 +437,15 @@ export const TeamCardSection = styled.div`
 	border-radius: 12px;
 	word-break: keep-all;
 	cursor: pointer;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
+
+	@media (max-width: 450px) {
+		width: 100%;
+		height: 35rem;
+	}
 `;
 
 export const TeamImageContainer = styled.div`
@@ -459,6 +471,11 @@ export const TeamDescContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	@media (max-width: 450px) {
+		flex-direction: column;
+		align-items: start;
+	}
 `;
 
 export const WriteDate = styled.p`
@@ -469,6 +486,10 @@ export const WriteDate = styled.p`
 export const TeamUserNickname = styled.p`
 	font-size: 1.2rem;
 	color: #202020;
+
+	@media (max-width: 768px) {
+		margin-top: 0;
+	}
 `;
 
 export const TeamButtonContainer = styled.div`
@@ -544,6 +565,7 @@ export const TitleInfo = styled.h2`
 	line-height: 120%;
 	margin-top: 2rem;
 	margin-bottom: 2rem;
+	min-height: 5rem;
 	color: ${({ theme }) => theme.colors.text};
 
 	@media (max-width: 768px) {

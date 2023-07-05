@@ -49,6 +49,7 @@ const MyPageButton = ({ setClick, header }: ClickProps) => {
 		navigate('/admin/team_auth');
 		window.scrollTo(0, 0);
 		setClick(() => 'home');
+		toggleModal();
 	};
 
 	return (

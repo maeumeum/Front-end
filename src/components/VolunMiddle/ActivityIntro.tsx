@@ -10,8 +10,6 @@ import {
 } from './ActivityStyle';
 import { VolunteerType } from '@src/types/cardType';
 
-const apiURL = import.meta.env.VITE_API_URL;
-
 interface ActivityIntroProps {
 	volunteerData: VolunteerType;
 }
@@ -24,6 +22,16 @@ const ActivityIntro = ({ volunteerData }: ActivityIntroProps) => {
 	if (volunteerData.content) {
 		formattedContent = volunteerData.content.split('\n');
 	}
+
+	const getImageWidth = (imageCount: number) => {
+		if (imageCount >= 4) {
+			return '25%';
+		} else if (imageCount === 2) {
+			return '50%';
+		} else if (imageCount === 1) {
+			return '100%';
+		}
+	};
 
 	return (
 		<>
@@ -38,7 +46,8 @@ const ActivityIntro = ({ volunteerData }: ActivityIntroProps) => {
 						{volunteerData.images.map((image: string, index: number) => (
 							<Image
 								key={index}
-								src={`${apiURL}/${image}`}
+								src={image}
+								style={{ width: getImageWidth(volunteerData.images.length) }}
 								alt='content-image'
 							/>
 						))}

@@ -5,6 +5,7 @@ export const Container = styled.div`
 	margin: 0 auto;
 	@media (max-width: 768px) {
 		margin-left: 3rem;
+		width: 80%;
 	}
 `;
 
@@ -15,6 +16,7 @@ export const Header = styled.header`
 
 export const Text = styled.p`
 	font-size: 2rem;
+	width: 100%;
 `;
 export const ActiveBtn = styled.div`
 	&:hover {
