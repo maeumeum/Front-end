@@ -9,9 +9,10 @@ import {
 	PostContents,
 	PostButtons,
 	AcceptButtons,
+	Title,
 } from './PostListStyle';
 
-import { Title, PostBox as PostBoxStyle } from '@components/MyPost/myPost';
+import { PostBox as PostBoxStyle } from '@components/MyPost/myPost';
 
 type PostListProps = {
 	postTitle: string;
