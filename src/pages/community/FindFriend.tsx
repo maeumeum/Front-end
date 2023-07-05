@@ -128,12 +128,9 @@ const FindFriend = () => {
 					<BigText>동행구해요!</BigText>
 					<Sub>
 						<p>마음이 통하는 친구들과 아름다운 마음을 이어나가요</p>
-						<p>
-							<FfHighLight>
-								제목에 봉사활동의 정보를 포함하면 더욱 많은 댓글을 받을 수
-								있어요
-							</FfHighLight>
-						</p>
+						<FfHighLight>
+							제목에 봉사활동의 정보를 포함하면 더욱 많은 댓글을 받을 수 있어요
+						</FfHighLight>
 					</Sub>
 				</MiddleContainer>
 				<SearchContainer>
