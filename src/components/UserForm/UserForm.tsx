@@ -14,7 +14,6 @@ import { get, post, patch } from '@api/api';
 import { validPassword } from '@utils/signUpCheck.ts';
 import { passwordError, passwordCheckError } from '@utils/errorMessage.ts';
 import InputForm from '@src/components/UserForm/InputForm.tsx';
-import styled from 'styled-components';
 
 interface UserFormProps {
 	closeModal: () => void;
