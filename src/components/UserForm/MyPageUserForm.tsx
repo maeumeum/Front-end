@@ -173,7 +173,7 @@ function MyPageUserForm({ pageType }: MyPageUserFormProps) {
 					/>
 					<ButtonContainer>
 						{!canModify && (
-							<LargeButton onClick={changePwClickHandler}>
+							<LargeButton onClick={changePwClickHandler} isMyPage={'mypage'}>
 								비밀번호변경
 							</LargeButton>
 						)}

@@ -14,6 +14,7 @@ import { get, post, patch } from '@api/api';
 import { validPassword } from '@utils/signUpCheck.ts';
 import { passwordError, passwordCheckError } from '@utils/errorMessage.ts';
 import InputForm from '@src/components/UserForm/InputForm.tsx';
+import styled from 'styled-components';
 
 interface UserFormProps {
 	closeModal: () => void;
@@ -86,7 +87,6 @@ function UserForm({ closeModal, isChangePasswordModal }: UserFormProps) {
 		<>
 			<UserFormContainer>
 				<TopBar title={modalTitle} text={modalText} modal='modal' />
-
 				<InputContainer>
 					<div>
 						<InputForm
@@ -117,6 +117,7 @@ function UserForm({ closeModal, isChangePasswordModal }: UserFormProps) {
 							/>
 						</div>
 					)}
+
 					<LargeButton isMyPage={'mypage'} onClick={changePasswordHandle}>
 						확인하기
 					</LargeButton>

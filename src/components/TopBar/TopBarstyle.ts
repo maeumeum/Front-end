@@ -17,6 +17,11 @@ export const TopBarBox = styled.div<BarProps>`
 			margin-top: 1rem;
 			width: 100%;
 		`}
+
+	@media (max-width: 360px) {
+		width: 35rem;
+		height: 9rem;
+	}
 `;
 export const TextContainer = styled.div`
 	box-sizing: border-box;
@@ -29,6 +34,9 @@ export const Title = styled.p`
 	font-size: 3.2rem;
 	color: #666666;
 	font-weight: bold;
+	@media (max-width: 360px) {
+		font-size: 2rem;
+	}
 `;
 export const SubText = styled.p`
 	font-size: 1.6rem;
