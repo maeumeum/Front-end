@@ -24,6 +24,7 @@ import { get, post } from '@api/api';
 import { VolunteerDataType } from '@src/types/dataType';
 import { DataType } from '@src/types/dataType';
 import alertData from '@src/utils/swalObject';
+import defaultImg from '@assets/images/기본프로필이미지.webp';
 
 const truncateTitle = (title: string) => {
 	if (title.length > 40) {
@@ -59,18 +60,17 @@ function VolunInfo() {
 		}
 	};
 
-	const apiURL = import.meta.env.VITE_API_URL;
-
 	return (
 		<>
 			{volunteerData && (
 				<div>
 					<IntroContainer>
 						<ImgContainer>
-							<img
-								src={`${apiURL}/${volunteerData.image}`}
-								alt='팀대표이미지'
-							/>
+							{!volunteerData?.image ? (
+								<img src={defaultImg} alt='팀대표이미지' />
+							) : (
+								<img src={volunteerData.image} alt='팀대표이미지' />
+							)}
 							<Badge>{volunteerData.statusName}</Badge>
 						</ImgContainer>
 						<TeamInfo>

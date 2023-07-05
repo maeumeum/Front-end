@@ -23,7 +23,7 @@ export const ImgContainer = styled.div`
 	input {
 		opacity: 0;
 		position: absolute;
-		top: 0;
+		top: 1;
 		left: 0;
 		cursor: pointer;
 	}

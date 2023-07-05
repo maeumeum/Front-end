@@ -30,7 +30,7 @@ export const Image = styled.img`
 	}
 `;
 export const ContentsContainer = styled.div`
-	width: 112rem;
+	width: 100%;
 	height: auto;
 	margin-top: 10rem;
 `;

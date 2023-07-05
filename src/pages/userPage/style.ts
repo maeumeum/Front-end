@@ -190,7 +190,7 @@ export const SignUpForm = styled.div<SignUpProps>`
 		top: 15.3rem;
 
 		@media (max-width: 768px) {
-			left: 12.8rem;
+			left: 6.3rem;
 		}
 	}
 

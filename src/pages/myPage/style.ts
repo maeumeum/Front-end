@@ -44,20 +44,32 @@ export const TeamTypeRadio = styled.input`
 	font-weight: ${({ theme }) => theme.typography.weight.bold};
 `;
 
-export const MainContainer = styled.div``;
+export const MainContainer = styled.div`
+	@media (max-width: 768px) {
+		width: 100%;
+	}
+
+	textarea {
+		@media (max-width: 768px) {
+			width: 93%;
+		}
+	}
+`;
 
 export const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	margin-top: 3rem;
+	width: 100%;
 
 	button {
-		width: 60rem;
-	}
+		@media (min-width: 0px) and (max-width: 600px) {
+			width: 43rem;
+			height: 5rem;
+		}
 
-	button {
-		@media (max-width: 768px) {
-			width: 56rem;
+		@media (min-width: 768px) {
+			width: 60rem;
 			height: 5rem;
 		}
 	}
