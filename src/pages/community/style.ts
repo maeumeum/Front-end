@@ -36,7 +36,7 @@ export const MenuBar = styled.div`
 	@media (max-width: 360px) {
 		width: 100%;
 		margin-left: 0;
-		top: 35rem;
+		top: 37rem;
 	}
 `;
 
@@ -77,13 +77,14 @@ export const MiddleContainer = styled.div`
 	display: block;
 	margin-left: 25rem;
 	margin-bottom: 10rem;
-	width: 100%;
+	width: 80%;
 	@media (max-width: 768px) {
 		margin-left: -15rem;
 		margin-top: 20rem;
 	}
 	@media (max-width: 360px) {
 		margin-top: 15rem;
+		width: 100%;
 	}
 `;
 

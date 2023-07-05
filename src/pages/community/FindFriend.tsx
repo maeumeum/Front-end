@@ -24,6 +24,7 @@ import { get } from '@api/api';
 import { DataType } from '@src/types/dataType.ts';
 import findfriendImage from '@assets/images/findfriendImage.webp';
 import throttle from '@utils/throttle.ts';
+import useLoginStore from '@src/store/useLoginStore';
 
 type PostData = {
 	_id: string;
@@ -35,6 +36,14 @@ const FindFriend = () => {
 	const [postListData, setPostListData] = useState<PostData[]>([]);
 	const [query, setQuery] = useState<string>('');
 	const [isLoad, setLoad] = useState<boolean>(false);
+	const [checkToken, setCheckToken] = useState<boolean>(false);
+	const { isLogin } = useLoginStore();
+
+	useEffect(() => {
+		if (isLogin) {
+			setCheckToken(true);
+		}
+	});
 
 	// 처음 데이터 불러오기
 	useEffect(() => {
@@ -45,6 +54,7 @@ const FindFriend = () => {
 			);
 			setPostListData(response.data.categoryPost);
 			setLoad(response.data.hasMore);
+			console.log('data', response);
 		};
 		fetchPostList();
 		window.scrollTo(0, 0);
@@ -143,7 +153,7 @@ const FindFriend = () => {
 					<BottomArea>
 						<SearchBar onSearch={handleSearch} />
 						<NumberWriteContainer>
-							<WriteButton toNavigate={navigateWrite} />
+							{checkToken && <WriteButton toNavigate={navigateWrite} />}
 						</NumberWriteContainer>
 						{postListData !== null &&
 							postListData.length > 0 &&
