@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import ReactModal from 'react-modal';
 import Swal from 'sweetalert2';
+import { useMediaQuery } from 'react-responsive';
 
 import { dateFormatter } from '@utils/dateUtils';
 import { post } from '@api/api';
@@ -12,6 +13,7 @@ import {
 import alertData from '@utils/swalObject';
 import {
 	customStyles,
+	mobileTeamStyles,
 	MainContainer,
 	TopContainer,
 	MainTitle,
@@ -32,19 +34,19 @@ interface TeamModalProps {
 	setIsModified: Dispatch<SetStateAction<boolean>>;
 }
 
-const apiURL = import.meta.env.VITE_API_URL;
-
 const TeamModal = ({
 	isOpen,
 	closeModal,
 	teamData,
 	setIsModified,
 }: TeamModalProps) => {
+	const isMobile = useMediaQuery({
+		query: '(max-width:768px)',
+	});
 	const handleClose = () => {
 		closeModal();
 	};
 
-	const image = `${apiURL}/${teamData.image}`;
 	const date = dateFormatter(teamData.establishmentDate, 'YYYY년 MM월 DD일');
 	const introduction = teamData.introduction.split('\r\n');
 	const briefHistory = teamData.briefHistory.split('\r\n');
@@ -89,13 +91,13 @@ const TeamModal = ({
 		<ReactModal
 			isOpen={isOpen}
 			onRequestClose={handleClose}
-			style={customStyles}>
+			style={isMobile ? mobileTeamStyles : customStyles}>
 			<MainContainer>
 				<MainTitle>
 					[{teamData.category}] {teamData.teamName}
 				</MainTitle>
 				<TopContainer>
-					<TeamLogo src={image} alt='teamLogo' />
+					<TeamLogo src={teamData.image} alt='teamLogo' />
 					<DescContainer>
 						<Desc>신청자</Desc> {teamData.user_id.nickname}
 						<Desc>설립일</Desc> {date}
