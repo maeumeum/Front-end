@@ -21,9 +21,14 @@ export const ImgContainer = styled.div`
 	width: 100%;
 	height: auto;
 	margin-top: 10rem;
+	margin-left: 2rem;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
 `;
 export const Image = styled.img`
-	width: 100%;
+	width: 70%;
+	height: 40rem;
 
 	@media (max-width: 768px) {
 		width: 55%;
