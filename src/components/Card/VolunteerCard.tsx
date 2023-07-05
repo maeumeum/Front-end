@@ -7,6 +7,7 @@ import {
 	RecruitStatus,
 	VolunteerIntroContainer,
 	VolunteerTitle,
+	VolunteerContent,
 } from '@components/Card/card';
 
 interface VolunteerCardProps {
@@ -16,10 +17,8 @@ interface VolunteerCardProps {
 
 import imgData from '@assets/images/volunteer1.webp';
 
-const apiURL = import.meta.env.VITE_API_URL;
-
 const VolunteerCard = ({ volunteerData, onClick }: VolunteerCardProps) => {
-	const volunteerImg = `${apiURL}/${volunteerData.images[0]}`;
+	const volunteerImg = `${volunteerData.images[0]}`;
 
 	return (
 		<VolunteerSection onClick={onClick}>
@@ -31,9 +30,9 @@ const VolunteerCard = ({ volunteerData, onClick }: VolunteerCardProps) => {
 			</RecruitStatus>
 			<VolunteerIntroContainer>
 				<VolunteerTitle>{volunteerData.title}</VolunteerTitle>
-				{/* <VolunteerContent>
+				<VolunteerContent>
 					{volunteerData.register_user_id.nickname}
-				</VolunteerContent> */}
+				</VolunteerContent>
 			</VolunteerIntroContainer>
 		</VolunteerSection>
 	);
