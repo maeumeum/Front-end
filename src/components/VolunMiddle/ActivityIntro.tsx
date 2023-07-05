@@ -10,8 +10,6 @@ import {
 } from './ActivityStyle';
 import { VolunteerType } from '@src/types/cardType';
 
-const apiURL = import.meta.env.VITE_API_URL;
-
 interface ActivityIntroProps {
 	volunteerData: VolunteerType;
 }
@@ -36,11 +34,7 @@ const ActivityIntro = ({ volunteerData }: ActivityIntroProps) => {
 				{hasPostImage && (
 					<ImgContainer>
 						{volunteerData.images.map((image: string, index: number) => (
-							<Image
-								key={index}
-								src={`${apiURL}/${image}`}
-								alt='content-image'
-							/>
+							<Image key={index} src={image} alt='content-image' />
 						))}
 					</ImgContainer>
 				)}
