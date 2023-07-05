@@ -18,6 +18,19 @@ export const customStyles = {
 	},
 };
 
+export const mobileTeamStyles = {
+	content: {
+		top: '40%',
+		left: '50%',
+		right: 'auto',
+		bottom: 'auto',
+		margin: 'auto',
+		transform: 'translate(-50%, -50%)',
+		width: '70%',
+		maxHeight: '40%',
+	},
+};
+
 export const MobileStyles = {
 	content: {
 		top: 0,
@@ -46,10 +59,18 @@ export const TopContainer = styled.div`
 
 export const MainTitle = styled.h1`
 	font-size: 2.5rem;
+
+	@media (max-width: 768px) {
+		font-size: 2rem;
+	}
 `;
 
 export const Title = styled.h1`
 	font-size: 2rem;
+
+	@media (max-width: 768px) {
+		font-size: 1.8rem;
+	}
 `;
 
 export const TeamLogo = styled.img`

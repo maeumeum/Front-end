@@ -12,7 +12,7 @@ import {
 	ContentInput,
 	TextLength,
 	ImageArea,
-} from '@src/components/WritePage/WritePageStyle';
+} from '@src/components/WritePage/CWritePageStyle';
 import Swal from 'sweetalert2';
 import alertData from '@utils/swalObject';
 import { CommunityType } from '@src/types/communityType';

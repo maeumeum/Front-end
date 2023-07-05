@@ -10,7 +10,7 @@ import {
 	ButtonContainer,
 	ContentInput,
 	TextLength,
-} from '../WritePage/WritePageStyle';
+} from '../WritePage/CWritePageStyle';
 
 const WritePage = ({ onSave, onCancel }: WritePageProps) => {
 	const [content, setContent] = useState('');

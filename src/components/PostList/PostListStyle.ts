@@ -53,6 +53,10 @@ export const PostButtons = styled.button`
 	height: 4rem;
 	border-radius: 8px;
 	cursor: pointer;
+
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
+	}
 `;
 
 export const AcceptButtons = styled.button`
@@ -64,4 +68,8 @@ export const AcceptButtons = styled.button`
 	height: 4rem;
 	border-radius: 8px;
 	cursor: pointer;
+
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
+	}
 `;

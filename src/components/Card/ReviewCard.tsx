@@ -17,14 +17,12 @@ interface ReviewCardProps {
 	onClick: React.MouseEventHandler<HTMLDivElement>;
 }
 
-const apiURL = import.meta.env.VITE_API_URL;
-
 const ReviewCard = ({ reviewData, onClick }: ReviewCardProps) => {
 	const isPc = useMediaQuery({
 		query: '(min-width:769px)',
 	});
 	const key = reviewData.index;
-	const reviewImg = `${apiURL}/${reviewData.images[0]}`;
+	const reviewImg = `${reviewData.images[0]}`;
 
 	//Content 미리보기 함수
 	const content =

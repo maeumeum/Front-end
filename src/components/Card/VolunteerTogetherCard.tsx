@@ -57,7 +57,7 @@ const VolunteerTogetherCard = ({ volunteerData }: VolunteerCardProps) => {
 		<CardContainer statusName={statusName} onClick={onClick}>
 			<ImgBox>
 				{images.length > 0 ? (
-					<img src={`${url}/${thumbnail}`} alt='Logo' />
+					<img src={thumbnail} alt='Logo' />
 				) : (
 					<img src={defaultImage} alt={'게시글 기본이미지'} />
 				)}
@@ -87,10 +87,7 @@ const VolunteerTogetherCard = ({ volunteerData }: VolunteerCardProps) => {
 			<TitleInfo>{`[${teamName}] ${shortTitle}`}</TitleInfo>
 			<InfoBox statusName={statusName}>
 				<VolunteerUserInfo>
-					<img
-						src={`${url}/${register_user_id.image}`}
-						alt='작성자 프로필사진'
-					/>
+					<img src={register_user_id.image} alt='작성자 프로필사진' />
 					<p>{register_user_id.nickname}</p>
 				</VolunteerUserInfo>
 				{statusName === VolunteerTypes.CONTINUE && (
