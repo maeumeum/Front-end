@@ -23,6 +23,16 @@ const ActivityIntro = ({ volunteerData }: ActivityIntroProps) => {
 		formattedContent = volunteerData.content.split('\n');
 	}
 
+	const getImageWidth = (imageCount: number) => {
+		if (imageCount >= 4) {
+			return '25%';
+		} else if (imageCount === 2) {
+			return '50%';
+		} else if (imageCount === 1) {
+			return '100%';
+		}
+	};
+
 	return (
 		<>
 			<Container>
@@ -34,7 +44,12 @@ const ActivityIntro = ({ volunteerData }: ActivityIntroProps) => {
 				{hasPostImage && (
 					<ImgContainer>
 						{volunteerData.images.map((image: string, index: number) => (
-							<Image key={index} src={image} alt='content-image' />
+							<Image
+								key={index}
+								src={image}
+								style={{ width: getImageWidth(volunteerData.images.length) }}
+								alt='content-image'
+							/>
 						))}
 					</ImgContainer>
 				)}
