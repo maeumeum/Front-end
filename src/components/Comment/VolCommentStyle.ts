@@ -8,7 +8,7 @@ export const Container = styled.div`
 		width: 90%;
 	}
 	@media (max-width: 360px) {
-		width: 80%;
+		width: 90%;
 		margin-left: 2rem;
 	}
 `;
@@ -45,7 +45,7 @@ export const BtnContainer = styled.div`
 		margin-left: -32rem;
 	}
 	@media (max-width: 360px) {
-		margin-left: -77rem;
+		margin-left: -85rem;
 	}
 `;
 export const BtnContainer2 = styled.div`
@@ -59,7 +59,7 @@ export const BtnContainer2 = styled.div`
 		margin-left: 75rem;
 	}
 	@media (max-width: 360px) {
-		margin-left: 28rem;
+		margin-left: 25rem;
 		margin-top: 25rem;
 	}
 `;
