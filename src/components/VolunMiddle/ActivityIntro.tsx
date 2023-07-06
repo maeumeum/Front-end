@@ -29,7 +29,7 @@ const ActivityIntro = ({ volunteerData }: ActivityIntroProps) => {
 		} else if (imageCount === 2) {
 			return '50%';
 		} else if (imageCount === 1) {
-			return '100%';
+			return '70%';
 		}
 	};
 

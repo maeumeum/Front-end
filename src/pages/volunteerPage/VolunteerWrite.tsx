@@ -90,9 +90,7 @@ const VolunteerWrite = () => {
 			await post('/api/volunteers', formData);
 			navigate('/volunteers/ongoing');
 		} catch (error) {
-			Swal.fire(
-				alertData.errorMessage('빠진 내용이 없는지 다시한번 확인해주세요.'),
-			);
+			Swal.fire(alertData.errorMessage(String(error)));
 			navigate('/volunteers/ongoing/edit');
 		}
 	};
@@ -122,7 +120,9 @@ const VolunteerWrite = () => {
 			) : (
 				<MobileTopBar>글 작성하기</MobileTopBar>
 			)}
+
 			<VolunteerWritePage onSave={onSavePost} onCancel={onCancelPost} />
+
 			<WriteImageArea>
 				이미지업로드
 				<input
