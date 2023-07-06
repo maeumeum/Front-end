@@ -21,7 +21,6 @@ import star from '@assets/icons/star.svg';
 import LargeButton from '../Buttons/LargeButton';
 import { useParams } from 'react-router-dom';
 import { get, post } from '@api/api';
-import { TeamType } from '@src/types/cardType';
 import { VolunteerDataType } from '@src/types/dataType';
 import { DataType } from '@src/types/dataType';
 import alertData from '@src/utils/swalObject';
@@ -62,7 +61,6 @@ function VolunInfo() {
 			Swal.fire(alertData.successMessage(String(err)));
 		}
 	};
-
 	return (
 		<>
 			{volunteerData && (

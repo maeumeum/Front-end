@@ -15,6 +15,7 @@ export const get = async <T>(
 		});
 		return response.data;
 	} catch (err) {
+		console.log(err);
 		throw new Error((err as any).response.data.name);
 	}
 };

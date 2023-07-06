@@ -59,7 +59,6 @@ const AuthTeam = () => {
 
 	const tabs = [TabTypes.GROUP_CERTIFICATION];
 	const navigate = useNavigate();
-	console.log(submit);
 
 	//인증된 유저인지 여부 확인
 	useEffect(() => {
@@ -67,7 +66,6 @@ const AuthTeam = () => {
 			try {
 				const response = await get<DataType>('/api/users/info');
 				isSetAuthorization(response.data.authorization);
-				console.log(response);
 			} catch (error) {
 				console.log(error);
 			}
@@ -80,7 +78,6 @@ const AuthTeam = () => {
 		const fetchData = async () => {
 			try {
 				const response = await get<DataType>('/api/team/auth');
-				console.log(response);
 				setIsThisReviewed(response.data.isSubmit);
 			} catch (error) {
 				console.log(error);

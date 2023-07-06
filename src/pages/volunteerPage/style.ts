@@ -365,3 +365,19 @@ export const BtnReport = styled.button`
 	cursor: pointer;
 	font-size: 2.5rem;
 `;
+export const CationContnet = styled.p`
+	font-size: 2rem;
+	color: ${({ theme }) => theme.colors.gray600};
+	position: absolute;
+	bottom: 11rem;
+	left: 27rem;
+	@media (max-width: 768px) {
+		bottom: 9rem;
+		left: 34rem;
+	}
+	@media (max-width: 360px) {
+		bottom: 5rem;
+		left: 1rem;
+		font-size: 1rem;
+	}
+`;

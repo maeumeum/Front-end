@@ -6,7 +6,12 @@ import alertData from '@src/utils/swalObject.ts';
 import VolunteerWritePage from '@components/WritePage/VolunteerWritePage';
 import { post } from '@api/api';
 import { useNavigate } from 'react-router-dom';
-import { MobileTopBar, WriteImageArea, Container } from './style';
+import {
+	MobileTopBar,
+	WriteImageArea,
+	Container,
+	CationContnet,
+} from './style';
 import actTypes from '@src/types/actTypeConstants';
 import TopBar from '@components/TopBar/TopBar';
 
@@ -90,9 +95,7 @@ const VolunteerWrite = () => {
 			await post('/api/volunteers', formData);
 			navigate('/volunteers/ongoing');
 		} catch (error) {
-			Swal.fire(
-				alertData.errorMessage('빠진 내용이 없는지 다시한번 확인해주세요.'),
-			);
+			Swal.fire(alertData.errorMessage(String(error)));
 			navigate('/volunteers/ongoing/edit');
 		}
 	};
@@ -122,7 +125,9 @@ const VolunteerWrite = () => {
 			) : (
 				<MobileTopBar>글 작성하기</MobileTopBar>
 			)}
+
 			<VolunteerWritePage onSave={onSavePost} onCancel={onCancelPost} />
+
 			<WriteImageArea>
 				이미지업로드
 				<input
@@ -134,6 +139,9 @@ const VolunteerWrite = () => {
 					onChange={handelImageChange}
 				/>
 			</WriteImageArea>
+			<CationContnet>
+				jpg, jpeg, png 형식 10mb이하 최대 5장 파일만 가능합니다.
+			</CationContnet>
 		</Container>
 	);
 };
