@@ -353,3 +353,10 @@ export const BottomArea = styled.div`
 		width: 100%;
 	}
 `;
+export const CationContnet = styled.p`
+	font-size: 2rem;
+	color: ${({ theme }) => theme.colors.gray600};
+	position: absolute;
+	top: 68rem;
+	left: 36rem;
+`;
