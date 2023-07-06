@@ -6,7 +6,12 @@ import alertData from '@src/utils/swalObject.ts';
 import VolunteerWritePage from '@components/WritePage/VolunteerWritePage';
 import { post } from '@api/api';
 import { useNavigate } from 'react-router-dom';
-import { MobileTopBar, WriteImageArea, Container } from './style';
+import {
+	MobileTopBar,
+	WriteImageArea,
+	Container,
+	CationContnet,
+} from './style';
 import actTypes from '@src/types/actTypeConstants';
 import TopBar from '@components/TopBar/TopBar';
 
@@ -134,6 +139,9 @@ const VolunteerWrite = () => {
 					onChange={handelImageChange}
 				/>
 			</WriteImageArea>
+			<CationContnet>
+				jpg, jpeg, png 형식 10mb이하 최대 5장 파일만 가능합니다.
+			</CationContnet>
 		</Container>
 	);
 };

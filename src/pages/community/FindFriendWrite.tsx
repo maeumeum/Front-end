@@ -2,7 +2,7 @@ import { useState } from 'react';
 import WritePage from '@components/WritePage/WritePage';
 import { post } from '@api/api';
 import { useNavigate } from 'react-router-dom';
-import { ImageArea, Container } from './style';
+import { ImageArea, Container, CationContnet } from './style';
 import Swal from 'sweetalert2';
 import alertData from '@src/utils/swalObject.ts';
 
@@ -74,6 +74,9 @@ const FindFriendWrite = () => {
 						onChange={handelImageChange}
 					/>
 				</ImageArea>
+				<CationContnet>
+					jpg, jpeg, png 형식 10mb이하 최대 5장 파일만 가능합니다.
+				</CationContnet>
 			</Container>
 		</>
 	);
