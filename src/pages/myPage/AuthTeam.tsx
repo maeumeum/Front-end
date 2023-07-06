@@ -52,25 +52,43 @@ const AuthTeam = () => {
 	const [phoneNum, setPhoneNum] = useState<string>('');
 	const [submit, setSubmit] = useState<boolean>(false);
 	const [isAuthorization, isSetAuthorization] = useState<boolean>(false);
+	const [isThisReviwed, setIsThisReviewed] = useState<boolean>(false);
 	const isMobile = useMediaQuery({
 		query: '(max-width:768px)',
 	});
 
 	const tabs = [TabTypes.GROUP_CERTIFICATION];
 	const navigate = useNavigate();
+	console.log(submit);
 
-	//제출 여부 확인
+	//인증된 유저인지 여부 확인
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const response = await get<DataType>('/api/users/info');
 				isSetAuthorization(response.data.authorization);
+				console.log(response);
 			} catch (error) {
 				console.log(error);
 			}
 		};
 		fetchData();
 	}, []);
+
+	//제출 여부 확인
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await get<DataType>('/api/team/auth');
+				console.log(response);
+				setIsThisReviewed(response.data.isSubmit);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetchData();
+	}, []);
+
 	// inputValue 함수
 	const getFormChanger =
 		(setter: React.Dispatch<React.SetStateAction<string>>) =>
@@ -129,7 +147,7 @@ const AuthTeam = () => {
 					<>
 						<TeamForm>
 							<MainContainer>
-								{isAuthorization && (
+								{isThisReviwed && (
 									<WaitMessage>
 										<h1>현재 관리자가 검토중입니다. 조금만 기다려주세요:)</h1>
 									</WaitMessage>

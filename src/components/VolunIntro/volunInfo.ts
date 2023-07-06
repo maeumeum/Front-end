@@ -35,6 +35,7 @@ export const ImgContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	position: relative;
+	padding: 3rem;
 	img {
 		width: 100%;
 		height: 40rem;
