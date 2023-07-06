@@ -25,9 +25,7 @@ export const IntroContainer = styled.div`
 
 	@media (max-width: 360px) {
 		flex-direction: column;
-		align-items: flex-start;
 		width: 50rem;
-		margin-left: 2.3rem;
 	}
 `;
 
@@ -40,21 +38,29 @@ export const ImgContainer = styled.div`
 	img {
 		width: 100%;
 		height: 40rem;
+
+		@media (max-width: 768px) {
+			height: 30rem;
+		}
+
+		@media (max-width: 360px) and (max-width: 768px) {
+			height: 20rem;
+		}
+
+		@media (max-width: 360px) {
+			height: 25rem;
+		}
+	}
+
+	@media (max-width: 360px) {
+		height: 30rem;
 	}
 `;
 
 export const TeamInfo = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin-left: 8rem;
-
-	@media (max-width: 768px) {
-		margin-left: 5rem;
-		/* width: 55%; */
-	}
-
 	@media (max-width: 360px) {
-		margin-left: 3rem;
 		width: 80%;
 		height: 60%;
 	}
@@ -108,7 +114,7 @@ export const ApplyBox = styled.div`
 
 	h1 {
 		@media (max-width: 360px) {
-			font-size: 2.5rem;
+			font-size: 2rem;
 		}
 	}
 `;

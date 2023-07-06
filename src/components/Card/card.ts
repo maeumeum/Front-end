@@ -94,8 +94,8 @@ export const UserInfo = styled.div`
 	position: relative;
 
 	img {
-		width: 3.8rem;
-		height: 3.8rem;
+		width: 3.3rem;
+		height: 3.3rem;
 		border-radius: 50%;
 	}
 
@@ -149,6 +149,14 @@ export const Badge = styled.div<CardProps>`
 		font-size: ${({ theme }) => theme.typography.size.subparagraph};
 		left: 1rem;
 		top: 1rem;
+	}
+
+	@media (max-width: 360px) {
+		width: 30px;
+		height: 30px;
+		font-size: ${({ theme }) => theme.typography.size.subparagraph};
+		left: 2rem;
+		top: 3rem;
 	}
 `;
 

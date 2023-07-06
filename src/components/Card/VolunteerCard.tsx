@@ -19,11 +19,16 @@ import imgData from '@assets/images/volunteer1.webp';
 
 const VolunteerCard = ({ volunteerData, onClick }: VolunteerCardProps) => {
 	const volunteerImg = `${volunteerData.images[0]}`;
-
+	console.log(volunteerImg);
 	return (
 		<VolunteerSection onClick={onClick}>
 			<VolunteerImgContainer>
-				<VolunteerImage src={volunteerImg ? volunteerImg : imgData} />
+				{/* <VolunteerImage src={volunteerImg ? volunteerImg : imgData} /> */}
+				{volunteerData.images.length > 0 ? (
+					<VolunteerImage src={volunteerImg} alt='Logo' />
+				) : (
+					<VolunteerImage src={imgData} alt={'게시글 기본이미지'} />
+				)}
 			</VolunteerImgContainer>
 			<RecruitStatus className={volunteerData.statusName}>
 				{volunteerData.statusName}

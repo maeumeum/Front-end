@@ -20,7 +20,7 @@ import {
 import CardAvailableIcon from '@assets/icons/card_applier_is_available_icon.svg';
 import CardFullIcon from '@assets/icons/card_applier_is_full_icon.svg';
 import defaultImage from '@src/assets/images/volunteer1.webp';
-
+import defaultProfile from '@assets/images/기본프로필이미지.webp';
 interface VolunteerCardProps {
 	volunteerData: VolunteerTogetherType;
 }
@@ -85,7 +85,11 @@ const VolunteerTogetherCard = ({ volunteerData }: VolunteerCardProps) => {
 			<TitleInfo>{`[${teamName}] ${shortTitle}`}</TitleInfo>
 			<InfoBox statusName={statusName}>
 				<VolunteerUserInfo>
-					<img src={register_user_id.image} alt='작성자 프로필사진' />
+					{register_user_id.image ? (
+						<img src={register_user_id.image} alt='작성자 프로필사진' />
+					) : (
+						<img src={defaultProfile} alt='작성자 프로필사진' />
+					)}
 					<p>{register_user_id.nickname}</p>
 				</VolunteerUserInfo>
 				{statusName === VolunteerTypes.CONTINUE && (
