@@ -24,6 +24,7 @@ import questionImage from '@assets/images/questionImage.webp';
 import { get } from '@api/api';
 import { DataType } from '@src/types/dataType.ts';
 import throttle from '@utils/throttle.ts';
+import useLoginStore from '@src/store/useLoginStore';
 
 type PostData = {
 	_id: string;
@@ -35,6 +36,14 @@ const Question = () => {
 	const [postListData, setPostListData] = useState<PostData[]>([]);
 	const [query, setQuery] = useState<string>('');
 	const [isLoad, setLoad] = useState<boolean>(false);
+	const [checkToken, setCheckToken] = useState<boolean>(false);
+	const { isLogin } = useLoginStore();
+
+	useEffect(() => {
+		if (isLogin) {
+			setCheckToken(true);
+		}
+	});
 
 	useEffect(() => {
 		const fetchPostList = async () => {
@@ -140,7 +149,7 @@ const Question = () => {
 					<BottomArea>
 						<SearchBar onSearch={handleSearch} />
 						<NumberWriteContainer>
-							<WriteButton toNavigate={navigateWrite} />
+							{checkToken && <WriteButton toNavigate={navigateWrite} />}
 						</NumberWriteContainer>
 						{postListData !== null &&
 							postListData.length > 0 &&

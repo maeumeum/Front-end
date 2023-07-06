@@ -58,6 +58,15 @@ export const PostButtons = styled.button`
 		font-size: 1.5rem;
 	}
 `;
+export const Title = styled.p`
+	padding: 4px;
+	font-family: kakaoBig;
+	font-size: 2.5rem;
+	font-weight: ${({ theme }) => theme.typography.weight.bold};
+	letter-spacing: 0em;
+	text-align: left;
+	border-bottom: 3px solid #afcd81;
+`;
 
 export const AcceptButtons = styled.button`
 	margin-right: 3rem;
