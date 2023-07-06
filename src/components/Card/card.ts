@@ -150,6 +150,14 @@ export const Badge = styled.div<CardProps>`
 		left: 1rem;
 		top: 1rem;
 	}
+
+	@media (max-width: 360px) {
+		width: 30px;
+		height: 30px;
+		font-size: ${({ theme }) => theme.typography.size.subparagraph};
+		left: 2rem;
+		top: 3rem;
+	}
 `;
 
 export const Button = styled.button`

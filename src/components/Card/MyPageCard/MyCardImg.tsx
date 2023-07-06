@@ -22,6 +22,7 @@ import ReviewButton from '@components/Card/MyPageCard/ReviewButton';
 import { MyVolunCardProps } from 'src/types/cardType';
 import SuggestStatusSelector from './SuggestStatusSelector.tsx';
 import AppliedStatusSelector from './AppliedStatusSelector.tsx';
+import defaultProfile from '@assets/images/기본프로필이미지.webp';
 
 function MyCardImg({ currTab, volunCardData }: MyVolunCardProps) {
 	const {
@@ -65,7 +66,7 @@ function MyCardImg({ currTab, volunCardData }: MyVolunCardProps) {
 			<CardContainer currTab={currTab} statusName={statusName}>
 				<ImgBox onClick={clickNavigate}>
 					{thumbnail ? (
-						<img src={`${url}/${thumbnail}`} alt='게시글 대표이미지' />
+						<img src={thumbnail} alt='게시글 대표이미지' />
 					) : (
 						<img src={defaultImage} alt='게시글 기본이미지'></img>
 					)}
@@ -88,7 +89,11 @@ function MyCardImg({ currTab, volunCardData }: MyVolunCardProps) {
 					</VolunInfo>
 
 					<UserInfo>
-						<img src={`${url}/${userImage}`} alt='작성자 프로필사진' />
+						{userImage ? (
+							<img src={userImage} alt='게시글 대표이미지' />
+						) : (
+							<img src={defaultProfile} alt='게시글 기본이미지'></img>
+						)}
 						<p>{truncateCentName(nickname)}</p>
 
 						{authorization && (
