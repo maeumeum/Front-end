@@ -27,7 +27,7 @@ export const ImgContainer = styled.div`
 	margin-top: 10rem;
 	margin-left: 2rem;
 	display: flex;
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
 `;
 export const Image = styled.img`
 	width: 25%;
