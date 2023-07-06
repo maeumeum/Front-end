@@ -21,6 +21,7 @@ import star from '@assets/icons/star.svg';
 import LargeButton from '../Buttons/LargeButton';
 import { useParams } from 'react-router-dom';
 import { get, post } from '@api/api';
+import { TeamType } from '@src/types/cardType';
 import { VolunteerDataType } from '@src/types/dataType';
 import { DataType } from '@src/types/dataType';
 import alertData from '@src/utils/swalObject';
@@ -37,6 +38,7 @@ const truncateTitle = (title: string) => {
 function VolunInfo() {
 	const { postId } = useParams() as { postId: string };
 	const [volunteerData, setVolunteerData] = useState<VolunteerDataType>();
+	const [teamImgData, setTeamImgData] = useState<string>();
 	const currentDate = dateFormatter(getCurrent(), 'YYYY-MM-DD');
 	const navigate = useNavigate();
 
@@ -44,6 +46,7 @@ function VolunInfo() {
 		const fetchData = async () => {
 			const responseData = await get<DataType>(`/api/volunteers/${postId}`);
 			setVolunteerData(responseData.data.volunteer);
+			setTeamImgData(responseData.data.teamAuthInfo.image);
 		};
 		fetchData();
 	}, []);
@@ -66,10 +69,10 @@ function VolunInfo() {
 				<div>
 					<IntroContainer>
 						<ImgContainer>
-							{!volunteerData?.image ? (
-								<img src={defaultImg} alt='팀대표이미지' />
+							{teamImgData ? (
+								<img src={teamImgData} alt='팀대표이미지' />
 							) : (
-								<img src={volunteerData.image} alt='팀대표이미지' />
+								<img src={defaultImg} alt='팀대표이미지' />
 							)}
 							<Badge>{volunteerData.statusName}</Badge>
 						</ImgContainer>

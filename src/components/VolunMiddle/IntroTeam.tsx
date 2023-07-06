@@ -23,15 +23,13 @@ type IntroTeamProps = {
 	teamData: TeamType;
 };
 
-const apiURL = import.meta.env.VITE_API_URL;
-
 // eslint-disable-next-line react/prop-types
 const IntroTeam = ({ teamData }: IntroTeamProps) => {
 	const establishDate = dateFormatter(
 		teamData.establishmentDate,
 		'YYYY년 MM월 DD일',
 	);
-	const image = `${apiURL}/${teamData.image}`;
+
 	const briefHistory = teamData.briefHistory.split('\n');
 
 	return (
@@ -40,7 +38,7 @@ const IntroTeam = ({ teamData }: IntroTeamProps) => {
 				<TopArea>
 					<Cover>
 						<ImgContainer>
-							<Img src={image} alt='Team-image' />
+							<Img src={teamData.image} alt='Team-image' />
 						</ImgContainer>
 						<TextContainer>
 							<Team>{teamData.category}</Team>
