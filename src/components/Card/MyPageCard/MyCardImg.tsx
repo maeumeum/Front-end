@@ -39,8 +39,6 @@ function MyCardImg({ currTab, volunCardData }: MyVolunCardProps) {
 		volunApplyId,
 	} = volunCardData;
 
-	const url = import.meta.env.VITE_API_URL;
-
 	const navigate = useNavigate();
 	const [selectedStatus, setSelectedStatus] = useState<string>(statusName);
 	const [isPastEndDate, setIsPastEndDate] = useState(false);

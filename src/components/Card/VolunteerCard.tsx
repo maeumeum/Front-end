@@ -19,7 +19,7 @@ import imgData from '@assets/images/volunteer1.webp';
 
 const VolunteerCard = ({ volunteerData, onClick }: VolunteerCardProps) => {
 	const volunteerImg = `${volunteerData.images[0]}`;
-
+	console.log(volunteerData);
 	return (
 		<VolunteerSection onClick={onClick}>
 			<VolunteerImgContainer>

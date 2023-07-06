@@ -94,8 +94,8 @@ export const UserInfo = styled.div`
 	position: relative;
 
 	img {
-		width: 3.8rem;
-		height: 3.8rem;
+		width: 3.3rem;
+		height: 3.3rem;
 		border-radius: 50%;
 	}
 
