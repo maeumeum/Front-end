@@ -24,9 +24,7 @@ const ActivityIntro = ({ volunteerData }: ActivityIntroProps) => {
 	}
 
 	const getImageWidth = (imageCount: number) => {
-		if (imageCount >= 4) {
-			return '25%';
-		} else if (imageCount === 2) {
+		if (imageCount >= 2) {
 			return '50%';
 		} else if (imageCount === 1) {
 			return '70%';
