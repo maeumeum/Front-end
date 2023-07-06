@@ -62,7 +62,6 @@ function VolunInfo() {
 			Swal.fire(alertData.successMessage(String(err)));
 		}
 	};
-
 	return (
 		<>
 			{volunteerData && (

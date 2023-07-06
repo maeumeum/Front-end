@@ -54,7 +54,6 @@ const FindFriend = () => {
 			);
 			setPostListData(response.data.categoryPost);
 			setLoad(response.data.hasMore);
-			console.log('data', response);
 		};
 		fetchPostList();
 		window.scrollTo(0, 0);
