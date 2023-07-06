@@ -16,6 +16,10 @@ export const Square = styled.div`
 `;
 export const Title = styled.p`
 	font-size: 3rem;
+
+	@media (max-width: 360px) {
+		font-size: 2.3rem;
+	}
 `;
 export const ImgContainer = styled.div`
 	width: 100%;
@@ -24,7 +28,6 @@ export const ImgContainer = styled.div`
 	margin-left: 2rem;
 	display: flex;
 	flex-wrap: nowrap;
-	/* justify-content: center; */
 `;
 export const Image = styled.img`
 	width: 25%;
@@ -41,4 +44,8 @@ export const ContentsContainer = styled.div`
 `;
 export const Content = styled.p`
 	font-size: 2rem;
+
+	@media (max-width: 360px) {
+		font-size: 1.8rem;
+	}
 `;

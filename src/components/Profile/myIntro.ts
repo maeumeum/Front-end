@@ -30,7 +30,7 @@ export const IntroContainer = styled.div`
 			font-size: 12px;
 		}
 
-		@media (max-width: 360px) {
+		@media (min-width: 360px) and (max-width: 768px) {
 			width: 30rem;
 		}
 	}
