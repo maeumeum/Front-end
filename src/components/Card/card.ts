@@ -134,13 +134,13 @@ export const Badge = styled.div<CardProps>`
 	${({ currTab }) =>
 		currTab === TabTypes.VOLUNTEER_COMPLETED &&
 		css`
-			background: #53595b;
+			background: rgba(32, 32, 32, 0.8);
 		`}
 	${({ statusName }) =>
 		(statusName === VolunteerTypes.COMPLETED ||
 			statusName === VolunteerTypes.DISCONTINUE) &&
 		css`
-			background: #53595b;
+			background: rgba(32, 32, 32, 0.8);
 		`}
 
   @media (max-width: 768px) {

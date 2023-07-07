@@ -39,9 +39,6 @@ const FindFriendWrite = () => {
 		for (let i = 0; i < selectedImage.length; i++) {
 			formData.append('images', selectedImage[i]);
 		}
-		for (const [key, value] of formData.entries()) {
-			console.log(`${key}: ${value}`);
-		}
 		await post('/api/community/create', formData, {
 			headers: {
 				'Content-Type': 'multipart/form-data',
