@@ -26,6 +26,10 @@ const FindFriendWrite = () => {
 	};
 
 	const onSavePost = async (inputTitle: string, content: string) => {
+		if (!inputTitle || !content) {
+			Swal.fire(alertData.fillTitleContent);
+			return;
+		}
 		setPostData({
 			title: inputTitle,
 			content: content,
@@ -38,9 +42,6 @@ const FindFriendWrite = () => {
 		formData.append('postType', 'findfriend');
 		for (let i = 0; i < selectedImage.length; i++) {
 			formData.append('images', selectedImage[i]);
-		}
-		for (const [key, value] of formData.entries()) {
-			console.log(`${key}: ${value}`);
 		}
 		await post('/api/community/create', formData, {
 			headers: {

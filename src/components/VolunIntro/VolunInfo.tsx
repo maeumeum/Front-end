@@ -25,7 +25,7 @@ import { VolunteerDataType } from '@src/types/dataType';
 import { DataType } from '@src/types/dataType';
 import alertData from '@src/utils/swalObject';
 import defaultImg from '@assets/images/기본프로필이미지.webp';
-
+import { VolunteerTypes } from '@src/types/myPageConstants';
 const truncateTitle = (title: string) => {
 	if (title.length > 40) {
 		const truncatedName = title.slice(0, 40);
@@ -50,6 +50,7 @@ function VolunInfo() {
 		fetchData();
 	}, []);
 
+	console.log(volunteerData);
 	const clickApply = async () => {
 		try {
 			await post('/api/applications', {
@@ -72,7 +73,9 @@ function VolunInfo() {
 							) : (
 								<img src={defaultImg} alt='팀대표이미지' />
 							)}
-							<Badge>{volunteerData.statusName}</Badge>
+							<Badge statusName={volunteerData.statusName}>
+								{volunteerData.statusName}
+							</Badge>
 						</ImgContainer>
 						<TeamInfo>
 							<Title>{truncateTitle(volunteerData.title)}</Title>
@@ -86,10 +89,10 @@ function VolunInfo() {
 								<p>목표인원 : {volunteerData.registerCount}명</p>
 								<p>활동유형 : {volunteerData.actType}</p>
 								<p>
-									모집기간 : {truncateDate(currentDate)} ~{' '}
-									{truncateDate(volunteerData.deadline)} (현재&nbsp;
+									모집기간 :{truncateDate(volunteerData.deadline)} 일 까지
+									(현재&nbsp;
 									{remainingDaysCalculator(currentDate, volunteerData.deadline)}
-									일) 남음
+									일 남음)
 								</p>
 								<p>
 									활동기간 : {truncateDate(volunteerData.startDate)} ~{' '}
@@ -101,7 +104,9 @@ function VolunInfo() {
 									onClick={clickApply}
 									apply={true}
 									disabled={
-										volunteerData.applyCount === volunteerData.registerCount
+										volunteerData.applyCount === volunteerData.registerCount ||
+										volunteerData.statusName === VolunteerTypes.DISCONTINUE ||
+										volunteerData.statusName === VolunteerTypes.COMPLETED
 									}>
 									{volunteerData.applyCount === volunteerData.registerCount
 										? '신청마감'
