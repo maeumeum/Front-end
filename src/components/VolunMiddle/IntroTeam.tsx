@@ -67,14 +67,17 @@ const IntroTeam = ({ teamData }: IntroTeamProps) => {
 						</Content>
 					</DivideContent>
 					<BottomContainer>
+						<Square></Square>
 						<SubTitle>설립일자</SubTitle>
 						<Team>{establishDate}</Team>
 					</BottomContainer>
 					<BottomContainer>
+						<Square></Square>
 						<SubTitle>소재지 주소</SubTitle>
 						<Team>{teamData.location}</Team>
 					</BottomContainer>
 					<BottomContainer>
+						<Square></Square>
 						<SubTitle>전화번호</SubTitle>
 						<Team>{phoneNumSplit(teamData.phone)}</Team>
 					</BottomContainer>
