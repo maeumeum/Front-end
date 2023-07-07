@@ -26,6 +26,10 @@ const FindFriendWrite = () => {
 	};
 
 	const onSavePost = async (inputTitle: string, content: string) => {
+		if (!inputTitle || !content) {
+			Swal.fire(alertData.fillTitleContent);
+			return;
+		}
 		setPostData({
 			title: inputTitle,
 			content: content,
