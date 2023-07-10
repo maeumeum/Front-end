@@ -13,9 +13,7 @@ const useAuthStore = create<AuthType>((set) => ({
 			});
 			set({ userData: await responseData.data });
 		} catch (err) {
-			await get<DataType>('/api/refresh', {
-				withCredentials: true,
-			});
+			console.log(err);
 		}
 	},
 }));
