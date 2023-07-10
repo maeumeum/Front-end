@@ -27,8 +27,6 @@ import Swal from 'sweetalert2';
 import alertData from '@src/utils/swalObject.ts';
 import { CommunityType } from '@src/types/communityType';
 
-const apiURL = import.meta.env.VITE_API_URL;
-
 const QuestionDetail = () => {
 	const navigate = useNavigate();
 	const { postId } = useParams() as { postId: string };
@@ -136,11 +134,7 @@ const QuestionDetail = () => {
 					{hasPostImage && (
 						<div>
 							{images.map((image: string, index: number) => (
-								<Image
-									key={index}
-									src={`${apiURL}/${image}`}
-									alt='content-image'
-								/>
+								<Image key={index} src={image} alt='content-image' />
 							))}
 						</div>
 					)}
