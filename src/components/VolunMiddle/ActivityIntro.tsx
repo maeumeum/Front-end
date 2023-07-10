@@ -27,7 +27,7 @@ const ActivityIntro = ({ volunteerData }: ActivityIntroProps) => {
 		if (imageCount >= 2) {
 			return '50%';
 		} else if (imageCount === 1) {
-			return '70%';
+			return '60%';
 		}
 	};
 
@@ -45,7 +45,11 @@ const ActivityIntro = ({ volunteerData }: ActivityIntroProps) => {
 							<Image
 								key={index}
 								src={image}
-								style={{ width: getImageWidth(volunteerData.images.length) }}
+								style={{
+									width: getImageWidth(volunteerData.images.length),
+									margin:
+										volunteerData.images.length === 1 ? '0 auto' : undefined,
+								}}
 								alt='content-image'
 							/>
 						))}
