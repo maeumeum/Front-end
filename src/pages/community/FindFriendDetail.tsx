@@ -27,8 +27,6 @@ import { DataType } from '@src/types/dataType.ts';
 import useAuthStore from '@src/store/useAuthStore.ts';
 import { CommunityType } from '@src/types/communityType';
 
-const apiURL = import.meta.env.VITE_API_URL;
-
 const FindFriendDetail = () => {
 	const navigate = useNavigate();
 	const { postId } = useParams() as { postId: string };
@@ -138,11 +136,7 @@ const FindFriendDetail = () => {
 					{hasPostImage && (
 						<div>
 							{images.map((image: string, index: number) => (
-								<Image
-									key={index}
-									src={`${apiURL}/${image}`}
-									alt='content-image'
-								/>
+								<Image key={index} src={image} alt='content-image' />
 							))}
 						</div>
 					)}
