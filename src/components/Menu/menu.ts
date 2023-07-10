@@ -24,6 +24,7 @@ export const Menus = styled.div`
 		}
 	}
 	p {
+		cursor: pointer;
 		font-size: 1.6rem;
 		&:hover {
 			color: var(--button--color);
