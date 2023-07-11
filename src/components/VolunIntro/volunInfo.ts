@@ -38,6 +38,7 @@ export const ImgContainer = styled.div`
 	padding: 3rem;
 	img {
 		width: 100%;
+		max-width: 100%;
 		height: 40rem;
 
 		@media (max-width: 768px) {
