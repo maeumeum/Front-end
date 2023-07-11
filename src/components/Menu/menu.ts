@@ -11,6 +11,7 @@ export const MenuTitle = styled.p`
 	font-size: 2.2rem;
 	font-weight: bold;
 	padding: 1rem;
+	cursor: pointer;
 `;
 
 export const Menus = styled.div`
