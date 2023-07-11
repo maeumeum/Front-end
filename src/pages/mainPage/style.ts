@@ -182,8 +182,4 @@ export const WebName = styled.div`
 	color: ${({ theme }) => theme.colors.gray600};
 	font-size: 2rem;
 	font-weight: ${({ theme }) => theme.typography.weight.bold};
-
-	@media (max-width: 768px) {
-		display: relative;
-	}
 `;
