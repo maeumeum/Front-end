@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 
 import { patch, del } from '@api/api';
 import useAuthStore from '@src/store/useAuthStore';
+import useLoginStore from '@src/store/useLoginStore';
 import alertData from '@utils/swalObject';
 import {
 	PostBox,
@@ -39,8 +40,12 @@ const PostList = ({
 	volunteer,
 }: PostListProps) => {
 	const { userData, getUserData } = useAuthStore();
+	const { isLogin } = useLoginStore();
+
 	useEffect(() => {
-		getUserData();
+		if (isLogin) {
+			getUserData();
+		}
 	}, []);
 
 	const isAdmin = isReported && userData !== null && userData.role === 'admin';
