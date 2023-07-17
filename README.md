@@ -82,16 +82,21 @@
 
 ### Backend
 [류한나](https://github.com/hanna-ryu) : 팀장 / 백엔드 
-- User JWT인증 방식 로그인, 회원가입, 유저 관련 CRUD 기능 구현
+- User JWT ACCESS_TOKEN / REFRESH_TOKEN 방식 로그인, 회원가입, 유저 관련 CRUD 기능 구현
 - Review 조건별 / 기능별 CRUD 기능 구현 , scheduler 모듈 활용 일정시점 db 자동변경 구현  
 - 팀 단체 인증 CRUD 기능 구현, , nodemailer 인증 시스템 구현, 
 - winston 활용 logger 시스템 적용
 - asyncHandler , errorHandler, 응답 형식 구분
-- multer 활용 이미지 업로드 기능 구현
+- AWS S3 이미지 서버 구축 / multer 활용 이미지 업로드 
 
 [이해인](https://github.com/LHI0915)
+- Volunteer 봉사신청 CRUD 기능 구현
+- Volunteer Comment, Community Comment CRUD API 구현
+- 봉사 게시물, 댓글, 리뷰 신고 기능 / 관리자 신고 관리 기능 구현
+- 검색 쿼리 및 무한스크롤 response builder 제작
 
 [탁경진](https://github.com/Takkyou)
+- Community 커뮤니티 CRUD 기능 구현
 
 ### Frontend
 [김마리나](https://github.com/marinarinarina)
@@ -111,6 +116,7 @@
   - 커뮤니티, 리뷰페이지
 
 [정혜린](https://github.com/02rynn)
+
 - 마이페이지 구현
   - 회원정보 수정
   - 자기소개, 프로필 사진 설정 및 변경
@@ -127,7 +133,7 @@
 - 반응형
   - 마이페이지
   - 봉사 상세페이지
-    
+
 [최윤재](https://github.com/uniqueeest)
 - 메인페이지 구현
 - 회원가입, 로그인 페이지 구현
