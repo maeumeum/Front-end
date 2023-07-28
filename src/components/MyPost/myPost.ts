@@ -18,12 +18,8 @@ export const PostBox = styled.div<PostProps>`
 		box-shadow: 0 4px 6px rgba(0.1, 0.1, 0.1, 0.1);
 	}
 	@media (max-width: 768px) {
-		margin-left: 3rem;
-		width: 56rem;
-	}
-	@media (max-width: 360px) {
-		width: 35rem;
-		margin: 2rem auto;
+		width: calc(100% - 4rem);
+		padding: 2rem;
 	}
 `;
 

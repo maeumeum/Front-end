@@ -120,7 +120,8 @@ export const ReviewPostContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	@media (max-width: 360px) {
-		width: 100%;
+
+	@media (max-width: 768px) {
+		margin: 2rem;
 	}
 `;
