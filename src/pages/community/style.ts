@@ -81,6 +81,7 @@ export const MiddleContainer = styled.div`
 	@media (max-width: 768px) {
 		margin-left: -15rem;
 		margin-top: 20rem;
+		width: 100%;
 	}
 	@media (max-width: 360px) {
 		margin-top: 15rem;
@@ -348,8 +349,7 @@ export const BottomArea = styled.div`
 	align-items: center;
 	margin-left: 15rem;
 	@media (max-width: 768px) {
-		margin-left: 3rem;
-		margin-top: -10rem;
+		margin: -10rem 2rem 0;
 		width: 100%;
 	}
 `;

@@ -129,10 +129,8 @@ const FindFriend = () => {
 							마음을 이어보세요!
 						</Subtitle>
 					</TextArea>
-
 					<FFImageArea src={findfriendImage} alt='findfriend-image' />
 				</MainContainer>
-
 				<MiddleContainer>
 					<BigText>동행구해요!</BigText>
 					<Sub>
